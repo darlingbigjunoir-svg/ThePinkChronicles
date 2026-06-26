@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Pink Chronicles – By Herty Afari</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Nunito:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- ===== NAVBAR ===== -->
+  <header class="navbar">
+    <div class="nav-logo">
+      <i class="fa-solid fa-microphone-lines logo-icon"></i>
+      <div class="logo-text">
+        <span class="logo-the">THE</span>
+        <span class="logo-pink">PINK</span>
+        <span class="logo-chronicles">CHRONICLES</span>
+        <span class="logo-by">BY HERTY AFARI</span>
+      </div>
+    </div>
+    <nav class="nav-links">
+      <a href="index.html" class="active">HOME</a>
+      <a href="about.html">ABOUT</a>
+      <a href="episodes.html">EPISODES</a>
+      <a href="topics.html">TOPICS</a>
+      <a href="fun-time.html">FUN TIME</a>
+      <a href="community.html">COMMUNITY</a>
+      <a href="contact.html">CONTACT</a>
+    </nav>
+    <a href="episodes.html" class="btn-listen">
+      <i class="fa-solid fa-headphones"></i> LISTEN NOW
+    </a>
+    <button type="button" class="hamburger" aria-label="Toggle navigation menu" onclick="this.classList.toggle('open'); document.querySelector('.nav-links').classList.toggle('open')">
+      <i class="fa-solid fa-bars"></i>
+    </button>
+  </header>
+
+  <!-- ===== HERO ===== -->
+  <section class="hero">
+    <div class="hero-left">
+      <div class="hero-deco">
+        <i class="fa-solid fa-star deco-star s1"></i>
+        <i class="fa-regular fa-heart deco-heart h1"></i>
+        <i class="fa-solid fa-star deco-star s2"></i>
+        <i class="fa-regular fa-heart deco-heart h2"></i>
+        <i class="fa-solid fa-star deco-star s3"></i>
+      </div>
+      <h1 class="hero-title">
+        <span class="ht-the">THE</span>
+        <span class="ht-pink">PINK</span>
+        <span class="ht-chronicles">CHRONICLES</span>
+        <span class="ht-by">BY HERTY AFARI</span>
+      </h1>
+      <p class="hero-tagline">Real talks. Real girls. Real growth.</p>
+      <p class="hero-sub">A podcast by teens, for teens.<br/>Sharing stories, discussing topics,<br/>and having fun while we grow together.</p>
+      <a href="episodes.html" class="btn-episode">
+        <i class="fa-solid fa-circle-play"></i> LISTEN TO LATEST EPISODE
+      </a>
+    </div>
+    <div class="hero-right">
+      <img src="images/0.png" alt="The Pink Chronicles studio setup" class="hero-img" />
+    </div>
+  </section>
+
+  <!-- ===== ABOUT + WE TALK ABOUT ===== -->
+  <section class="about-section">
+    <div class="about-left">
+      <img src="images/12.png" alt="Girl podcasting" class="about-girl" />
+      <div class="about-text">
+        <h2 class="section-title pink">ABOUT THE PODCAST</h2>
+        <div class="pink-divider"></div>
+        <p>The Pink Chronicles by Herty Afari is a safe space where teen girls can speak up, share their thoughts, and listen to real conversations about life. From deep talks to funny moments, we're here to inspire, support, and empower each other.</p>
+        <div class="tagline-badge">Your voice. Your story. Your tribe.</div>
+      </div>
+    </div>
+
+    <div class="about-right">
+      <h2 class="section-title pink centered">WE TALK ABOUT</h2>
+      <div class="pink-divider centered"></div>
+      <div class="topics-grid">
+        <div class="topic-card">
+          <i class="fa-solid fa-brain topic-icon"></i>
+          <h3>MENTAL HEALTH</h3>
+          <p>Let's talk about stress, anxiety, self-care, and staying strong.</p>
+        </div>
+        <div class="topic-card">
+          <i class="fa-solid fa-heart topic-icon"></i>
+          <h3>RELATIONSHIPS</h3>
+          <p>Friendships, family, crushes and everything in between.</p>
+        </div>
+        <div class="topic-card">
+          <i class="fa-solid fa-seedling topic-icon"></i>
+          <h3>SELF GROWTH</h3>
+          <p>Building confidence, self love, goals and becoming our best self.</p>
+        </div>
+        <div class="topic-card">
+          <i class="fa-solid fa-book-open topic-icon"></i>
+          <h3>SCHOOL &amp; LIFE</h3>
+          <p>Balancing school, pressure, and real life struggles.</p>
+        </div>
+        <div class="topic-card">
+          <i class="fa-solid fa-comments topic-icon"></i>
+          <h3>REAL TALK</h3>
+          <p>Unfiltered conversations about things we don't always say out loud.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FUN TIME ===== -->
+  <section class="fun-time">
+    <div class="fun-polaroids">
+      <img src="images/13.png" alt="Community polaroid photos" class="polaroids-img" />
+    </div>
+    <div class="fun-text">
+      <h2 class="section-title pink centered">FUN TIME</h2>
+      <div class="pink-divider centered"></div>
+      <p>Because life isn't all serious!<br/>Join us for games, challenges, Q&amp;A sessions,<br/>and lots of laughs.</p>
+      <div class="fun-icons">
+        <i class="fa-solid fa-gamepad fun-icon"></i>
+        <i class="fa-solid fa-face-laugh fun-icon"></i>
+        <i class="fa-solid fa-star fun-icon"></i>
+        <i class="fa-regular fa-comment fun-icon"></i>
+      </div>
+    </div>
+    <div class="fun-right-icons">
+      <i class="fa-regular fa-face-smile right-smile"></i>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="footer-brand">
+      <p class="footer-script">Let's<br/>Connect!</p>
+      <i class="fa-regular fa-heart footer-heart"></i>
+    </div>
+
+    <div class="footer-connect">
+      <h3>CONNECT WITH US</h3>
+      <p>We'd love to hear from you! Whether you have a question, a topic suggestion, or just want to say hi.</p>
+    </div>
+
+    <div class="footer-contact-item">
+      <div class="contact-icon-wrap">
+        <i class="fa-solid fa-phone"></i>
+      </div>
+      <div>
+        <span class="contact-label">PHONE</span>
+        <span class="contact-val">+1 234 567 8901</span>
+      </div>
+    </div>
+
+    <div class="footer-contact-item">
+      <div class="contact-icon-wrap">
+        <i class="fa-solid fa-location-dot"></i>
+      </div>
+      <div>
+        <span class="contact-label">LOCATION</span>
+        <span class="contact-val">123 Pink Lane, Dreamville, CA 90210, USA</span>
+      </div>
+    </div>
+
+    <div class="footer-contact-item">
+      <div class="contact-icon-wrap">
+        <i class="fa-solid fa-envelope"></i>
+      </div>
+      <div>
+        <span class="contact-label">EMAIL</span>
+        <span class="contact-val">thepinkchronicles@gmail.com</span>
+      </div>
+    </div>
+
+    <div class="footer-mic">
+      <img src="images/14.png" alt="Podcast microphone" class="footer-mic-img" />
+    </div>
+  </footer>
+
+</body>
+</html>

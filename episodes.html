@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Episodes – The Pink Chronicles</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Nunito:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- ===== NAVBAR ===== -->
+  <header class="navbar">
+    <div class="nav-logo">
+      <i class="fa-solid fa-microphone-lines logo-icon"></i>
+      <div class="logo-text">
+        <span class="logo-the">THE</span>
+        <span class="logo-pink">PINK<br>CHRONICLES</span>
+        <span class="logo-by">BY HERTY AFARI</span>
+      </div>
+    </div>
+    <nav class="nav-links">
+      <a href="index.html">HOME</a>
+      <a href="about.html">ABOUT</a>
+      <a href="episodes.html" class="active">EPISODES</a>
+      <a href="topics.html">TOPICS</a>
+      <a href="fun-time.html">FUN TIME</a>
+      <a href="contact.html">CONTACT</a>
+    </nav>
+    <a href="#" class="btn-listen">
+      <i class="fa-solid fa-headphones"></i> LISTEN NOW
+    </a>
+    <button type="button" class="hamburger" aria-label="Toggle navigation" onclick="this.classList.toggle('open'); document.querySelector('.nav-links').classList.toggle('open')">
+      <i class="fa-solid fa-bars"></i>
+    </button>
+  </header>
+
+  <!-- ===== EPISODES HERO ===== -->
+  <section class="ep-hero">
+    <div class="ep-hero-left">
+      <!-- floating deco -->
+      <i class="fa-solid fa-heart ep-deco epd1"></i>
+      <i class="fa-solid fa-star ep-deco epd2"></i>
+      <i class="fa-regular fa-heart ep-deco epd3"></i>
+
+      <p class="ep-eyebrow">
+        <i class="fa-solid fa-heart"></i>
+        All Episodes
+        <i class="fa-regular fa-heart"></i>
+      </p>
+      <h1 class="ep-hero-title">
+        REAL STORIES.<br>
+        <span class="pink">REAL GIRLS. REAL TALK.</span>
+      </h1>
+      <p class="ep-hero-sub">
+        New episodes every week! Tune in for real conversations,
+        helpful advice, and a whole lot of girl talk.
+        <i class="fa-solid fa-heart"></i>
+      </p>
+    </div>
+
+    <div class="ep-hero-right">
+      <img src="images/8.png" alt="Pink headphones and microphone setup" />
+    </div>
+  </section>
+
+  <!-- ===== MAIN CONTENT ===== -->
+  <main class="ep-main">
+
+    <!-- ── Episode List ── -->
+    <div class="ep-list-panel">
+
+      <div class="ep-list-header">
+        <h2 class="ep-list-title">
+          <i class="fa-solid fa-microphone"></i>
+          LATEST EPISODES
+        </h2>
+        <div class="ep-sortby">
+          <label for="sort-episodes">Sort by:</label>
+          <select id="sort-episodes">
+            <option>Newest First</option>
+            <option>Oldest First</option>
+            <option>Most Popular</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Episode 24 -->
+      <div class="ep-card">
+        <div class="ep-thumb">
+          <div class="ep-thumb-label">Be Kind<br>to<br>Yourself</div>
+        </div>
+        <button class="ep-play-btn" aria-label="Play episode">
+          <i class="fa-solid fa-play"></i>
+        </button>
+        <div class="ep-info">
+          <p class="ep-number">EPISODE 24</p>
+          <h3 class="ep-name">
+            Be Kind to Yourself
+            <i class="fa-regular fa-heart"></i>
+          </h3>
+          <p class="ep-desc">We're talking self-love, confidence, and why being kind to YOU is the first step to a happier life.</p>
+          <div class="ep-meta">
+            <span><i class="fa-regular fa-calendar-days"></i> May 18, 2024</span>
+            <span><i class="fa-regular fa-clock"></i> 32 min</span>
+          </div>
+        </div>
+        <div class="ep-actions">
+          <span class="ep-duration">32:15</span>
+          <button class="ep-more-btn" aria-label="More options">
+            <i class="fa-solid fa-ellipsis"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Episode 23 -->
+      <div class="ep-card">
+        <div class="ep-thumb">
+          <div class="ep-thumb-label">Friendships<br>That<br>Heal <i class="fa-solid fa-heart" style="color:var(--pink-deep);font-size:.55rem;"></i></div>
+        </div>
+        <button class="ep-play-btn" aria-label="Play episode">
+          <i class="fa-solid fa-play"></i>
+        </button>
+        <div class="ep-info">
+          <p class="ep-number">EPISODE 23</p>
+          <h3 class="ep-name">
+            Friendships That Heal
+            <i class="fa-regular fa-heart"></i>
+          </h3>
+          <p class="ep-desc">How to build real, healthy friendships and let go of the ones that drain you.</p>
+          <div class="ep-meta">
+            <span><i class="fa-regular fa-calendar-days"></i> May 11, 2024</span>
+            <span><i class="fa-regular fa-clock"></i> 28 min</span>
+          </div>
+        </div>
+        <div class="ep-actions">
+          <span class="ep-duration">28:40</span>
+          <button class="ep-more-btn" aria-label="More options">
+            <i class="fa-solid fa-ellipsis"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Episode 22 -->
+      <div class="ep-card">
+        <div class="ep-thumb">
+          <div class="ep-thumb-label">Anxiety<br>is not<br>your fault</div>
+        </div>
+        <button class="ep-play-btn" aria-label="Play episode">
+          <i class="fa-solid fa-play"></i>
+        </button>
+        <div class="ep-info">
+          <p class="ep-number">EPISODE 22</p>
+          <h3 class="ep-name">
+            Anxiety Is Not Your Fault
+            <i class="fa-regular fa-heart"></i>
+          </h3>
+          <p class="ep-desc">Let's break the stigma and talk about anxiety, coping strategies, and getting help.</p>
+          <div class="ep-meta">
+            <span><i class="fa-regular fa-calendar-days"></i> May 4, 2024</span>
+            <span><i class="fa-regular fa-clock"></i> 29 min</span>
+          </div>
+        </div>
+        <div class="ep-actions">
+          <span class="ep-duration">29:05</span>
+          <button class="ep-more-btn" aria-label="More options">
+            <i class="fa-solid fa-ellipsis"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Episode 21 -->
+      <div class="ep-card">
+        <div class="ep-thumb">
+          <div class="ep-thumb-label">Setting<br>Boundaries<br>is Self-care <i class="fa-solid fa-heart" style="color:var(--pink-deep);font-size:.55rem;"></i></div>
+        </div>
+        <button class="ep-play-btn" aria-label="Play episode">
+          <i class="fa-solid fa-play"></i>
+        </button>
+        <div class="ep-info">
+          <p class="ep-number">EPISODE 21</p>
+          <h3 class="ep-name">
+            Setting Boundaries is Self-Care
+            <i class="fa-regular fa-heart"></i>
+          </h3>
+          <p class="ep-desc">Why boundaries matter and how to set them without feeling guilty.</p>
+          <div class="ep-meta">
+            <span><i class="fa-regular fa-calendar-days"></i> Apr 27, 2024</span>
+            <span><i class="fa-regular fa-clock"></i> 26 min</span>
+          </div>
+        </div>
+        <div class="ep-actions">
+          <span class="ep-duration">26:30</span>
+          <button class="ep-more-btn" aria-label="More options">
+            <i class="fa-solid fa-ellipsis"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Episode 20 -->
+      <div class="ep-card">
+        <div class="ep-thumb">
+          <div class="ep-thumb-label">Your<br>Body,<br>Your Rules</div>
+        </div>
+        <button class="ep-play-btn" aria-label="Play episode">
+          <i class="fa-solid fa-play"></i>
+        </button>
+        <div class="ep-info">
+          <p class="ep-number">EPISODE 20</p>
+          <h3 class="ep-name">
+            Your Body, Your Rules
+            <i class="fa-regular fa-heart"></i>
+          </h3>
+          <p class="ep-desc">A real conversation about body image, self-acceptance, and embracing who you are.</p>
+          <div class="ep-meta">
+            <span><i class="fa-regular fa-calendar-days"></i> Apr 20, 2024</span>
+            <span><i class="fa-regular fa-clock"></i> 31 min</span>
+          </div>
+        </div>
+        <div class="ep-actions">
+          <span class="ep-duration">31:42</span>
+          <button class="ep-more-btn" aria-label="More options">
+            <i class="fa-solid fa-ellipsis"></i>
+          </button>
+        </div>
+      </div>
+
+    </div><!-- /ep-list-panel -->
+
+    <!-- ── Sidebar ── -->
+    <aside class="ep-sidebar">
+
+      <!-- New Here? -->
+      <div class="new-here-card">
+        <div class="new-here-label">
+          <i class="fa-solid fa-star"></i>
+          New Here?
+        </div>
+        <div class="new-here-inner">
+          <div class="new-here-icon-wrap">
+            <i class="fa-solid fa-microphone"></i>
+          </div>
+          <p class="new-here-text">
+            <strong>The Pink Chronicles</strong> is your safe space for real talk, real stories, and real growth.
+          </p>
+        </div>
+        <button class="btn-start-listening">
+          <i class="fa-solid fa-headphones"></i> START LISTENING
+        </button>
+      </div>
+
+      <!-- Browse by Topic -->
+      <div class="sidebar-card browse-card">
+        <h3 class="browse-card-title">BROWSE BY TOPIC</h3>
+
+        <div class="topic-row">
+          <span class="topic-row-icon"><i class="fa-solid fa-brain"></i></span>
+          <span class="topic-row-name">Mental Health</span>
+          <span class="topic-row-count">12</span>
+        </div>
+        <div class="topic-row">
+          <span class="topic-row-icon"><i class="fa-solid fa-heart"></i></span>
+          <span class="topic-row-name">Relationships</span>
+          <span class="topic-row-count">15</span>
+        </div>
+        <div class="topic-row">
+          <span class="topic-row-icon"><i class="fa-solid fa-seedling"></i></span>
+          <span class="topic-row-name">Self Growth</span>
+          <span class="topic-row-count">11</span>
+        </div>
+        <div class="topic-row">
+          <span class="topic-row-icon"><i class="fa-solid fa-book-open"></i></span>
+          <span class="topic-row-name">School &amp; Life</span>
+          <span class="topic-row-count">10</span>
+        </div>
+        <div class="topic-row">
+          <span class="topic-row-icon"><i class="fa-solid fa-comments"></i></span>
+          <span class="topic-row-name">Real Talk</span>
+          <span class="topic-row-count">9</span>
+        </div>
+        <div class="topic-row">
+          <span class="topic-row-icon"><i class="fa-solid fa-face-laugh"></i></span>
+          <span class="topic-row-name">Fun &amp; Lifestyle</span>
+          <span class="topic-row-count">8</span>
+        </div>
+
+        <a href="topics.html" class="view-all-link">
+          VIEW ALL TOPICS <i class="fa-solid fa-arrow-right"></i>
+        </a>
+      </div>
+
+      <!-- Share Your Story -->
+      <div class="story-card">
+        <div class="story-card-deco">
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-crown"></i>
+          <i class="fa-solid fa-star"></i>
+        </div>
+        <h3 class="story-title">Have a story to share?</h3>
+        <p class="story-sub">We'd love to hear from you!</p>
+        <button class="btn-share-story">
+          SHARE YOUR STORY <i class="fa-solid fa-heart"></i>
+        </button>
+      </div>
+
+    </aside>
+
+  </main>
+
+  <!-- ===== EPISODES FOOTER ===== -->
+  <footer class="ep-footer">
+
+    <div class="ep-footer-brand">
+      <div class="ep-footer-tagline">You're not<br>alone.</div>
+      <p class="ep-footer-sub">
+        We're in this together.<br>
+        New episodes every Saturday.<br>
+        Hit play and join the conversation! <i class="fa-solid fa-heart"></i>
+      </p>
+    </div>
+
+    <div class="ep-footer-divider"></div>
+
+    <div class="ep-footer-listen">
+      <p class="ep-footer-col-title">LISTEN ON</p>
+      <div class="ep-platform-icons">
+        <button class="ep-platform-btn" aria-label="Spotify">
+          <i class="fa-brands fa-spotify"></i>
+        </button>
+        <button class="ep-platform-btn" aria-label="Apple Podcasts">
+          <i class="fa-brands fa-apple"></i>
+        </button>
+        <button class="ep-platform-btn" aria-label="YouTube">
+          <i class="fa-brands fa-youtube"></i>
+        </button>
+        <button class="ep-platform-btn" aria-label="Music">
+          <i class="fa-solid fa-music"></i>
+        </button>
+      </div>
+    </div>
+
+    <div class="ep-footer-follow">
+      <p class="ep-footer-col-title">FOLLOW US</p>
+      <div class="ep-social-icons">
+        <button class="ep-social-btn" aria-label="Instagram">
+          <i class="fa-brands fa-instagram"></i>
+        </button>
+        <button class="ep-social-btn" aria-label="TikTok">
+          <i class="fa-brands fa-tiktok"></i>
+        </button>
+        <button class="ep-social-btn" aria-label="Pinterest">
+          <i class="fa-brands fa-pinterest-p"></i>
+        </button>
+        <button class="ep-social-btn" aria-label="Email">
+          <i class="fa-solid fa-envelope"></i>
+        </button>
+      </div>
+    </div>
+
+    <div class="ep-footer-mug">
+      <img src="images/9.png" alt="Podcast mug" class="ep-footer-mug-img" />
+    </div>
+
+  </footer>
+
+</body>
+</html>
