@@ -12,42 +12,44 @@
 
   <!-- ===== NAVBAR ===== -->
   <header class="navbar">
-    <div class="nav-logo">
+    <a href="index.html" class="nav-logo">
       <i class="fa-solid fa-microphone-lines logo-icon"></i>
       <div class="logo-text">
         <span class="logo-the">THE</span>
         <span class="logo-pink">PINK<br>CHRONICLES</span>
         <span class="logo-by">BY HERTY AFARI</span>
       </div>
-    </div>
-    <nav class="nav-links">
-      <a href="index.html">HOME</a>
-      <a href="about.html">ABOUT</a>
-      <a href="episodes.html" class="active">EPISODES</a>
-      <a href="topics.html">TOPICS</a>
-      <a href="community.html">COMMUNITY</a>
-      <a href="contact.html">CONTACT</a>
+    </a>
+    <nav>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html">HOME</a></li>
+        <li><a href="about.html">ABOUT</a></li>
+        <li><a href="episodes.html" class="active">EPISODES</a></li>
+        <li><a href="topics.html">TOPICS</a></li>
+        <li><a href="community.html">COMMUNITY</a></li>
+        <li><a href="contact.html">CONTACT</a></li>
+      </ul>
     </nav>
-    <a href="#" class="btn-listen">
+    <a href="#video-section" class="btn-listen">
       <i class="fa-solid fa-headphones"></i> LISTEN NOW
     </a>
-    <button class="hamburger" type="button" aria-label="Toggle navigation menu" title="Toggle navigation menu" onclick="this.classList.toggle('open'); document.querySelector('.nav-links').classList.toggle('open')">
+    <button class="hamburger" type="button" aria-label="Toggle navigation" onclick="document.getElementById('navLinks').classList.toggle('open')">
       <i class="fa-solid fa-bars"></i>
     </button>
   </header>
 
+
   <!-- ===== EPISODES HERO ===== -->
   <section class="ep-hero">
     <div class="ep-hero-left">
-      <!-- floating deco -->
-      <i class="fa-solid fa-heart ep-deco epd1"></i>
-      <i class="fa-solid fa-star ep-deco epd2"></i>
-      <i class="fa-regular fa-heart ep-deco epd3"></i>
+      <i class="fa-solid fa-heart ep-deco epd1" aria-hidden="true"></i>
+      <i class="fa-solid fa-star ep-deco epd2" aria-hidden="true"></i>
+      <i class="fa-regular fa-heart ep-deco epd3" aria-hidden="true"></i>
 
       <p class="ep-eyebrow">
-        <i class="fa-solid fa-heart"></i>
+        <i class="fa-solid fa-heart" aria-hidden="true"></i>
         All Episodes
-        <i class="fa-regular fa-heart"></i>
+        <i class="fa-regular fa-heart" aria-hidden="true"></i>
       </p>
       <h1 class="ep-hero-title">
         REAL STORIES.<br>
@@ -56,24 +58,299 @@
       <p class="ep-hero-sub">
         New episodes every week! Tune in for real conversations,
         helpful advice, and a whole lot of girl talk.
-        <i class="fa-solid fa-heart"></i>
+        <i class="fa-solid fa-heart" aria-hidden="true"></i>
       </p>
     </div>
-
     <div class="ep-hero-right">
-      <img src="episodes-hero.png" alt="Pink headphones and microphone setup" />
+      <img src="episodes-hero.png" alt="Pink headphones and microphone setup in a cosy studio" />
     </div>
   </section>
 
-  <!-- ===== MAIN CONTENT ===== -->
+
+  <!-- ===== FEATURED VIDEO SECTION ===== -->
+  <section class="video-section" id="video-section">
+
+    <div class="video-section-intro">
+      <div class="video-section-icon">
+        <i class="fa-solid fa-circle-play" aria-hidden="true"></i>
+      </div>
+      <div class="video-section-intro-text">
+        <h2>Featured Episode</h2>
+        <p>Watch &amp; listen right here — no app needed</p>
+      </div>
+    </div>
+
+    <div class="video-layout">
+
+      <!-- ── Player card ── -->
+      <div class="video-main">
+
+        <!-- Thumbnail / video wrap -->
+        <div class="video-player-wrap" id="playerWrap">
+
+          <!-- Still / poster state -->
+          <div class="video-still" id="videoStill">
+            <i class="fa-solid fa-microphone video-deco-mic" aria-hidden="true"></i>
+            <i class="fa-solid fa-heart video-deco-heart" aria-hidden="true"></i>
+            <span class="video-ep-badge" id="stillBadge">Episode 24 · The Pink Chronicles</span>
+            <span class="video-still-title" id="stillTitle">Be Kind to Yourself</span>
+            <button class="video-play-big" id="bigPlayBtn" onclick="handlePlay()" aria-label="Play episode 24 — Be Kind to Yourself">
+              <i class="fa-solid fa-play" aria-hidden="true"></i>
+            </button>
+          </div>
+
+          <!-- Pause overlay (shown while playing) -->
+          <div class="video-pause-overlay" id="pauseOverlay" onclick="handlePause()">
+            <button class="video-pause-btn" aria-label="Pause episode">
+              <i class="fa-solid fa-pause" aria-hidden="true"></i>
+            </button>
+          </div>
+
+          <!-- Native video element — swap src for your real file -->
+          <video
+            class="ep-video-el"
+            id="mainVideo"
+            preload="metadata"
+            aria-label="Episode 24: Be Kind to Yourself"
+          >
+            <!--
+              Replace the src below with your real video file path or a hosted URL.
+              Example: <source src="videos/ep24-be-kind-to-yourself.mp4" type="video/mp4" />
+              For YouTube, swap the entire <video> block for an <iframe> embed instead.
+            -->
+            <source src="videos/ep24-be-kind-to-yourself.mp4" type="video/mp4" />
+            Your browser does not support the video element.
+          </video>
+        </div>
+
+        <!-- Custom controls bar -->
+        <div class="video-controls-bar" id="controlsBar">
+          <!-- Progress row -->
+          <div class="vc-progress-row">
+            <span class="vc-time" id="currentTime">0:00</span>
+            <div class="vc-track" id="progressTrack" onclick="seekVideo(event)" role="slider" aria-label="Playback progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" tabindex="0">
+              <div class="vc-fill" id="progressFill"></div>
+            </div>
+            <span class="vc-time" id="totalTime">32:15</span>
+          </div>
+          <!-- Button row -->
+          <div class="vc-buttons">
+            <button class="vc-btn" onclick="skipVideo(-15)" title="Rewind 15 seconds" aria-label="Rewind 15 seconds">
+              <i class="fa-solid fa-rotate-left" aria-hidden="true"></i>
+            </button>
+            <button class="vc-btn vc-main" id="playPauseBtn" onclick="togglePlayPause()" aria-label="Play episode">
+              <i class="fa-solid fa-play" id="playPauseIcon" aria-hidden="true"></i>
+            </button>
+            <button class="vc-btn" onclick="skipVideo(15)" title="Skip 15 seconds" aria-label="Skip forward 15 seconds">
+              <i class="fa-solid fa-rotate-right" aria-hidden="true"></i>
+            </button>
+            <button class="vc-speed" id="speedBtn" onclick="cycleSpeed()" aria-label="Playback speed">1×</button>
+
+            <div class="vc-vol-group">
+              <i class="fa-solid fa-volume-low" aria-hidden="true"></i>
+              <input class="vc-vol" type="range" min="0" max="100" value="80" id="volSlider" aria-label="Volume" oninput="setVolume(this.value)" />
+            </div>
+
+            <div class="vc-action-group">
+              <button class="vc-btn" onclick="downloadEp()" title="Download episode" aria-label="Download episode">
+                <i class="fa-solid fa-download" aria-hidden="true"></i>
+              </button>
+              <button class="vc-btn" onclick="shareEp()" title="Share episode" aria-label="Share episode">
+                <i class="fa-solid fa-share-nodes" aria-hidden="true"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Episode info strip -->
+        <div class="video-ep-info">
+          <p class="video-ep-label-row" id="epLabel">EPISODE 24</p>
+          <h3 class="video-ep-title-row" id="epTitle">
+            Be Kind to Yourself
+            <i class="fa-regular fa-heart" aria-hidden="true"></i>
+          </h3>
+          <div class="video-ep-meta">
+            <span><i class="fa-regular fa-calendar-days" aria-hidden="true"></i> May 18, 2024</span>
+            <span><i class="fa-regular fa-clock" aria-hidden="true"></i> 32 min</span>
+            <span><i class="fa-solid fa-headphones" aria-hidden="true"></i> 2.4k listens</span>
+          </div>
+          <p class="video-ep-desc" id="epDesc">
+            We're talking self-love, confidence, and why being kind to YOU is the very first step to a
+            happier, fuller life. Herty shares personal stories, listener questions, and practical tips
+            you can start using today. Because you deserve it, sis. <i class="fa-regular fa-heart" aria-hidden="true"></i>
+          </p>
+          <div class="video-ep-actions">
+            <button class="btn-play-ep" onclick="handlePlay()" id="infoPlayBtn">
+              <i class="fa-solid fa-play" aria-hidden="true"></i> PLAY NOW
+            </button>
+            <button class="btn-ghost-ep">
+              <i class="fa-solid fa-bookmark" aria-hidden="true"></i> SAVE
+            </button>
+            <button class="btn-ghost-ep" onclick="shareEp()">
+              <i class="fa-solid fa-share-nodes" aria-hidden="true"></i> SHARE
+            </button>
+          </div>
+        </div>
+      </div><!-- /video-main -->
+
+      <!-- ── Video Sidebar ── -->
+      <aside class="video-sidebar">
+
+        <!-- Up Next queue -->
+        <div class="queue-card">
+          <div class="queue-card-header">
+            <i class="fa-solid fa-list" aria-hidden="true"></i>
+            Up Next
+          </div>
+
+          <!-- Episode entries — JS uses data-* attrs to swap player state -->
+          <div class="queue-item queue-active"
+               data-ep="24"
+               data-title="Be Kind to Yourself"
+               data-desc="We're talking self-love, confidence, and why being kind to YOU is the very first step to a happier, fuller life. Herty shares personal stories, listener questions, and practical tips you can start using today."
+               data-date="May 18, 2024"
+               data-dur="32:15"
+               data-listens="2.4k"
+               data-badge="Episode 24 · The Pink Chronicles"
+               data-src="videos/ep24-be-kind-to-yourself.mp4"
+               onclick="selectEpisode(this)"
+               role="button"
+               tabindex="0"
+               aria-label="Episode 24: Be Kind to Yourself">
+            <div class="queue-thumb">Be Kind<br>to<br>Yourself</div>
+            <div class="queue-info">
+              <div class="q-ep">EP. 24</div>
+              <div class="q-title">Be Kind to Yourself</div>
+              <div class="q-dur">32:15</div>
+            </div>
+            <div class="queue-play-icon"><i class="fa-solid fa-circle-play" aria-hidden="true"></i></div>
+          </div>
+
+          <div class="queue-item"
+               data-ep="23"
+               data-title="Friendships That Heal"
+               data-desc="How to build real, healthy friendships and gently let go of the ones that drain your energy and peace."
+               data-date="May 11, 2024"
+               data-dur="28:40"
+               data-listens="1.9k"
+               data-badge="Episode 23 · The Pink Chronicles"
+               data-src="videos/ep23-friendships-that-heal.mp4"
+               onclick="selectEpisode(this)"
+               role="button"
+               tabindex="0"
+               aria-label="Episode 23: Friendships That Heal">
+            <div class="queue-thumb">Friend-<br>ships<br>That Heal</div>
+            <div class="queue-info">
+              <div class="q-ep">EP. 23</div>
+              <div class="q-title">Friendships That Heal</div>
+              <div class="q-dur">28:40</div>
+            </div>
+            <div class="queue-play-icon"><i class="fa-solid fa-circle-play" aria-hidden="true"></i></div>
+          </div>
+
+          <div class="queue-item"
+               data-ep="22"
+               data-title="Anxiety Is Not Your Fault"
+               data-desc="Let's break the stigma and have a real, honest conversation about anxiety, coping strategies, and reaching out for help."
+               data-date="May 4, 2024"
+               data-dur="29:05"
+               data-listens="2.1k"
+               data-badge="Episode 22 · The Pink Chronicles"
+               data-src="videos/ep22-anxiety-not-your-fault.mp4"
+               onclick="selectEpisode(this)"
+               role="button"
+               tabindex="0"
+               aria-label="Episode 22: Anxiety Is Not Your Fault">
+            <div class="queue-thumb">Anxiety<br>is not<br>your fault</div>
+            <div class="queue-info">
+              <div class="q-ep">EP. 22</div>
+              <div class="q-title">Anxiety Is Not Your Fault</div>
+              <div class="q-dur">29:05</div>
+            </div>
+            <div class="queue-play-icon"><i class="fa-solid fa-circle-play" aria-hidden="true"></i></div>
+          </div>
+
+          <div class="queue-item"
+               data-ep="21"
+               data-title="Setting Boundaries is Self-Care"
+               data-desc="Why boundaries matter and how to set them without feeling guilty, mean, or afraid of losing people."
+               data-date="Apr 27, 2024"
+               data-dur="26:30"
+               data-listens="1.7k"
+               data-badge="Episode 21 · The Pink Chronicles"
+               data-src="videos/ep21-setting-boundaries.mp4"
+               onclick="selectEpisode(this)"
+               role="button"
+               tabindex="0"
+               aria-label="Episode 21: Setting Boundaries is Self-Care">
+            <div class="queue-thumb">Setting<br>Bounda-<br>ries</div>
+            <div class="queue-info">
+              <div class="q-ep">EP. 21</div>
+              <div class="q-title">Setting Boundaries is Self-Care</div>
+              <div class="q-dur">26:30</div>
+            </div>
+            <div class="queue-play-icon"><i class="fa-solid fa-circle-play" aria-hidden="true"></i></div>
+          </div>
+
+          <div class="queue-item"
+               data-ep="20"
+               data-title="Your Body, Your Rules"
+               data-desc="A real conversation about body image, self-acceptance, and the journey to embracing who you truly are."
+               data-date="Apr 20, 2024"
+               data-dur="31:42"
+               data-listens="2.2k"
+               data-badge="Episode 20 · The Pink Chronicles"
+               data-src="videos/ep20-your-body-your-rules.mp4"
+               onclick="selectEpisode(this)"
+               role="button"
+               tabindex="0"
+               aria-label="Episode 20: Your Body, Your Rules">
+            <div class="queue-thumb">Your<br>Body,<br>Your Rules</div>
+            <div class="queue-info">
+              <div class="q-ep">EP. 20</div>
+              <div class="q-title">Your Body, Your Rules</div>
+              <div class="q-dur">31:42</div>
+            </div>
+            <div class="queue-play-icon"><i class="fa-solid fa-circle-play" aria-hidden="true"></i></div>
+          </div>
+        </div><!-- /queue-card -->
+
+        <!-- Listen on platforms -->
+        <div class="listen-on-card">
+          <i class="fa-solid fa-headphones" aria-hidden="true"></i>
+          <h3>Listen Everywhere</h3>
+          <p>Subscribe so you never miss a new episode dropping every Saturday</p>
+          <div class="platform-dots">
+            <button class="platform-dot" title="Spotify" aria-label="Listen on Spotify">
+              <i class="fa-brands fa-spotify" aria-hidden="true"></i>
+            </button>
+            <button class="platform-dot" title="Apple Podcasts" aria-label="Listen on Apple Podcasts">
+              <i class="fa-brands fa-apple" aria-hidden="true"></i>
+            </button>
+            <button class="platform-dot" title="YouTube" aria-label="Listen on YouTube">
+              <i class="fa-brands fa-youtube" aria-hidden="true"></i>
+            </button>
+            <button class="platform-dot" title="More platforms" aria-label="More platforms">
+              <i class="fa-solid fa-ellipsis" aria-hidden="true"></i>
+            </button>
+          </div>
+        </div>
+
+      </aside><!-- /video-sidebar -->
+
+    </div><!-- /video-layout -->
+  </section><!-- /video-section -->
+
+
+  <!-- ===== EPISODE LIST + SIDEBAR ===== -->
   <main class="ep-main">
 
-    <!-- ── Episode List ── -->
+    <!-- ── Episode List Panel ── -->
     <div class="ep-list-panel">
 
       <div class="ep-list-header">
         <h2 class="ep-list-title">
-          <i class="fa-solid fa-microphone"></i>
+          <i class="fa-solid fa-microphone" aria-hidden="true"></i>
           LATEST EPISODES
         </h2>
         <div class="ep-sortby">
@@ -87,146 +364,203 @@
       </div>
 
       <!-- Episode 24 -->
-      <div class="ep-card">
+      <article class="ep-card">
         <div class="ep-thumb">
           <div class="ep-thumb-label">Be Kind<br>to<br>Yourself</div>
         </div>
-        <button type="button" class="ep-play-btn" aria-label="Play episode">
-          <i class="fa-solid fa-play"></i>
+        <button type="button" class="ep-play-btn" aria-label="Play episode 24" onclick="jumpToPlayer('24','Be Kind to Yourself')">
+          <i class="fa-solid fa-play" aria-hidden="true"></i>
         </button>
         <div class="ep-info">
           <p class="ep-number">EPISODE 24</p>
           <h3 class="ep-name">
             Be Kind to Yourself
-            <i class="fa-regular fa-heart"></i>
+            <i class="fa-regular fa-heart" aria-hidden="true"></i>
           </h3>
           <p class="ep-desc">We're talking self-love, confidence, and why being kind to YOU is the first step to a happier life.</p>
           <div class="ep-meta">
-            <span><i class="fa-regular fa-calendar-days"></i> May 18, 2024</span>
-            <span><i class="fa-regular fa-clock"></i> 32 min</span>
+            <span><i class="fa-regular fa-calendar-days" aria-hidden="true"></i> May 18, 2024</span>
+            <span><i class="fa-regular fa-clock" aria-hidden="true"></i> 32 min</span>
           </div>
         </div>
         <div class="ep-actions">
           <span class="ep-duration">32:15</span>
-          <button type="button" class="ep-more-btn" aria-label="More options">
-            <i class="fa-solid fa-ellipsis"></i>
+          <button type="button" class="ep-more-btn" aria-label="More options for episode 24">
+            <i class="fa-solid fa-ellipsis" aria-hidden="true"></i>
           </button>
         </div>
-      </div>
+      </article>
 
       <!-- Episode 23 -->
-      <div class="ep-card">
+      <article class="ep-card">
         <div class="ep-thumb">
-          <div class="ep-thumb-label">Friendships<br>That<br>Heal <i class="fa-solid fa-heart ep-thumb-label-icon"></i></div>
+          <div class="ep-thumb-label">Friendships<br>That<br>Heal</div>
         </div>
-        <button type="button" class="ep-play-btn" aria-label="Play episode">
-          <i class="fa-solid fa-play"></i>
+        <button type="button" class="ep-play-btn" aria-label="Play episode 23" onclick="jumpToPlayer('23','Friendships That Heal')">
+          <i class="fa-solid fa-play" aria-hidden="true"></i>
         </button>
         <div class="ep-info">
           <p class="ep-number">EPISODE 23</p>
           <h3 class="ep-name">
             Friendships That Heal
-            <i class="fa-regular fa-heart"></i>
+            <i class="fa-regular fa-heart" aria-hidden="true"></i>
           </h3>
           <p class="ep-desc">How to build real, healthy friendships and let go of the ones that drain you.</p>
           <div class="ep-meta">
-            <span><i class="fa-regular fa-calendar-days"></i> May 11, 2024</span>
-            <span><i class="fa-regular fa-clock"></i> 28 min</span>
+            <span><i class="fa-regular fa-calendar-days" aria-hidden="true"></i> May 11, 2024</span>
+            <span><i class="fa-regular fa-clock" aria-hidden="true"></i> 28 min</span>
           </div>
         </div>
         <div class="ep-actions">
           <span class="ep-duration">28:40</span>
-          <button type="button" class="ep-more-btn" aria-label="More options">
-            <i class="fa-solid fa-ellipsis"></i>
+          <button type="button" class="ep-more-btn" aria-label="More options for episode 23">
+            <i class="fa-solid fa-ellipsis" aria-hidden="true"></i>
           </button>
         </div>
-      </div>
+      </article>
 
       <!-- Episode 22 -->
-      <div class="ep-card">
+      <article class="ep-card">
         <div class="ep-thumb">
           <div class="ep-thumb-label">Anxiety<br>is not<br>your fault</div>
         </div>
-        <button type="button" class="ep-play-btn" aria-label="Play episode">
-          <i class="fa-solid fa-play"></i>
+        <button type="button" class="ep-play-btn" aria-label="Play episode 22" onclick="jumpToPlayer('22','Anxiety Is Not Your Fault')">
+          <i class="fa-solid fa-play" aria-hidden="true"></i>
         </button>
         <div class="ep-info">
           <p class="ep-number">EPISODE 22</p>
           <h3 class="ep-name">
             Anxiety Is Not Your Fault
-            <i class="fa-regular fa-heart"></i>
+            <i class="fa-regular fa-heart" aria-hidden="true"></i>
           </h3>
           <p class="ep-desc">Let's break the stigma and talk about anxiety, coping strategies, and getting help.</p>
           <div class="ep-meta">
-            <span><i class="fa-regular fa-calendar-days"></i> May 4, 2024</span>
-            <span><i class="fa-regular fa-clock"></i> 29 min</span>
+            <span><i class="fa-regular fa-calendar-days" aria-hidden="true"></i> May 4, 2024</span>
+            <span><i class="fa-regular fa-clock" aria-hidden="true"></i> 29 min</span>
           </div>
         </div>
         <div class="ep-actions">
           <span class="ep-duration">29:05</span>
-          <button type="button" class="ep-more-btn" aria-label="More options">
-            <i class="fa-solid fa-ellipsis"></i>
+          <button type="button" class="ep-more-btn" aria-label="More options for episode 22">
+            <i class="fa-solid fa-ellipsis" aria-hidden="true"></i>
           </button>
         </div>
-      </div>
+      </article>
 
       <!-- Episode 21 -->
-      <div class="ep-card">
+      <article class="ep-card">
         <div class="ep-thumb">
-          <div class="ep-thumb-label">Setting<br>Boundaries<br>is Self-care <i class="fa-solid fa-heart ep-thumb-label-icon"></i></div>
+          <div class="ep-thumb-label">Setting<br>Boundaries<br>= Self-care</div>
         </div>
-        <button type="button" class="ep-play-btn" aria-label="Play episode">
-          <i class="fa-solid fa-play"></i>
+        <button type="button" class="ep-play-btn" aria-label="Play episode 21" onclick="jumpToPlayer('21','Setting Boundaries is Self-Care')">
+          <i class="fa-solid fa-play" aria-hidden="true"></i>
         </button>
         <div class="ep-info">
           <p class="ep-number">EPISODE 21</p>
           <h3 class="ep-name">
             Setting Boundaries is Self-Care
-            <i class="fa-regular fa-heart"></i>
+            <i class="fa-regular fa-heart" aria-hidden="true"></i>
           </h3>
           <p class="ep-desc">Why boundaries matter and how to set them without feeling guilty.</p>
           <div class="ep-meta">
-            <span><i class="fa-regular fa-calendar-days"></i> Apr 27, 2024</span>
-            <span><i class="fa-regular fa-clock"></i> 26 min</span>
+            <span><i class="fa-regular fa-calendar-days" aria-hidden="true"></i> Apr 27, 2024</span>
+            <span><i class="fa-regular fa-clock" aria-hidden="true"></i> 26 min</span>
           </div>
         </div>
         <div class="ep-actions">
           <span class="ep-duration">26:30</span>
-          <button type="button" class="ep-more-btn" aria-label="More options">
-            <i class="fa-solid fa-ellipsis"></i>
+          <button type="button" class="ep-more-btn" aria-label="More options for episode 21">
+            <i class="fa-solid fa-ellipsis" aria-hidden="true"></i>
           </button>
         </div>
-      </div>
+      </article>
 
       <!-- Episode 20 -->
-      <div class="ep-card">
+      <article class="ep-card">
         <div class="ep-thumb">
           <div class="ep-thumb-label">Your<br>Body,<br>Your Rules</div>
         </div>
-        <button type="button" class="ep-play-btn" aria-label="Play episode">
-          <i class="fa-solid fa-play"></i>
+        <button type="button" class="ep-play-btn" aria-label="Play episode 20" onclick="jumpToPlayer('20','Your Body, Your Rules')">
+          <i class="fa-solid fa-play" aria-hidden="true"></i>
         </button>
         <div class="ep-info">
           <p class="ep-number">EPISODE 20</p>
           <h3 class="ep-name">
             Your Body, Your Rules
-            <i class="fa-regular fa-heart"></i>
+            <i class="fa-regular fa-heart" aria-hidden="true"></i>
           </h3>
           <p class="ep-desc">A real conversation about body image, self-acceptance, and embracing who you are.</p>
           <div class="ep-meta">
-            <span><i class="fa-regular fa-calendar-days"></i> Apr 20, 2024</span>
-            <span><i class="fa-regular fa-clock"></i> 31 min</span>
+            <span><i class="fa-regular fa-calendar-days" aria-hidden="true"></i> Apr 20, 2024</span>
+            <span><i class="fa-regular fa-clock" aria-hidden="true"></i> 31 min</span>
           </div>
         </div>
         <div class="ep-actions">
           <span class="ep-duration">31:42</span>
-          <button type="button" class="ep-more-btn" aria-label="More options">
-            <i class="fa-solid fa-ellipsis"></i>
+          <button type="button" class="ep-more-btn" aria-label="More options for episode 20">
+            <i class="fa-solid fa-ellipsis" aria-hidden="true"></i>
           </button>
         </div>
-      </div>
+      </article>
+
+      <!-- Episode 19 -->
+      <article class="ep-card">
+        <div class="ep-thumb">
+          <div class="ep-thumb-label">Toxic<br>Relation-<br>ships</div>
+        </div>
+        <button type="button" class="ep-play-btn" aria-label="Play episode 19" onclick="jumpToPlayer('19','Recognising Toxic Relationships')">
+          <i class="fa-solid fa-play" aria-hidden="true"></i>
+        </button>
+        <div class="ep-info">
+          <p class="ep-number">EPISODE 19</p>
+          <h3 class="ep-name">
+            Recognising Toxic Relationships
+            <i class="fa-regular fa-heart" aria-hidden="true"></i>
+          </h3>
+          <p class="ep-desc">The red flags we miss, the signs we ignore, and how to find the courage to walk away.</p>
+          <div class="ep-meta">
+            <span><i class="fa-regular fa-calendar-days" aria-hidden="true"></i> Apr 13, 2024</span>
+            <span><i class="fa-regular fa-clock" aria-hidden="true"></i> 35 min</span>
+          </div>
+        </div>
+        <div class="ep-actions">
+          <span class="ep-duration">35:08</span>
+          <button type="button" class="ep-more-btn" aria-label="More options for episode 19">
+            <i class="fa-solid fa-ellipsis" aria-hidden="true"></i>
+          </button>
+        </div>
+      </article>
+
+      <!-- Episode 18 -->
+      <article class="ep-card">
+        <div class="ep-thumb">
+          <div class="ep-thumb-label">Dream<br>Big,<br>Girl</div>
+        </div>
+        <button type="button" class="ep-play-btn" aria-label="Play episode 18" onclick="jumpToPlayer('18','Dream Big, Girl')">
+          <i class="fa-solid fa-play" aria-hidden="true"></i>
+        </button>
+        <div class="ep-info">
+          <p class="ep-number">EPISODE 18</p>
+          <h3 class="ep-name">
+            Dream Big, Girl
+            <i class="fa-regular fa-heart" aria-hidden="true"></i>
+          </h3>
+          <p class="ep-desc">Goal-setting, ambition, and why no dream is ever too big when you believe in yourself.</p>
+          <div class="ep-meta">
+            <span><i class="fa-regular fa-calendar-days" aria-hidden="true"></i> Apr 6, 2024</span>
+            <span><i class="fa-regular fa-clock" aria-hidden="true"></i> 27 min</span>
+          </div>
+        </div>
+        <div class="ep-actions">
+          <span class="ep-duration">27:22</span>
+          <button type="button" class="ep-more-btn" aria-label="More options for episode 18">
+            <i class="fa-solid fa-ellipsis" aria-hidden="true"></i>
+          </button>
+        </div>
+      </article>
 
     </div><!-- /ep-list-panel -->
+
 
     <!-- ── Sidebar ── -->
     <aside class="ep-sidebar">
@@ -234,19 +568,19 @@
       <!-- New Here? -->
       <div class="new-here-card">
         <div class="new-here-label">
-          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star" aria-hidden="true"></i>
           New Here?
         </div>
         <div class="new-here-inner">
           <div class="new-here-icon-wrap">
-            <i class="fa-solid fa-microphone"></i>
+            <i class="fa-solid fa-microphone" aria-hidden="true"></i>
           </div>
           <p class="new-here-text">
             <strong>The Pink Chronicles</strong> is your safe space for real talk, real stories, and real growth.
           </p>
         </div>
-        <button type="button" class="btn-start-listening">
-          <i class="fa-solid fa-headphones"></i> START LISTENING
+        <button type="button" class="btn-start-listening" onclick="document.getElementById('video-section').scrollIntoView({behavior:'smooth'})">
+          <i class="fa-solid fa-headphones" aria-hidden="true"></i> START LISTENING
         </button>
       </div>
 
@@ -254,45 +588,45 @@
       <div class="sidebar-card browse-card">
         <h3 class="browse-card-title">BROWSE BY TOPIC</h3>
 
-        <div class="topic-row">
-          <span class="topic-row-icon"><i class="fa-solid fa-brain"></i></span>
+        <div class="topic-row" role="button" tabindex="0">
+          <span class="topic-row-icon"><i class="fa-solid fa-brain" aria-hidden="true"></i></span>
           <span class="topic-row-name">Mental Health</span>
           <span class="topic-row-count">12</span>
         </div>
-        <div class="topic-row">
-          <span class="topic-row-icon"><i class="fa-solid fa-heart"></i></span>
+        <div class="topic-row" role="button" tabindex="0">
+          <span class="topic-row-icon"><i class="fa-solid fa-heart" aria-hidden="true"></i></span>
           <span class="topic-row-name">Relationships</span>
           <span class="topic-row-count">15</span>
         </div>
-        <div class="topic-row">
-          <span class="topic-row-icon"><i class="fa-solid fa-seedling"></i></span>
+        <div class="topic-row" role="button" tabindex="0">
+          <span class="topic-row-icon"><i class="fa-solid fa-seedling" aria-hidden="true"></i></span>
           <span class="topic-row-name">Self Growth</span>
           <span class="topic-row-count">11</span>
         </div>
-        <div class="topic-row">
-          <span class="topic-row-icon"><i class="fa-solid fa-book-open"></i></span>
+        <div class="topic-row" role="button" tabindex="0">
+          <span class="topic-row-icon"><i class="fa-solid fa-book-open" aria-hidden="true"></i></span>
           <span class="topic-row-name">School &amp; Life</span>
           <span class="topic-row-count">10</span>
         </div>
-        <div class="topic-row">
-          <span class="topic-row-icon"><i class="fa-solid fa-comments"></i></span>
+        <div class="topic-row" role="button" tabindex="0">
+          <span class="topic-row-icon"><i class="fa-solid fa-comments" aria-hidden="true"></i></span>
           <span class="topic-row-name">Real Talk</span>
           <span class="topic-row-count">9</span>
         </div>
-        <div class="topic-row">
-          <span class="topic-row-icon"><i class="fa-solid fa-face-laugh"></i></span>
+        <div class="topic-row" role="button" tabindex="0">
+          <span class="topic-row-icon"><i class="fa-solid fa-face-laugh" aria-hidden="true"></i></span>
           <span class="topic-row-name">Fun &amp; Lifestyle</span>
           <span class="topic-row-count">8</span>
         </div>
 
         <a href="topics.html" class="view-all-link">
-          VIEW ALL TOPICS <i class="fa-solid fa-arrow-right"></i>
+          VIEW ALL TOPICS <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
         </a>
       </div>
 
       <!-- Share Your Story -->
       <div class="story-card">
-        <div class="story-card-deco">
+        <div class="story-card-deco" aria-hidden="true">
           <i class="fa-solid fa-star"></i>
           <i class="fa-solid fa-crown"></i>
           <i class="fa-solid fa-star"></i>
@@ -300,15 +634,16 @@
         <h3 class="story-title">Have a story to share?</h3>
         <p class="story-sub">We'd love to hear from you!</p>
         <button type="button" class="btn-share-story">
-          SHARE YOUR STORY <i class="fa-solid fa-heart"></i>
+          SHARE YOUR STORY <i class="fa-solid fa-heart" aria-hidden="true"></i>
         </button>
       </div>
 
-    </aside>
+    </aside><!-- /ep-sidebar -->
 
-  </main>
+  </main><!-- /ep-main -->
 
-  <!-- ===== EPISODES FOOTER ===== -->
+
+  <!-- ===== EPISODES FOOTER BANNER ===== -->
   <footer class="ep-footer">
 
     <div class="ep-footer-brand">
@@ -316,26 +651,26 @@
       <p class="ep-footer-sub">
         We're in this together.<br>
         New episodes every Saturday.<br>
-        Hit play and join the conversation! <i class="fa-solid fa-heart"></i>
+        Hit play and join the conversation! <i class="fa-solid fa-heart" aria-hidden="true"></i>
       </p>
     </div>
 
-    <div class="ep-footer-divider"></div>
+    <div class="ep-footer-divider" aria-hidden="true"></div>
 
     <div class="ep-footer-listen">
       <p class="ep-footer-col-title">LISTEN ON</p>
       <div class="ep-platform-icons">
-        <button type="button" class="ep-platform-btn" aria-label="Spotify">
-          <i class="fa-brands fa-spotify"></i>
+        <button type="button" class="ep-platform-btn" aria-label="Listen on Spotify">
+          <i class="fa-brands fa-spotify" aria-hidden="true"></i>
         </button>
-        <button type="button" class="ep-platform-btn" aria-label="Apple Podcasts">
-          <i class="fa-brands fa-apple"></i>
+        <button type="button" class="ep-platform-btn" aria-label="Listen on Apple Podcasts">
+          <i class="fa-brands fa-apple" aria-hidden="true"></i>
         </button>
-        <button type="button" class="ep-platform-btn" aria-label="YouTube">
-          <i class="fa-brands fa-youtube"></i>
+        <button type="button" class="ep-platform-btn" aria-label="Listen on YouTube">
+          <i class="fa-brands fa-youtube" aria-hidden="true"></i>
         </button>
-        <button type="button" class="ep-platform-btn" aria-label="Music">
-          <i class="fa-solid fa-music"></i>
+        <button type="button" class="ep-platform-btn" aria-label="Other platforms">
+          <i class="fa-solid fa-music" aria-hidden="true"></i>
         </button>
       </div>
     </div>
@@ -343,27 +678,227 @@
     <div class="ep-footer-follow">
       <p class="ep-footer-col-title">FOLLOW US</p>
       <div class="ep-social-icons">
-        <button type="button" class="ep-social-btn" aria-label="Instagram">
-          <i class="fa-brands fa-instagram"></i>
+        <button type="button" class="ep-social-btn" aria-label="Follow on Instagram">
+          <i class="fa-brands fa-instagram" aria-hidden="true"></i>
         </button>
-        <button type="button" class="ep-social-btn" aria-label="TikTok">
-          <i class="fa-brands fa-tiktok"></i>
+        <button type="button" class="ep-social-btn" aria-label="Follow on TikTok">
+          <i class="fa-brands fa-tiktok" aria-hidden="true"></i>
         </button>
-        <button type="button" class="ep-social-btn" aria-label="Pinterest">
-          <i class="fa-brands fa-pinterest-p"></i>
+        <button type="button" class="ep-social-btn" aria-label="Follow on Pinterest">
+          <i class="fa-brands fa-pinterest-p" aria-hidden="true"></i>
         </button>
-        <button type="button" class="ep-social-btn" aria-label="Email">
-          <i class="fa-solid fa-envelope"></i>
+        <button type="button" class="ep-social-btn" aria-label="Send us an email">
+          <i class="fa-solid fa-envelope" aria-hidden="true"></i>
         </button>
       </div>
     </div>
 
-    <div class="ep-footer-mug">
-      <!-- decorative placeholder: a pink mic icon at large size -->
+    <div class="ep-footer-mug" aria-hidden="true">
       <i class="fa-solid fa-microphone ep-footer-mug-icon"></i>
     </div>
 
   </footer>
+
+
+  <!-- ===== VIDEO PLAYER SCRIPT ===== -->
+  <script>
+    /* ─── State ─── */
+    const video      = document.getElementById('mainVideo');
+    const still      = document.getElementById('videoStill');
+    const pauseOv    = document.getElementById('pauseOverlay');
+    const fill       = document.getElementById('progressFill');
+    const curTime    = document.getElementById('currentTime');
+    const totalTime  = document.getElementById('totalTime');
+    const ppIcon     = document.getElementById('playPauseIcon');
+    const track      = document.getElementById('progressTrack');
+    const speedBtn   = document.getElementById('speedBtn');
+    const volSlider  = document.getElementById('volSlider');
+    const infoPlayBtn = document.getElementById('infoPlayBtn');
+
+    const speeds = [1, 1.25, 1.5, 2, 0.75];
+    let speedIdx = 0;
+
+    /* ─── Helpers ─── */
+    function fmt(s) {
+      s = Math.floor(s || 0);
+      const m = Math.floor(s / 60);
+      const sec = s % 60;
+      return m + ':' + (sec < 10 ? '0' : '') + sec;
+    }
+
+    function setPlaying(state) {
+      if (state) {
+        still.classList.add('hidden');
+        video.classList.add('visible');
+        pauseOv.classList.add('visible');
+        ppIcon.className = 'fa-solid fa-pause';
+        infoPlayBtn.innerHTML = '<i class="fa-solid fa-pause" aria-hidden="true"></i> PAUSE';
+      } else {
+        pauseOv.classList.remove('visible');
+        ppIcon.className = 'fa-solid fa-play';
+        infoPlayBtn.innerHTML = '<i class="fa-solid fa-play" aria-hidden="true"></i> PLAY NOW';
+      }
+    }
+
+    /* ─── Play / pause ─── */
+    function handlePlay() {
+      if (video.paused) {
+        video.play().catch(() => {});
+      }
+    }
+
+    function handlePause() {
+      if (!video.paused) video.pause();
+    }
+
+    function togglePlayPause() {
+      if (video.paused) { video.play().catch(() => {}); }
+      else { video.pause(); }
+    }
+
+    video.addEventListener('play',  () => setPlaying(true));
+    video.addEventListener('pause', () => setPlaying(false));
+    video.addEventListener('ended', () => {
+      setPlaying(false);
+      still.classList.remove('hidden');
+      video.classList.remove('visible');
+      fill.style.width = '0%';
+      curTime.textContent = '0:00';
+    });
+
+    /* ─── Progress ─── */
+    video.addEventListener('loadedmetadata', () => {
+      totalTime.textContent = fmt(video.duration);
+    });
+
+    video.addEventListener('timeupdate', () => {
+      if (!video.duration) return;
+      const pct = (video.currentTime / video.duration) * 100;
+      fill.style.width = pct + '%';
+      curTime.textContent = fmt(video.currentTime);
+      track.setAttribute('aria-valuenow', Math.round(pct));
+    });
+
+    function seekVideo(e) {
+      if (!video.duration) return;
+      const rect = track.getBoundingClientRect();
+      const pct  = Math.max(0, Math.min(1, (e.clientX - rect.left) / rect.width));
+      video.currentTime = pct * video.duration;
+    }
+
+    /* ─── Skip ─── */
+    function skipVideo(secs) {
+      video.currentTime = Math.max(0, Math.min(video.duration || 0, video.currentTime + secs));
+    }
+
+    /* ─── Speed ─── */
+    function cycleSpeed() {
+      speedIdx = (speedIdx + 1) % speeds.length;
+      video.playbackRate = speeds[speedIdx];
+      speedBtn.textContent = speeds[speedIdx] + '×';
+    }
+
+    /* ─── Volume ─── */
+    function setVolume(val) {
+      video.volume = val / 100;
+    }
+    video.volume = volSlider.value / 100;
+
+    /* ─── Download / Share ─── */
+    function downloadEp() {
+      const a = document.createElement('a');
+      a.href = video.currentSrc || video.src || '#';
+      a.download = '';
+      a.click();
+    }
+
+    function shareEp() {
+      if (navigator.share) {
+        navigator.share({
+          title: document.getElementById('epTitle').textContent.trim(),
+          url: window.location.href
+        }).catch(() => {});
+      } else {
+        navigator.clipboard.writeText(window.location.href).then(() => {
+          alert('Link copied to clipboard!');
+        }).catch(() => {});
+      }
+    }
+
+    /* ─── Queue: select episode ─── */
+    function selectEpisode(el) {
+      /* Update queue highlight */
+      document.querySelectorAll('.queue-item').forEach(q => q.classList.remove('queue-active'));
+      el.classList.add('queue-active');
+
+      /* Pause current video */
+      if (!video.paused) video.pause();
+
+      /* Read data attributes */
+      const ep       = el.dataset.ep;
+      const title    = el.dataset.title;
+      const desc     = el.dataset.desc;
+      const date     = el.dataset.date;
+      const dur      = el.dataset.dur;
+      const listens  = el.dataset.listens;
+      const badge    = el.dataset.badge;
+      const src      = el.dataset.src;
+
+      /* Update player still state */
+      document.getElementById('stillBadge').textContent = badge;
+      document.getElementById('stillTitle').textContent = title;
+
+      /* Update info strip */
+      document.getElementById('epLabel').textContent = 'EPISODE ' + ep;
+      const titleEl = document.getElementById('epTitle');
+      titleEl.childNodes[0].textContent = title + ' ';
+      document.getElementById('epDesc').innerHTML =
+        desc + ' <i class="fa-regular fa-heart" aria-hidden="true"></i>';
+
+      /* Swap video source */
+      video.src = src;
+      video.load();
+
+      /* Reset controls */
+      fill.style.width = '0%';
+      curTime.textContent = '0:00';
+      totalTime.textContent = dur;
+      speedIdx = 0;
+      speedBtn.textContent = '1×';
+      video.playbackRate = 1;
+
+      /* Return to still */
+      still.classList.remove('hidden');
+      video.classList.remove('visible');
+      setPlaying(false);
+
+      /* Smooth scroll to player */
+      document.getElementById('video-section').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    /* ─── Episode list play buttons → scroll + select queue item ─── */
+    function jumpToPlayer(epNum, title) {
+      const queueItems = document.querySelectorAll('.queue-item');
+      let matched = false;
+      queueItems.forEach(item => {
+        if (item.dataset.ep === epNum) {
+          selectEpisode(item);
+          matched = true;
+        }
+      });
+      /* If ep not in queue, still scroll and update title */
+      if (!matched) {
+        document.getElementById('video-section').scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+
+    /* ─── Keyboard: progress track ─── */
+    track.addEventListener('keydown', e => {
+      if (!video.duration) return;
+      if (e.key === 'ArrowRight') skipVideo(5);
+      if (e.key === 'ArrowLeft')  skipVideo(-5);
+    });
+  </script>
 
 </body>
 </html>

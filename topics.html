@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Topics – The Pink Chronicles</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Nunito:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- ===== NAVBAR ===== -->
+  <header class="navbar">
+    <div class="nav-logo">
+      <i class="fa-solid fa-microphone-lines logo-icon"></i>
+      <div class="logo-text">
+        <span class="logo-the">THE</span>
+        <span class="logo-pink">PINK<br>CHRONICLES</span>
+        <span class="logo-by">BY HERTY AFARI</span>
+      </div>
+    </div>
+    <nav class="nav-links">
+      <a href="index.html">HOME</a>
+      <a href="about.html">ABOUT</a>
+      <a href="episodes.html">EPISODES</a>
+      <a href="topics.html" class="active">TOPICS</a>
+      <a href="community.html">COMMUNITY</a>
+      <a href="contact.html">CONTACT</a>
+    </nav>
+    <a href="episodes.html" class="btn-listen">
+      <i class="fa-solid fa-headphones"></i> LISTEN NOW
+    </a>
+    <button type="button" class="hamburger" title="Toggle navigation menu"
+      onclick="this.classList.toggle('open'); document.querySelector('.nav-links').classList.toggle('open')">
+      <i class="fa-solid fa-bars"></i>
+    </button>
+  </header>
+
+  <!-- ===== TOPICS HERO ===== -->
+  <section class="tp-hero">
+    <div class="tp-hero-left">
+
+      <!-- floating deco -->
+      <i class="fa-solid  fa-angles-right tp-deco tpd1"></i>
+      <i class="fa-regular fa-heart        tp-deco tpd2"></i>
+      <i class="fa-solid  fa-star          tp-deco tpd3"></i>
+      <i class="fa-solid  fa-star          tp-deco tpd4"></i>
+      <i class="fa-regular fa-heart        tp-deco tpd5"></i>
+      <i class="fa-solid  fa-heart         tp-deco tpd6"></i>
+      <i class="fa-regular fa-heart        tp-deco tpd7"></i>
+
+      <p class="tp-eyebrow">
+        Let's Talk About
+        <i class="fa-solid fa-heart"></i>
+      </p>
+
+      <h1 class="tp-hero-title">
+        <span class="pink">TOPICS</span> THAT MATTER.<br>
+        CONVERSATIONS THAT HELP US <span class="pink">GROW.</span>
+      </h1>
+
+      <p class="tp-hero-body">
+        From real-life struggles to big dreams, we cover the
+        things that shape our minds, hearts, and futures.
+      </p>
+
+      <p class="tp-hero-cta">
+        Explore our topics and join the conversation.
+        <i class="fa-solid fa-heart"></i>
+      </p>
+    </div>
+
+    <div class="tp-hero-right">
+      <img src="topics-hero.png" alt="Topics – Real Topics, Real Girls, Real Growth lightbox with flowers" />
+    </div>
+  </section>
+
+  <!-- ===== OUR TOPICS GRID ===== -->
+  <section class="tp-topics-section">
+
+    <div class="tp-section-header">
+      <h2 class="tp-section-title">
+        <i class="fa-solid fa-heart"></i>
+        OUR TOPICS
+        <i class="fa-solid fa-heart"></i>
+      </h2>
+      <p class="tp-section-sub">Honest talks. Real issues. Helpful insights.</p>
+    </div>
+
+    <div class="tp-grid">
+
+      <!-- 1. Mental Health -->
+      <div class="tp-card">
+        <div class="tp-card-deco">
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-heart"></i>
+        </div>
+        <div class="tp-icon-wrap">
+          <i class="fa-solid fa-brain"></i>
+        </div>
+        <h3>MENTAL HEALTH</h3>
+        <p>Let's break the stigma and talk about stress, anxiety, overthinking, and how to feel better.</p>
+        <button class="btn-explore">EXPLORE <i class="fa-solid fa-arrow-right"></i></button>
+      </div>
+
+      <!-- 2. Relationships -->
+      <div class="tp-card">
+        <div class="tp-card-deco">
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-heart"></i>
+        </div>
+        <div class="tp-icon-wrap">
+          <i class="fa-solid fa-heart"></i>
+        </div>
+        <h3>RELATIONSHIPS</h3>
+        <p>Friendships, family, crushes, boundaries, and everything in between.</p>
+        <button class="btn-explore">EXPLORE <i class="fa-solid fa-arrow-right"></i></button>
+      </div>
+
+      <!-- 3. Self Growth -->
+      <div class="tp-card">
+        <div class="tp-card-deco">
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+        </div>
+        <div class="tp-icon-wrap">
+          <i class="fa-solid fa-seedling"></i>
+        </div>
+        <h3>SELF GROWTH</h3>
+        <p>Building confidence, self love, goals, habits, and becoming your best self.</p>
+        <button class="btn-explore">EXPLORE <i class="fa-solid fa-arrow-right"></i></button>
+      </div>
+
+      <!-- 4. School & Life -->
+      <div class="tp-card">
+        <div class="tp-card-deco">
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-heart"></i>
+        </div>
+        <div class="tp-icon-wrap">
+          <i class="fa-solid fa-book-open"></i>
+        </div>
+        <h3>SCHOOL &amp; LIFE</h3>
+        <p>Balancing school, pressure, exams, and real life struggles we all face.</p>
+        <button class="btn-explore">EXPLORE <i class="fa-solid fa-arrow-right"></i></button>
+      </div>
+
+      <!-- 5. Real Talk -->
+      <div class="tp-card">
+        <div class="tp-card-deco">
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-heart"></i>
+        </div>
+        <div class="tp-icon-wrap">
+          <i class="fa-solid fa-comments"></i>
+        </div>
+        <h3>REAL TALK</h3>
+        <p>Unfiltered conversations about the things we don't always say out loud.</p>
+        <button class="btn-explore">EXPLORE <i class="fa-solid fa-arrow-right"></i></button>
+      </div>
+
+      <!-- 6. Body Image -->
+      <div class="tp-card">
+        <div class="tp-card-deco">
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-heart"></i>
+        </div>
+        <div class="tp-icon-wrap">
+          <i class="fa-solid fa-person-dress"></i>
+        </div>
+        <h3>BODY IMAGE</h3>
+        <p>Loving yourself, healing your relationship with your body, and tuning out the noise.</p>
+        <button class="btn-explore">EXPLORE <i class="fa-solid fa-arrow-right"></i></button>
+      </div>
+
+      <!-- 7. Future & Career -->
+      <div class="tp-card">
+        <div class="tp-card-deco">
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-heart"></i>
+        </div>
+        <div class="tp-icon-wrap">
+          <i class="fa-solid fa-briefcase"></i>
+        </div>
+        <h3>FUTURE &amp; CAREER</h3>
+        <p>Dreams, passions, career choices, and preparing for your future.</p>
+        <button class="btn-explore">EXPLORE <i class="fa-solid fa-arrow-right"></i></button>
+      </div>
+
+      <!-- 8. Confidence -->
+      <div class="tp-card">
+        <div class="tp-card-deco">
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+        </div>
+        <div class="tp-icon-wrap">
+          <i class="fa-solid fa-shield-heart"></i>
+        </div>
+        <h3>CONFIDENCE</h3>
+        <p>How to believe in yourself, speak up, and shine in your own way.</p>
+        <button class="btn-explore">EXPLORE <i class="fa-solid fa-arrow-right"></i></button>
+      </div>
+
+      <!-- 9. Fun & Lifestyle -->
+      <div class="tp-card">
+        <div class="tp-card-deco">
+          <i class="fa-solid fa-heart"></i>
+          <i class="fa-solid fa-star"></i>
+        </div>
+        <div class="tp-icon-wrap">
+          <i class="fa-solid fa-moon"></i>
+        </div>
+        <h3>FUN &amp; LIFESTYLE</h3>
+        <p>Girl time, hobbies, productivity, memes, trends, and things that make life fun!</p>
+        <button class="btn-explore">EXPLORE <i class="fa-solid fa-arrow-right"></i></button>
+      </div>
+
+      <!-- 10. Healing & Wellness -->
+      <div class="tp-card">
+        <div class="tp-card-deco">
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-heart"></i>
+        </div>
+        <div class="tp-icon-wrap">
+          <i class="fa-solid fa-hands-holding-heart"></i>
+        </div>
+        <h3>HEALING &amp; WELLNESS</h3>
+        <p>Emotional healing, self-care routines, mindfulness, and choosing peace.</p>
+        <button class="btn-explore">EXPLORE <i class="fa-solid fa-arrow-right"></i></button>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ===== CTA BANNER ===== -->
+  <div class="tp-cta-banner">
+
+    <!-- Decorative headphones -->
+    <div class="tp-cta-headphones">
+      <i class="fa-solid fa-headphones"></i>
+    </div>
+
+    <!-- Left tagline -->
+    <div class="tp-cta-left">
+      <i class="fa-solid fa-heart  tp-banner-deco tbd1"></i>
+      <i class="fa-regular fa-heart tp-banner-deco tbd2"></i>
+      <i class="fa-solid fa-star   tp-banner-deco tbd3"></i>
+
+      <div class="tp-cta-tagline">
+        Every Topic. Every Voice. Every Girl.
+        <i class="fa-solid fa-heart"></i>
+      </div>
+      <p class="tp-cta-sub">No judgment. Just support, stories, and sisterhood.</p>
+    </div>
+
+    <!-- Right CTA -->
+    <div class="tp-cta-right">
+      <i class="fa-solid fa-star  tp-cta-right-deco tcrd1"></i>
+      <i class="fa-solid fa-heart tp-cta-right-deco tcrd2"></i>
+
+      <h3>Have a topic you want us to cover?</h3>
+      <button class="btn-suggest">
+        SUGGEST A TOPIC
+        <i class="fa-solid fa-heart"></i>
+      </button>
+    </div>
+
+  </div>
+
+</body>
+</html>
