@@ -7,6 +7,27 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Nunito:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/style.css" />
+  <style>
+    .join-field-error {
+      display: none;
+      align-items: center;
+      gap: 0.4rem;
+      margin-top: 0.45rem;
+      color: #ff5d8f;
+      font-size: 0.9rem;
+      font-weight: 700;
+    }
+
+    .join-field-error.is-visible {
+      display: flex;
+    }
+
+    .join-input.error,
+    .join-select.error {
+      border-color: #ff5d8f;
+      box-shadow: 0 0 0 2px rgba(255, 93, 143, 0.15);
+    }
+  </style>
 </head>
 <body class="join-page">
 
@@ -167,7 +188,7 @@
               />
               <i class="fa-regular fa-user join-field-icon" aria-hidden="true"></i>
             </div>
-            <div class="join-field-error" id="errFullName" style="display:none;">
+            <div class="join-field-error" id="errFullName">
               <i class="fa-solid fa-circle-exclamation"></i> Please enter your full name.
             </div>
           </div>
@@ -184,7 +205,7 @@
               />
               <i class="fa-regular fa-id-badge join-field-icon" aria-hidden="true"></i>
             </div>
-            <div class="join-field-error" id="errNickname" style="display:none;">
+            <div class="join-field-error" id="errNickname">
               <i class="fa-solid fa-circle-exclamation"></i> Please choose a nickname.
             </div>
           </div>
@@ -192,7 +213,7 @@
           <!-- Age -->
           <div>
             <div class="join-field join-field-select">
-              <select id="jAge" class="join-select" onchange="this.classList.add('filled')">
+              <select id="jAge" class="join-select" aria-label="Select your age" title="Select your age" onchange="this.classList.add('filled')">
                 <option value="" disabled selected>Age &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Select your age</option>
                 <option value="13">13</option>
                 <option value="14">14</option>
@@ -205,7 +226,7 @@
                 <option value="21+">21+</option>
               </select>
             </div>
-            <div class="join-field-error" id="errAge" style="display:none;">
+            <div class="join-field-error" id="errAge">
               <i class="fa-solid fa-circle-exclamation"></i> Please select your age.
             </div>
           </div>
@@ -222,7 +243,7 @@
               />
               <i class="fa-regular fa-envelope join-field-icon" aria-hidden="true"></i>
             </div>
-            <div class="join-field-error" id="errEmail" style="display:none;">
+            <div class="join-field-error" id="errEmail">
               <i class="fa-solid fa-circle-exclamation"></i> Please enter a valid email address.
             </div>
           </div>
@@ -230,7 +251,7 @@
           <!-- Country -->
           <div>
             <div class="join-field join-field-select">
-              <select id="jCountry" class="join-select" onchange="this.classList.add('filled')">
+              <select id="jCountry" class="join-select" aria-label="Select your country" title="Select your country" onchange="this.classList.add('filled')">
                 <option value="" disabled selected>Country / Location &nbsp;&nbsp;&nbsp; Select your country</option>
                 <option>Ghana</option>
                 <option>Nigeria</option>
@@ -243,7 +264,7 @@
                 <option>Other</option>
               </select>
             </div>
-            <div class="join-field-error" id="errCountry" style="display:none;">
+            <div class="join-field-error" id="errCountry">
               <i class="fa-solid fa-circle-exclamation"></i> Please select your country.
             </div>
           </div>
@@ -308,7 +329,7 @@
           We're so glad you're here — real talks, real girls, real growth.
           Check your email for your welcome message!
         </p>
-        <a href="community.html" class="btn-back-home">
+        <a href="rules.html" class="btn-back-home">
           <i class="fa-solid fa-people-group"></i>
           GO TO THE COMMUNITY
         </a>
@@ -344,19 +365,27 @@
       const err   = document.getElementById(errId);
       if (show) {
         field.classList.add('error');
-        err.style.display = 'flex';
+        err.classList.add('is-visible');
       } else {
         field.classList.remove('error');
-        err.style.display = 'none';
+        err.classList.remove('is-visible');
       }
     }
 
+    function clearError(fieldId) {
+      const field = document.getElementById(fieldId);
+      const errId = 'err' + fieldId.replace('j', '');
+      field.classList.remove('error');
+      document.getElementById(errId).classList.remove('is-visible');
+    }
+
     /* Remove error styling on input */
-    ['jFullName','jNickname','jEmail'].forEach(id => {
-      document.getElementById(id).addEventListener('input', function() {
-        this.classList.remove('error');
-        document.getElementById('err' + id.replace('j','')).style.display = 'none';
-      });
+    ['jFullName','jNickname','jEmail','jAge','jCountry'].forEach(id => {
+      const el = document.getElementById(id);
+      el.addEventListener('input', () => clearError(id));
+      if (el.tagName === 'SELECT') {
+        el.addEventListener('change', () => clearError(id));
+      }
     });
 
     /* ── Form submit ── */
