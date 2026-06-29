@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Join the Sisterhood – The Pink Chronicles</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Nunito:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body class="join-page">
+
+  <!-- ===== NAVBAR ===== -->
+  <header class="navbar">
+    <a href="index.html" class="nav-logo">
+      <i class="fa-solid fa-microphone-lines logo-icon"></i>
+      <div class="logo-text">
+        <span class="logo-the">THE</span>
+        <span class="logo-pink">PINK<br>CHRONICLES</span>
+        <span class="logo-by">BY HERTY AFARI</span>
+      </div>
+    </a>
+    <nav>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html">HOME</a></li>
+        <li><a href="about.html">ABOUT</a></li>
+        <li><a href="episodes.html">EPISODES</a></li>
+        <li><a href="topics.html">TOPICS</a></li>
+        <li><a href="community.html" class="active">COMMUNITY</a></li>
+        <li><a href="contact.html">CONTACT</a></li>
+      </ul>
+    </nav>
+    <a href="episodes.html" class="btn-listen">
+      <i class="fa-solid fa-headphones"></i> LISTEN NOW
+    </a>
+    <button class="hamburger" type="button" aria-label="Toggle navigation"
+      onclick="document.getElementById('navLinks').classList.toggle('open')">
+      <i class="fa-solid fa-bars"></i>
+    </button>
+  </header>
+
+  <!-- ===== MAIN JOIN GRID ===== -->
+  <div class="join-grid">
+
+    <!-- ══════════════════════════════
+         LEFT PANEL
+    ══════════════════════════════ -->
+    <div class="join-left">
+
+      <!-- floating deco -->
+      <i class="fa-solid fa-star     join-deco jd1" aria-hidden="true"></i>
+      <i class="fa-regular fa-heart  join-deco jd2" aria-hidden="true"></i>
+      <i class="fa-solid fa-heart    join-deco jd3" aria-hidden="true"></i>
+      <i class="fa-regular fa-heart  join-deco jd4" aria-hidden="true"></i>
+
+      <!-- Step badge -->
+      <div class="join-step-badge">
+        <span class="step-num">STEP 1</span>
+        <i class="fa-solid fa-people-group"></i>
+        JOIN THE COMMUNITY — REGISTRATION
+      </div>
+
+      <!-- Brand headline -->
+      <p class="join-brand-eyebrow">
+        Join The
+        <i class="fa-solid fa-heart" aria-hidden="true"></i>
+      </p>
+      <h1 class="join-brand-title">PINK</h1>
+      <p class="join-brand-sub">CHRONICLES</p>
+      <p class="join-brand-script">
+        Sisterhood
+        <i class="fa-solid fa-heart" aria-hidden="true"></i>
+      </p>
+
+      <!-- Girls image with speech bubble -->
+      <div class="join-girls-wrap">
+        <img
+          src="community-girls.png"
+          alt="Four girls standing together with arms around each other"
+          class="join-girls-img"
+        />
+        <div class="join-bubble">You<br>belong<br>here!</div>
+      </div>
+
+      <!-- Tagline -->
+      <p class="join-tagline">
+        Become part of a safe, supportive space where teen girls
+        can connect, share, learn, and grow together.
+      </p>
+
+      <!-- Why join -->
+      <p class="join-why-title">
+        WHY JOIN OUR COMMUNITY?
+        <i class="fa-solid fa-heart" aria-hidden="true"></i>
+      </p>
+
+      <ul class="join-benefits">
+        <li class="join-benefit">
+          <div class="join-benefit-icon">
+            <i class="fa-solid fa-comments"></i>
+          </div>
+          Access exclusive community discussions
+        </li>
+        <li class="join-benefit">
+          <div class="join-benefit-icon">
+            <i class="fa-solid fa-trophy"></i>
+          </div>
+          Participate in monthly challenges
+        </li>
+        <li class="join-benefit">
+          <div class="join-benefit-icon">
+            <i class="fa-solid fa-video"></i>
+          </div>
+          Attend live Q&amp;A sessions
+        </li>
+        <li class="join-benefit">
+          <div class="join-benefit-icon">
+            <i class="fa-solid fa-user-secret"></i>
+          </div>
+          Share your stories anonymously
+        </li>
+        <li class="join-benefit">
+          <div class="join-benefit-icon">
+            <i class="fa-solid fa-people-group"></i>
+          </div>
+          Make new friends in a positive environment
+        </li>
+        <li class="join-benefit">
+          <div class="join-benefit-icon">
+            <i class="fa-solid fa-podcast"></i>
+          </div>
+          Early access to podcast episodes
+        </li>
+      </ul>
+
+    </div><!-- /join-left -->
+
+    <!-- ══════════════════════════════
+         RIGHT PANEL — FORM
+    ══════════════════════════════ -->
+    <div class="join-right">
+
+      <!-- floating deco -->
+      <i class="fa-solid fa-star   join-deco jrd1" aria-hidden="true"></i>
+      <i class="fa-regular fa-heart join-deco jrd2" aria-hidden="true"></i>
+
+      <!-- Form (shown by default) -->
+      <div id="joinFormWrap">
+
+        <h2 class="join-form-title">
+          <i class="fa-solid fa-users"></i>
+          CREATE YOUR ACCOUNT
+          <i class="fa-solid fa-heart"></i>
+        </h2>
+
+        <form class="join-form" id="joinForm" onsubmit="handleJoinSubmit(event)" novalidate>
+
+          <!-- Full Name -->
+          <div>
+            <div class="join-field">
+              <input
+                type="text"
+                id="jFullName"
+                class="join-input"
+                placeholder="Full Name"
+                autocomplete="name"
+              />
+              <i class="fa-regular fa-user join-field-icon" aria-hidden="true"></i>
+            </div>
+            <div class="join-field-error" id="errFullName" style="display:none;">
+              <i class="fa-solid fa-circle-exclamation"></i> Please enter your full name.
+            </div>
+          </div>
+
+          <!-- Nickname -->
+          <div>
+            <div class="join-field">
+              <input
+                type="text"
+                id="jNickname"
+                class="join-input"
+                placeholder="Nickname / Username"
+                autocomplete="username"
+              />
+              <i class="fa-regular fa-id-badge join-field-icon" aria-hidden="true"></i>
+            </div>
+            <div class="join-field-error" id="errNickname" style="display:none;">
+              <i class="fa-solid fa-circle-exclamation"></i> Please choose a nickname.
+            </div>
+          </div>
+
+          <!-- Age -->
+          <div>
+            <div class="join-field join-field-select">
+              <select id="jAge" class="join-select" onchange="this.classList.add('filled')">
+                <option value="" disabled selected>Age &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Select your age</option>
+                <option value="13">13</option>
+                <option value="14">14</option>
+                <option value="15">15</option>
+                <option value="16">16</option>
+                <option value="17">17</option>
+                <option value="18">18</option>
+                <option value="19">19</option>
+                <option value="20">20</option>
+                <option value="21+">21+</option>
+              </select>
+            </div>
+            <div class="join-field-error" id="errAge" style="display:none;">
+              <i class="fa-solid fa-circle-exclamation"></i> Please select your age.
+            </div>
+          </div>
+
+          <!-- Email -->
+          <div>
+            <div class="join-field">
+              <input
+                type="email"
+                id="jEmail"
+                class="join-input"
+                placeholder="Email Address"
+                autocomplete="email"
+              />
+              <i class="fa-regular fa-envelope join-field-icon" aria-hidden="true"></i>
+            </div>
+            <div class="join-field-error" id="errEmail" style="display:none;">
+              <i class="fa-solid fa-circle-exclamation"></i> Please enter a valid email address.
+            </div>
+          </div>
+
+          <!-- Country -->
+          <div>
+            <div class="join-field join-field-select">
+              <select id="jCountry" class="join-select" onchange="this.classList.add('filled')">
+                <option value="" disabled selected>Country / Location &nbsp;&nbsp;&nbsp; Select your country</option>
+                <option>Ghana</option>
+                <option>Nigeria</option>
+                <option>South Africa</option>
+                <option>Kenya</option>
+                <option>United Kingdom</option>
+                <option>United States</option>
+                <option>Canada</option>
+                <option>Australia</option>
+                <option>Other</option>
+              </select>
+            </div>
+            <div class="join-field-error" id="errCountry" style="display:none;">
+              <i class="fa-solid fa-circle-exclamation"></i> Please select your country.
+            </div>
+          </div>
+
+          <!-- Interests -->
+          <div>
+            <div class="join-interests-label">
+              INTERESTS
+              <span class="interests-note">(Select all that apply)</span>
+            </div>
+            <div class="join-chips">
+              <button type="button" class="join-chip" onclick="toggleChip(this)" data-value="mental-health">
+                <i class="fa-solid fa-brain"></i> Mental Health
+              </button>
+              <button type="button" class="join-chip" onclick="toggleChip(this)" data-value="relationships">
+                <i class="fa-solid fa-heart"></i> Relationships
+              </button>
+              <button type="button" class="join-chip" onclick="toggleChip(this)" data-value="self-growth">
+                <i class="fa-solid fa-seedling"></i> Self Growth
+              </button>
+              <button type="button" class="join-chip" onclick="toggleChip(this)" data-value="school-life">
+                <i class="fa-solid fa-book-open"></i> School Life
+              </button>
+              <button type="button" class="join-chip" onclick="toggleChip(this)" data-value="fun-lifestyle">
+                <i class="fa-solid fa-face-laugh"></i> Fun &amp; Lifestyle
+              </button>
+            </div>
+          </div>
+
+          <!-- Why do you want to join (optional) -->
+          <div class="join-field textarea-field">
+            <textarea
+              id="jWhy"
+              class="join-textarea"
+              placeholder="Why do you want to join? (Optional) — Tell us a little about yourself…"
+              rows="3"
+            ></textarea>
+          </div>
+
+          <!-- Submit -->
+          <button type="submit" class="btn-join-submit">
+            <i class="fa-solid fa-heart"></i>
+            JOIN THE SISTERHOOD
+          </button>
+
+          <p class="join-already">
+            Already a member?
+            <a href="login.html">Log in here</a>
+          </p>
+
+        </form>
+      </div><!-- /joinFormWrap -->
+
+      <!-- Success screen (hidden until submit) -->
+      <div class="join-success" id="joinSuccess">
+        <div class="join-success-icon">
+          <i class="fa-solid fa-heart-circle-check"></i>
+        </div>
+        <h2>Welcome to the Sisterhood!</h2>
+        <p id="joinSuccessMsg">
+          You're officially part of The Pink Chronicles community.
+          We're so glad you're here — real talks, real girls, real growth.
+          Check your email for your welcome message!
+        </p>
+        <a href="community.html" class="btn-back-home">
+          <i class="fa-solid fa-people-group"></i>
+          GO TO THE COMMUNITY
+        </a>
+        <div class="join-success-hearts">
+          <i class="fa-solid fa-heart"></i>
+          <i class="fa-solid fa-heart"></i>
+          <i class="fa-solid fa-heart"></i>
+          <i class="fa-solid fa-heart"></i>
+          <i class="fa-solid fa-heart"></i>
+        </div>
+      </div>
+
+    </div><!-- /join-right -->
+
+  </div><!-- /join-grid -->
+
+  <!-- ===== SCRIPT ===== -->
+  <script>
+    'use strict';
+
+    /* ── Interest chip toggle ── */
+    function toggleChip(btn) {
+      btn.classList.toggle('selected');
+    }
+
+    /* ── Helpers ── */
+    function isValidEmail(e) {
+      return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e);
+    }
+
+    function showError(fieldId, errId, show) {
+      const field = document.getElementById(fieldId);
+      const err   = document.getElementById(errId);
+      if (show) {
+        field.classList.add('error');
+        err.style.display = 'flex';
+      } else {
+        field.classList.remove('error');
+        err.style.display = 'none';
+      }
+    }
+
+    /* Remove error styling on input */
+    ['jFullName','jNickname','jEmail'].forEach(id => {
+      document.getElementById(id).addEventListener('input', function() {
+        this.classList.remove('error');
+        document.getElementById('err' + id.replace('j','')).style.display = 'none';
+      });
+    });
+
+    /* ── Form submit ── */
+    function handleJoinSubmit(e) {
+      e.preventDefault();
+
+      const fullName = document.getElementById('jFullName').value.trim();
+      const nickname = document.getElementById('jNickname').value.trim();
+      const age      = document.getElementById('jAge').value;
+      const email    = document.getElementById('jEmail').value.trim();
+      const country  = document.getElementById('jCountry').value;
+      const why      = document.getElementById('jWhy').value.trim();
+
+      /* Collect selected interests */
+      const interests = [...document.querySelectorAll('.join-chip.selected')]
+        .map(c => c.dataset.value);
+
+      /* Validate */
+      let valid = true;
+
+      if (!fullName) { showError('jFullName','errFullName',true); valid = false; }
+      else             showError('jFullName','errFullName',false);
+
+      if (!nickname) { showError('jNickname','errNickname',true); valid = false; }
+      else             showError('jNickname','errNickname',false);
+
+      if (!age) { showError('jAge','errAge',true); valid = false; }
+      else        showError('jAge','errAge',false);
+
+      if (!email || !isValidEmail(email)) { showError('jEmail','errEmail',true); valid = false; }
+      else                                  showError('jEmail','errEmail',false);
+
+      if (!country) { showError('jCountry','errCountry',true); valid = false; }
+      else            showError('jCountry','errCountry',false);
+
+      if (!valid) {
+        /* Scroll to first error */
+        const firstErr = document.querySelector('.join-input.error, .join-select.error');
+        if (firstErr) firstErr.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        return;
+      }
+
+      /* Build member object (ready for backend / localStorage) */
+      const member = {
+        id:        Date.now(),
+        name:      fullName,
+        nickname,
+        age,
+        email,
+        country,
+        interests,
+        why,
+        status:    'active',
+        joined:    new Date().toLocaleDateString('en-GB', { day:'2-digit', month:'short', year:'numeric' }),
+        role:      'Member'
+      };
+
+      /* Save to localStorage so the admin page can read it */
+      try {
+        const raw      = localStorage.getItem('pinkAdmin');
+        const existing = raw ? JSON.parse(raw) : { episodes: [], members: [] };
+        if (!Array.isArray(existing.members)) existing.members = [];
+        existing.members.push(member);
+        localStorage.setItem('pinkAdmin', JSON.stringify(existing));
+      } catch(err) {}
+
+      /* Show success screen */
+      document.getElementById('joinFormWrap').style.display  = 'none';
+      const successEl = document.getElementById('joinSuccess');
+      successEl.style.display = 'flex';
+
+      document.getElementById('joinSuccessMsg').textContent =
+        `You're officially part of The Pink Chronicles community, ${fullName}! ` +
+        `We're so glad you're here — real talks, real girls, real growth. ` +
+        `Welcome to the sisterhood! 💕`;
+
+      /* Scroll to success */
+      successEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+  </script>
+
+</body>
+</html>
