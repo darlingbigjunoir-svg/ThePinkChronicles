@@ -130,7 +130,15 @@
       color: var(--gray);
       line-height: 1.55;
     }
-    .queue-bottom-notice p a { color: var(--pink-deep); font-weight:700; text-decoration:none; }
+    .queue-bottom-notice .fa-heart {
+      color: var(--pink-mid) !important;
+      font-size: .7rem;
+    }
+    .queue-bottom-notice .queue-notify-link {
+      color: var(--pink-deep);
+      font-weight: 700;
+      text-decoration: none;
+    }
 
     .ep-empty-card {
       background: var(--white);
@@ -138,6 +146,64 @@
       border-radius: 18px;
       padding: 56px 32px;
       text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 14px;
+    }
+    .ep-empty-card-icon {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      background: var(--pink-pale);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 4px;
+    }
+    .ep-empty-card-icon .fa-solid {
+      color: var(--pink-deep) !important;
+      font-size: 2rem;
+    }
+    .ep-empty-card-title {
+      font-family: var(--ff-display);
+      font-style: italic;
+      font-size: 1.35rem;
+      color: var(--pink-deep);
+      margin: 0;
+    }
+    .ep-empty-card-copy {
+      font-size: .88rem;
+      color: var(--gray);
+      line-height: 1.7;
+      max-width: 400px;
+      margin: 0;
+    }
+    .ep-empty-card-actions {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-top: 6px;
+    }
+    .ep-empty-card-btn {
+      font-size: .8rem;
+      padding: 11px 26px;
+      border-radius: 50px;
+    }
+    .btn-notify .fa-solid {
+      color: var(--white) !important;
+      margin-right: 6px;
+    }
+    .ep-empty-card-footer {
+      font-size: .72rem;
+      color: var(--pink-light);
+      margin-top: 4px;
+      margin-bottom: 0;
+    }
+    .ep-empty-card-footer .fa-heart {
+      color: var(--pink-light) !important;
+      font-size: .65rem;
     }
     .ep-empty-notify-text strong { color: var(--dark); }
     .btn-notify {
@@ -191,7 +257,7 @@
       position: fixed;
       inset: 0;
       background: rgba(0,0,0,.45);
-      display: flex;
+      display: none;
       align-items: center;
       justify-content: center;
       z-index: 500;
@@ -239,6 +305,13 @@
       color: var(--gray);
       line-height: 1.65;
       margin-bottom: 22px;
+    }
+    .notify-modal-heart {
+      color: var(--pink-mid) !important;
+      font-size: .85rem;
+    }
+    .notify-modal-success-heart {
+      margin-left: 4px;
     }
     .notify-modal-input-row {
       display: flex;
@@ -522,11 +595,11 @@
           </div>
 
           <!-- bottom notice -->
-          <div style="padding:14px 16px; text-align:center; background:var(--pink-bg); border-top:1px solid var(--pink-pale);">
-            <p style="font-size:.72rem; color:var(--gray); line-height:1.55;">
-              <i class="fa-solid fa-heart" style="color:var(--pink-mid)!important; font-size:.7rem;"></i>
+          <div class="queue-bottom-notice">
+            <p>
+              <i class="fa-solid fa-heart"></i>
               Episodes unlock every <strong>Saturday</strong>.
-              <a href="#" onclick="openNotifyModal(event)" style="color:var(--pink-deep);font-weight:700;text-decoration:none;">
+              <a href="#" onclick="openNotifyModal(event)" class="queue-notify-link">
                 Get notified →
               </a>
             </p>
@@ -577,43 +650,27 @@
       </div>
 
       <!-- Empty state card -->
-      <div style="
-        background: var(--white);
-        border: 1.5px solid #f5d0de;
-        border-radius: 18px;
-        padding: 56px 32px;
-        text-align: center;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 14px;
-      ">
-        <div style="
-          width: 80px; height: 80px;
-          border-radius: 50%;
-          background: var(--pink-pale);
-          display: flex; align-items: center; justify-content: center;
-          margin-bottom: 4px;
-        ">
-          <i class="fa-solid fa-podcast" style="color:var(--pink-deep)!important;font-size:2rem;"></i>
+      <div class="ep-empty-card">
+        <div class="ep-empty-card-icon">
+          <i class="fa-solid fa-podcast"></i>
         </div>
-        <h3 style="font-family:var(--ff-display);font-style:italic;font-size:1.35rem;color:var(--pink-deep);">
+        <h3 class="ep-empty-card-title">
           No episodes yet — but they're coming!
         </h3>
-        <p style="font-size:.88rem;color:var(--gray);line-height:1.7;max-width:400px;">
+        <p class="ep-empty-card-copy">
           Herty is recording the very first episodes of The Pink Chronicles right now.
           Real talks, real girls, real growth — dropping every Saturday, starting soon.
         </p>
-        <div style="display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-top:6px;">
-          <button class="btn-notify" onclick="openNotifyModal()" style="font-size:.8rem;padding:11px 26px;border-radius:50px;">
-            <i class="fa-solid fa-bell" style="color:var(--white)!important;margin-right:6px;"></i>
+        <div class="ep-empty-card-actions">
+          <button class="btn-notify ep-empty-card-btn" onclick="openNotifyModal()">
+            <i class="fa-solid fa-bell"></i>
             NOTIFY ME WHEN EP. 1 DROPS
           </button>
         </div>
-        <p style="font-size:.72rem;color:var(--pink-light);margin-top:4px;">
-          <i class="fa-solid fa-heart" style="color:var(--pink-light)!important;font-size:.65rem;"></i>
+        <p class="ep-empty-card-footer">
+          <i class="fa-solid fa-heart"></i>
           Your voice. Your story. Your tribe.
-          <i class="fa-solid fa-heart" style="color:var(--pink-light)!important;font-size:.65rem;"></i>
+          <i class="fa-solid fa-heart"></i>
         </p>
       </div>
     </div>
@@ -702,7 +759,7 @@
   </footer>
 
   <!-- ===== NOTIFY ME MODAL ===== -->
-  <div id="notifyModal" class="notify-modal-overlay" style="display:none;" onclick="handleModalBackdrop(event)">
+  <div id="notifyModal" class="notify-modal-overlay" onclick="handleModalBackdrop(event)">
     <div class="notify-modal" id="notifyModalBox">
       <button class="notify-modal-close" onclick="closeNotifyModal()" aria-label="Close">
         <i class="fa-solid fa-xmark"></i>
@@ -717,7 +774,7 @@
         <p>
           Episode 1 of The Pink Chronicles drops soon. Drop your email and
           we'll send you a notification the moment it's live.
-          <i class="fa-regular fa-heart" style="color:var(--pink-mid)!important;font-size:.85rem;"></i>
+          <i class="fa-regular fa-heart notify-modal-heart"></i>
         </p>
         <div class="notify-modal-input-row">
           <input
@@ -743,7 +800,7 @@
           Get ready for real talks, real girls, and real growth.
           <br><br>
           <strong>— Herty &amp; The Pink Chronicles team</strong>
-          <i class="fa-solid fa-heart" style="color:var(--pink-mid)!important;margin-left:4px;font-size:.85rem;"></i>
+          <i class="fa-solid fa-heart notify-modal-heart notify-modal-success-heart"></i>
         </p>
       </div>
     </div>
