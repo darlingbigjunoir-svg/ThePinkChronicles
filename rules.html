@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Community Rules — The Pink Chronicles</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Playfair+Display:ital,wght@0,700;0,900;1,700;1,900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- ===== NAVBAR ===== -->
+  <nav class="navbar">
+    <a href="index.html" class="nav-logo">
+      <i class="fa-solid fa-microphone logo-icon"></i>
+      <span class="logo-text">
+        <span class="logo-the">THE</span>
+        <span class="logo-pink">Pink</span>
+        <span class="logo-chronicles">Chronicles</span>
+        <span class="logo-by">BY HERTY</span>
+      </span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="episodes.html">Episodes</a></li>
+      <li><a href="topics.html">Topics</a></li>
+      <li><a href="community.html" class="active">Community</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <a href="episodes.html" class="btn-listen">
+      <i class="fa-solid fa-headphones"></i> LISTEN NOW
+    </a>
+    <button class="hamburger" onclick="this.closest('.navbar').querySelector('.nav-links').classList.toggle('open')">
+      <i class="fa-solid fa-bars"></i>
+    </button>
+  </nav>
+
+  <!-- ===== RULES PAGE ===== -->
+  <main class="rules-page">
+
+    <!-- floating background deco -->
+    <i class="fa-solid fa-star  rules-bg-deco rbd1"></i>
+    <i class="fa-solid fa-heart rules-bg-deco rbd2"></i>
+    <i class="fa-solid fa-star  rules-bg-deco rbd3"></i>
+    <i class="fa-solid fa-heart rules-bg-deco rbd4"></i>
+    <i class="fa-solid fa-star  rules-bg-deco rbd5"></i>
+    <i class="fa-solid fa-heart rules-bg-deco rbd6"></i>
+
+    <div class="rules-card">
+
+      <!-- Step badge -->
+      <div class="join-step-badge">
+        <span class="step-num">STEP 2</span>
+        <i class="fa-solid fa-shield-heart"></i>
+        COMMUNITY RULES
+      </div>
+
+      <!-- Headline -->
+      <div class="rules-headline">
+        <p class="rules-script">Let's keep our space</p>
+        <h1 class="rules-big-title">
+          SAFE &amp; KIND
+          <i class="fa-regular fa-heart rules-title-heart"></i>
+        </h1>
+        <p class="rules-intro">
+          Please read and agree to our community rules<br />
+          so we can create a positive space for everyone.
+        </p>
+      </div>
+
+      <!-- Rules list -->
+      <ul class="rules-list">
+
+        <li class="rule-item">
+          <div class="rule-icon-wrap">
+            <i class="fa-solid fa-hand-holding-heart"></i>
+          </div>
+          <div class="rule-copy">
+            <h3>Be Respectful</h3>
+            <p>Treat everyone with kindness and respect. Different opinions are okay!</p>
+          </div>
+        </li>
+
+        <li class="rule-item">
+          <div class="rule-icon-wrap">
+            <i class="fa-solid fa-shield-halved"></i>
+          </div>
+          <div class="rule-copy">
+            <h3>No Bullying or Harassment</h3>
+            <p>We do not tolerate any hate, bullying, or harmful behavior.</p>
+          </div>
+        </li>
+
+        <li class="rule-item">
+          <div class="rule-icon-wrap">
+            <i class="fa-solid fa-lock"></i>
+          </div>
+          <div class="rule-copy">
+            <h3>Protect Personal Information</h3>
+            <p>Keep your and others' personal info private. Safety first!</p>
+          </div>
+        </li>
+
+        <li class="rule-item">
+          <div class="rule-icon-wrap">
+            <i class="fa-solid fa-hands-holding-circle"></i>
+          </div>
+          <div class="rule-copy">
+            <h3>Support and Encourage Others</h3>
+            <p>Lift each other up. We're all here to grow together.</p>
+          </div>
+        </li>
+
+        <li class="rule-item">
+          <div class="rule-icon-wrap">
+            <i class="fa-solid fa-flag"></i>
+          </div>
+          <div class="rule-copy">
+            <h3>Report Inappropriate Behavior</h3>
+            <p>If you see something wrong, report it to our team.</p>
+          </div>
+        </li>
+
+      </ul>
+
+      <!-- Checkbox agreement -->
+      <label class="rules-agree-label" id="agreeLabel">
+        <input type="checkbox" id="agreeCheck" onchange="toggleBtn()" />
+        <span class="rules-agree-box">
+          <i class="fa-solid fa-check rules-check-icon"></i>
+        </span>
+        I have read and agree to the community rules.
+      </label>
+
+      <!-- CTA button -->
+      <a href="community.html" class="btn-enter-community" id="enterBtn" aria-disabled="true">
+        <i class="fa-solid fa-people-group"></i>
+        I AGREE &amp; ENTER COMMUNITY
+      </a>
+
+      <!-- Footer note -->
+      <p class="rules-footer-note">
+        We're so happy to have you here!
+        <i class="fa-solid fa-heart rules-footer-heart"></i>
+      </p>
+
+    </div><!-- /.rules-card -->
+  </main>
+
+  <script>
+    function toggleBtn() {
+      const btn = document.getElementById('enterBtn');
+      const checked = document.getElementById('agreeCheck').checked;
+      btn.classList.toggle('enabled', checked);
+      btn.setAttribute('aria-disabled', String(!checked));
+    }
+  </script>
+
+</body>
+</html>
