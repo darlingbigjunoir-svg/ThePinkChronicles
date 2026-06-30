@@ -4912,9 +4912,78 @@ body.player-open { padding-bottom: 88px; }
   .platform-dot { width: 36px; height: 36px; }
 }
 
-/* =============================================
-   RULES PAGE — missing rule (added)
-   ============================================= */
 .rules-agree-error.is-visible {
   display: flex;
+}
+
+img, svg, video {
+  max-width: 100%;
+  height: auto;
+}
+
+@media (max-width: 960px) {
+  .cm-activities-grid { grid-template-columns: repeat(3, 1fr); }
+}
+@media (max-width: 640px) {
+  .cm-activities-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 380px) {
+  .values-grid { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 380px) {
+  .ht-pink            { font-size: 3rem; }
+  .ht-chronicles      { font-size: 1.6rem; }
+  .about-hero-title   { font-size: 1.8rem; }
+  .cm-hero-title       { font-size: 1.6rem; }
+  .tp-hero-title       { font-size: 1.6rem; }
+  .ct-hero-title       { font-size: 1.6rem; }
+  .ep-hero-title       { font-size: 1.6rem; }
+  .join-brand-title    { font-size: 1.9rem; }
+  .rules-headline      { font-size: 1.5rem; }
+
+  .hero-left, .about-hero-left, .cm-hero-left,
+  .tp-hero-left, .ct-hero-left, .ep-hero-left,
+  .join-left, .join-right{ padding-left: 18px; padding-right: 18px; }
+
+
+  .deco-star, .deco-heart,
+  .ah-heart, .ep-deco, .ct-deco, .cm-deco,
+  .tp-deco, .join-deco, .rules-bg-deco{ display: none; }
+}
+
+@media (max-width: 480px) {
+  .navbar { padding: 10px 16px; flex-wrap: wrap; }
+  .btn-listen span { display: none; }      
+  .btn-listen { padding: 10px 14px; }
+  .logo-chronicles { font-size: .85rem; }
+  .logo-pink { font-size: 1.3rem; }
+}
+
+@media (max-width: 960px) {
+  .ep-footer, .ct-footer, .cm-footer { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 640px) {
+  .ep-footer, .ct-footer, .cm-footer { grid-template-columns: 1fr; }
+}
+
+.ct-subscribe-row, .notify-modal-input-row,
+.ct-form-row, .join-form, .ep-empty-notify {
+  min-width: 0;
+}
+.ct-sub-input, .notify-modal-input,
+.ct-input, .ct-textarea, .ct-select,
+.join-input, .join-textarea, .join-select {
+  min-width: 0;
+}
+
+.contact-val, .ct-item-val, .ct-footer-brand-tagline,
+.footer-connect p {
+  overflow-wrap: anywhere;
+}
+
+@media (max-width: 960px) {
+  .about-hero, .new-here-card, .cm-join-card,
+  .story-card, .tp-cta-banner { overflow: hidden; }
 }
