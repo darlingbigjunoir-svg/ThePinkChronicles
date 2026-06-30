@@ -4911,3 +4911,10 @@ body.player-open { padding-bottom: 88px; }
   .listen-on-card { padding: 16px 14px; }
   .platform-dot { width: 36px; height: 36px; }
 }
+
+/* =============================================
+   RULES PAGE — missing rule (added)
+   ============================================= */
+.rules-agree-error.is-visible {
+  display: flex;
+}
