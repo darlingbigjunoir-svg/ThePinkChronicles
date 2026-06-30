@@ -917,7 +917,7 @@ body {
 }
 
 /* ── Episode List Panel ── */
-.ep-list-panel {}
+
 
 .ep-list-header {
   display: flex;
@@ -2014,7 +2014,7 @@ body {
   align-items: start;
 }
 
-.cm-why-left {}
+
 
 .cm-why-header {
   text-align: center;
