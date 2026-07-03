@@ -7,27 +7,6 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Nunito:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/style.css" />
-  <style>
-    .join-field-error {
-      display: none;
-      align-items: center;
-      gap: 0.4rem;
-      margin-top: 0.45rem;
-      color: #ff5d8f;
-      font-size: 0.9rem;
-      font-weight: 700;
-    }
-
-    .join-field-error.is-visible {
-      display: flex;
-    }
-
-    .join-input.error,
-    .join-select.error {
-      border-color: #ff5d8f;
-      box-shadow: 0 0 0 2px rgba(255, 93, 143, 0.15);
-    }
-  </style>
 </head>
 <body class="join-page">
 
@@ -329,9 +308,9 @@
           We're so glad you're here — real talks, real girls, real growth.
           Check your email for your welcome message!
         </p>
-        <a href="rules.html" class="btn-back-home">
-          <i class="fa-solid fa-people-group"></i>
-          GO TO THE COMMUNITY
+        <a href="rules.html" class="btn-flow-next">
+          <i class="fa-solid fa-shield-heart"></i>
+          CONTINUE TO COMMUNITY RULES
         </a>
         <div class="join-success-hearts">
           <i class="fa-solid fa-heart"></i>
@@ -450,6 +429,9 @@
         if (!Array.isArray(existing.members)) existing.members = [];
         existing.members.push(member);
         localStorage.setItem('pinkAdmin', JSON.stringify(existing));
+
+        /* Also store the current joining user's name for welcome.html / dashboard.html to greet them */
+        localStorage.setItem('pinkCurrentUser', JSON.stringify({ name: fullName, nickname }));
       } catch(err) {}
 
       /* Show success screen */

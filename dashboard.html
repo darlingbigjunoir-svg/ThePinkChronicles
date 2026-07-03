@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Community Dashboard – The Pink Chronicles</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Nunito:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body class="dash-page">
+
+  <!-- ===== SIDEBAR ===== -->
+  <aside class="dash-sidebar" id="dashSidebar">
+    <a href="index.html" class="dash-sidebar-logo">
+      <i class="fa-solid fa-microphone-lines"></i>
+      <div>
+        <span class="dash-logo-text-top">THE PINK</span>
+        <span class="dash-logo-text-main">CHRONICLES</span>
+      </div>
+    </a>
+
+    <nav class="dash-nav">
+      <a href="dashboard.html" class="dash-nav-link active">
+        <i class="fa-solid fa-house"></i> Home
+      </a>
+      <a href="topics.html" class="dash-nav-link">
+        <i class="fa-solid fa-comments"></i> Discussions
+      </a>
+      <a href="#" class="dash-nav-link">
+        <i class="fa-regular fa-calendar-days"></i> Events
+      </a>
+      <a href="#" class="dash-nav-link">
+        <i class="fa-solid fa-book-open"></i> Stories
+      </a>
+      <a href="#" class="dash-nav-link">
+        <i class="fa-solid fa-trophy"></i> Challenges
+      </a>
+      <a href="#" class="dash-nav-link">
+        <i class="fa-solid fa-people-group"></i> Members
+      </a>
+      <a href="#" class="dash-nav-link">
+        <i class="fa-regular fa-envelope"></i> Messages
+        <span class="dash-nav-badge">3</span>
+      </a>
+      <a href="#" class="dash-nav-link">
+        <i class="fa-solid fa-medal"></i> Badges
+      </a>
+      <a href="#" class="dash-nav-link">
+        <i class="fa-solid fa-folder-open"></i> Resources
+      </a>
+      <a href="#" class="dash-nav-link">
+        <i class="fa-solid fa-gear"></i> Settings
+      </a>
+      <a href="index.html" class="dash-nav-link">
+        <i class="fa-solid fa-right-from-bracket"></i> Log Out
+      </a>
+    </nav>
+  </aside>
+
+  <!-- ===== MAIN ===== -->
+  <div class="dash-main">
+
+    <!-- Top bar -->
+    <header class="dash-topbar">
+      <button class="dash-topbar-menu" onclick="document.getElementById('dashSidebar').classList.toggle('open')" aria-label="Toggle menu">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+
+      <div class="dash-step-badge">
+        <span class="step-num">STEP 4</span>
+        <i class="fa-solid fa-heart"></i>
+        COMMUNITY DASHBOARD
+      </div>
+
+      <div class="dash-topbar-title-block">
+        <div class="dash-topbar-sub">YOUR SPACE. YOUR PEOPLE. YOUR GROWTH.</div>
+      </div>
+
+      <!-- Stats -->
+      <div class="dash-topbar-stats">
+        <div class="dash-stat-pill dash-stat-streak">
+          <span class="dash-stat-num">
+            7 <i class="fa-solid fa-fire"></i>
+          </span>
+          <span class="dash-stat-label">Day Streak</span>
+        </div>
+        <div class="dash-stat-pill dash-stat-points">
+          <span class="dash-stat-num">
+            450 <i class="fa-solid fa-star"></i>
+          </span>
+          <span class="dash-stat-label">Pink Points</span>
+        </div>
+      </div>
+
+      <!-- User chip -->
+      <div class="dash-topbar-user">
+        <div class="dash-user-avatar">
+          <i class="fa-solid fa-user"></i>
+        </div>
+        <div>
+          <div class="dash-user-name" id="dashUserName">Pink Star</div>
+          <div class="dash-user-role">Community Member</div>
+          <a href="#" class="dash-view-profile">
+            View Profile <i class="fa-solid fa-arrow-right"></i>
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <!-- Greeting bar -->
+    <div class="dash-greet-bar">
+      <i class="fa-solid fa-hand-sparkles"></i>
+      Hi, <strong id="dashGreetName">Pink Star</strong>! &nbsp;
+      So happy to see you here! Remember, you are enough just as you are.
+      <i class="fa-solid fa-heart"></i>
+    </div>
+
+    <!-- Dashboard content -->
+    <div class="dash-content">
+      <div class="dash-grid">
+
+        <!-- ── DISCUSSION BOARDS ── -->
+        <div class="dash-card">
+          <div class="dash-card-header">
+            <div class="dash-card-title">
+              <i class="fa-solid fa-comments"></i>
+              DISCUSSION BOARDS
+              <a href="#" class="dash-view-link">
+                View All <i class="fa-solid fa-arrow-right"></i>
+              </a>
+            </div>
+            <div class="dash-card-sub">Join conversations that matter to you</div>
+          </div>
+          <div class="dash-card-body">
+            <div class="dash-discussion-row">
+              <div class="dash-disc-icon"><i class="fa-solid fa-brain"></i></div>
+              <div class="dash-disc-info">
+                <div class="dash-disc-name">Mental Health Corner</div>
+                <div class="dash-disc-sub">Talk about anxiety, stress, self-care &amp; more</div>
+              </div>
+              <span class="dash-disc-count">128</span>
+            </div>
+            <div class="dash-discussion-row">
+              <div class="dash-disc-icon"><i class="fa-solid fa-book-open"></i></div>
+              <div class="dash-disc-info">
+                <div class="dash-disc-name">School &amp; Study Tips</div>
+                <div class="dash-disc-sub">Share tips, ask questions, ace together!</div>
+              </div>
+              <span class="dash-disc-count">96</span>
+            </div>
+            <div class="dash-discussion-row">
+              <div class="dash-disc-icon"><i class="fa-solid fa-heart"></i></div>
+              <div class="dash-disc-info">
+                <div class="dash-disc-name">Friendships &amp; Relationships</div>
+                <div class="dash-disc-sub">Everything about friends, crushes &amp; more</div>
+              </div>
+              <span class="dash-disc-count">142</span>
+            </div>
+            <div class="dash-discussion-row">
+              <div class="dash-disc-icon"><i class="fa-solid fa-seedling"></i></div>
+              <div class="dash-disc-info">
+                <div class="dash-disc-name">Self-Love &amp; Confidence</div>
+                <div class="dash-disc-sub">Build confidence and love yourself!</div>
+              </div>
+              <span class="dash-disc-count">111</span>
+            </div>
+            <div class="dash-discussion-row">
+              <div class="dash-disc-icon"><i class="fa-solid fa-face-laugh"></i></div>
+              <div class="dash-disc-info">
+                <div class="dash-disc-name">Fun Zone</div>
+                <div class="dash-disc-sub">Games, memes, polls &amp; good vibes only!</div>
+              </div>
+              <span class="dash-disc-count">87</span>
+            </div>
+          </div>
+          <!-- Trending Topics -->
+          <div class="dash-card-header dash-card-header--top-border">
+            <div class="dash-card-title">
+              <i class="fa-solid fa-fire"></i>
+              TRENDING TOPICS
+            </div>
+            <div class="dash-card-sub">What's hot in the community</div>
+          </div>
+          <div class="dash-card-body">
+            <div class="dash-topics-wrap">
+              <span class="dash-topic-tag"><i class="fa-solid fa-hashtag"></i>AnxietyHelp</span>
+              <span class="dash-topic-tag"><i class="fa-solid fa-hashtag"></i>ExamStress</span>
+              <span class="dash-topic-tag"><i class="fa-solid fa-hashtag"></i>SelfLove</span>
+              <span class="dash-topic-tag"><i class="fa-solid fa-hashtag"></i>FriendshipGoals</span>
+              <span class="dash-topic-tag"><i class="fa-solid fa-hashtag"></i>FirstCrush</span>
+              <span class="dash-topic-tag"><i class="fa-solid fa-hashtag"></i>BodyPositivity</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- ── UPCOMING EVENTS ── -->
+        <div class="dash-card">
+          <div class="dash-card-header">
+            <div class="dash-card-title">
+              <i class="fa-regular fa-calendar-days"></i>
+              UPCOMING EVENTS
+              <a href="#" class="dash-view-link">
+                View Calendar <i class="fa-solid fa-arrow-right"></i>
+              </a>
+            </div>
+            <div class="dash-card-sub">Don't miss out!</div>
+          </div>
+          <div class="dash-card-body">
+            <div class="dash-event-row">
+              <div class="dash-event-date">
+                <span class="dash-event-month">MAY</span>
+                <span class="dash-event-day">25</span>
+              </div>
+              <div class="dash-event-info">
+                <div class="dash-event-name">
+                  Weekly Girl Talk <i class="fa-solid fa-comments"></i>
+                </div>
+                <div class="dash-event-desc">Real talks. Real girls. Real support.</div>
+              </div>
+              <span class="dash-event-time">7:00 PM EST</span>
+            </div>
+            <div class="dash-event-row">
+              <div class="dash-event-date">
+                <span class="dash-event-month">MAY</span>
+                <span class="dash-event-day">31</span>
+              </div>
+              <div class="dash-event-info">
+                <div class="dash-event-name">
+                  Confidence Challenge Kickoff <i class="fa-solid fa-trophy"></i>
+                </div>
+                <div class="dash-event-desc">7 days to a more confident YOU!</div>
+              </div>
+              <span class="dash-event-time">6:00 PM EST</span>
+            </div>
+            <div class="dash-event-row">
+              <div class="dash-event-date">
+                <span class="dash-event-month">JUN</span>
+                <span class="dash-event-day">07</span>
+              </div>
+              <div class="dash-event-info">
+                <div class="dash-event-name">
+                  Q&amp;A with Guest Expert <i class="fa-solid fa-microphone"></i>
+                </div>
+                <div class="dash-event-desc">Ask. Learn. Grow.</div>
+              </div>
+              <span class="dash-event-time">5:00 PM EST</span>
+            </div>
+          </div>
+          <!-- Recent posts -->
+          <div class="dash-card-header dash-card-header--top-border">
+            <div class="dash-card-title">
+              <i class="fa-solid fa-pen-to-square"></i>
+              RECENT POSTS
+            </div>
+            <div class="dash-card-sub">Latest from our amazing members</div>
+          </div>
+          <div class="dash-card-body">
+            <div class="dash-post-card">
+              <div class="dash-post-header">
+                <div class="dash-post-avatar"><i class="fa-solid fa-user"></i></div>
+                <div>
+                  <div class="dash-post-username">
+                    DreamyGirl <i class="fa-solid fa-star"></i>
+                  </div>
+                  <div class="dash-post-time">2h ago</div>
+                </div>
+                <button class="dash-post-menu" aria-label="Post options">
+                  <i class="fa-solid fa-ellipsis"></i>
+                </button>
+              </div>
+              <div class="dash-post-body">
+                Sometimes it's okay to not be okay. Be kind to yourself today.
+                <i class="fa-solid fa-heart"></i>
+              </div>
+              <div class="dash-post-actions">
+                <button class="dash-post-action-btn">
+                  <i class="fa-regular fa-heart"></i> 24
+                </button>
+                <button class="dash-post-action-btn">
+                  <i class="fa-regular fa-comment"></i> 8
+                </button>
+                <a href="#" class="dash-post-read-more">
+                  Read more <i class="fa-solid fa-arrow-right"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ── SHARE YOUR STORY ── -->
+        <div class="dash-card">
+          <div class="dash-card-header">
+            <div class="dash-card-title">
+              <i class="fa-solid fa-book-open"></i>
+              SHARE YOUR STORY
+            </div>
+            <div class="dash-card-sub">Your voice matters here</div>
+          </div>
+          <div class="dash-card-body">
+            <div class="dash-story-row">
+              <div class="dash-story-icon"><i class="fa-solid fa-pen"></i></div>
+              <div>
+                <div class="dash-story-name">Share an Experience</div>
+                <div class="dash-story-desc">Inspire others with your story</div>
+              </div>
+            </div>
+            <div class="dash-story-row">
+              <div class="dash-story-icon"><i class="fa-solid fa-circle-question"></i></div>
+              <div>
+                <div class="dash-story-name">Ask for Advice</div>
+                <div class="dash-story-desc">Get support from the community</div>
+              </div>
+            </div>
+            <div class="dash-story-row">
+              <div class="dash-story-icon"><i class="fa-solid fa-mask"></i></div>
+              <div>
+                <div class="dash-story-name">Submit Anonymously</div>
+                <div class="dash-story-desc">Share without revealing your identity</div>
+              </div>
+            </div>
+            <a href="#" class="dash-see-link">
+              Go to Stories <i class="fa-solid fa-arrow-right"></i>
+            </a>
+          </div>
+          <!-- Top contributors -->
+          <div class="dash-card-header dash-card-header--top-border">
+            <div class="dash-card-title">
+              <i class="fa-solid fa-crown"></i>
+              TOP CONTRIBUTORS
+            </div>
+            <div class="dash-card-sub">These members are making a difference!</div>
+          </div>
+          <div class="dash-card-body">
+            <div class="dash-leader-row">
+              <span class="dash-rank">1</span>
+              <div class="dash-leader-avatar"><i class="fa-solid fa-user"></i></div>
+              <span class="dash-leader-name">KindHeart <i class="fa-solid fa-heart"></i></span>
+              <span class="dash-leader-pts">1250 pts</span>
+            </div>
+            <div class="dash-leader-row">
+              <span class="dash-rank">2</span>
+              <div class="dash-leader-avatar"><i class="fa-solid fa-user"></i></div>
+              <span class="dash-leader-name">GlowQueen <i class="fa-solid fa-star"></i></span>
+              <span class="dash-leader-pts">980 pts</span>
+            </div>
+            <div class="dash-leader-row">
+              <span class="dash-rank">3</span>
+              <div class="dash-leader-avatar"><i class="fa-solid fa-user"></i></div>
+              <span class="dash-leader-name">PositiveVibes <i class="fa-solid fa-seedling"></i></span>
+              <span class="dash-leader-pts">870 pts</span>
+            </div>
+            <a href="#" class="dash-see-link">
+              See Leaderboard <i class="fa-solid fa-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- ── CHALLENGES + PLUS + ACTIVE ── -->
+        <div class="dash-plus-list-wrap">
+
+          <!-- Community Challenges -->
+          <div class="dash-card">
+            <div class="dash-card-header">
+              <div class="dash-card-title">
+                <i class="fa-solid fa-trophy"></i>
+                COMMUNITY CHALLENGES
+                <a href="#" class="dash-view-link">
+                  View All <i class="fa-solid fa-arrow-right"></i>
+                </a>
+              </div>
+              <div class="dash-card-sub">Grow, step by step!</div>
+            </div>
+            <div class="dash-card-body">
+              <div class="dash-challenge-row">
+                <div class="dash-challenge-icon"><i class="fa-solid fa-heart"></i></div>
+                <div class="dash-challenge-info">
+                  <div class="dash-challenge-name">Self-Care Challenge</div>
+                  <div class="dash-challenge-sub">Take care of your mind, body &amp; soul</div>
+                </div>
+                <span class="dash-days-left green">5 Days Left</span>
+              </div>
+              <div class="dash-challenge-row">
+                <div class="dash-challenge-icon"><i class="fa-solid fa-seedling"></i></div>
+                <div class="dash-challenge-info">
+                  <div class="dash-challenge-name">Confidence Challenge</div>
+                  <div class="dash-challenge-sub">Build your confidence every day</div>
+                </div>
+                <span class="dash-days-left blue">8 Days Left</span>
+              </div>
+              <div class="dash-challenge-row">
+                <div class="dash-challenge-icon"><i class="fa-solid fa-sun"></i></div>
+                <div class="dash-challenge-info">
+                  <div class="dash-challenge-name">Gratitude Challenge</div>
+                  <div class="dash-challenge-sub">Focus on the good, every day</div>
+                </div>
+                <span class="dash-days-left purple">12 Days Left</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Pink Chronicles Plus -->
+          <div class="dash-plus-card">
+            <div class="dash-plus-title">
+              PINK CHRONICLES PLUS <i class="fa-solid fa-star"></i>
+            </div>
+            <p class="dash-plus-perks-label">Unlock exclusive perks!</p>
+            <ul class="dash-plus-list">
+              <li><i class="fa-solid fa-circle-check"></i> Exclusive Podcasts</li>
+              <li><i class="fa-solid fa-circle-check"></i> Special Workshops</li>
+              <li><i class="fa-solid fa-circle-check"></i> Guest Speaker Events</li>
+              <li><i class="fa-solid fa-circle-check"></i> Private Community Groups</li>
+            </ul>
+            <a href="#" class="btn-learn-more">LEARN MORE</a>
+          </div>
+
+          <!-- Active Now -->
+          <div class="dash-card dash-active-card">
+            <div class="dash-active-title">ACTIVE NOW</div>
+            <div class="dash-active-count">
+              <i class="fa-solid fa-circle"></i> 125 girls online
+            </div>
+            <div class="dash-member-row">
+              <div class="dash-member-dot"></div>
+              <span class="dash-member-name">Sunshine</span>
+              <span class="dash-member-emoji">☀️</span>
+            </div>
+            <div class="dash-member-row">
+              <div class="dash-member-dot"></div>
+              <span class="dash-member-name">Peachy</span>
+              <span class="dash-member-emoji">🍑</span>
+            </div>
+            <div class="dash-member-row">
+              <div class="dash-member-dot"></div>
+              <span class="dash-member-name">Moonchild</span>
+              <span class="dash-member-emoji">🌙</span>
+            </div>
+            <div class="dash-member-row">
+              <div class="dash-member-dot"></div>
+              <span class="dash-member-name">DreamyGirl</span>
+              <span class="dash-member-emoji">✨</span>
+            </div>
+            <div class="dash-member-row">
+              <div class="dash-member-dot"></div>
+              <span class="dash-member-name">StarryEyes</span>
+              <span class="dash-member-emoji">🌟</span>
+            </div>
+            <button class="btn-see-all">SEE ALL MEMBERS</button>
+          </div>
+
+        </div>
+
+      </div><!-- /dash-grid -->
+    </div><!-- /dash-content -->
+  </div><!-- /dash-main -->
+
+  <script>
+    /* ── Load member name from localStorage ── */
+    (function() {
+      try {
+        const raw = localStorage.getItem('pinkAdmin');
+        if (raw) {
+          const data = JSON.parse(raw);
+          const members = data.members || [];
+          if (members.length) {
+            const last = members[members.length - 1];
+            const name = last.nickname || last.name || 'Pink Star';
+            const nameEls = document.querySelectorAll('#dashUserName, #dashGreetName');
+            nameEls.forEach(el => { el.textContent = name; });
+          }
+        }
+      } catch(e) {}
+    })();
+
+    /* ── Sidebar toggle on mobile ── */
+    document.addEventListener('click', function(e) {
+      const sidebar = document.getElementById('dashSidebar');
+      const menuBtn = document.querySelector('.dash-topbar-menu');
+      if (sidebar && menuBtn && !sidebar.contains(e.target) && !menuBtn.contains(e.target)) {
+        sidebar.classList.remove('open');
+      }
+    });
+
+    /* ── Post like button toggle ── */
+    document.querySelectorAll('.dash-post-action-btn').forEach(btn => {
+      btn.addEventListener('click', function() {
+        const icon = this.querySelector('.fa-heart, .fa-regular');
+        if (icon) {
+          icon.classList.toggle('fa-regular');
+          icon.classList.toggle('fa-solid');
+          icon.style.color = icon.classList.contains('fa-solid') ? 'var(--pink-deep)' : '';
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>
