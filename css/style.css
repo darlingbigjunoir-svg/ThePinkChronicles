@@ -916,6 +916,15 @@ body {
   align-items: start;
 }
 
+.tp-card a {
+  text-decoration: none;
+  transition: color .2s;
+}
+
+.tp-cta-right a {
+  text-decoration: none;
+  transition: color .2s;
+}
 /* ── Episode List Panel ── */
 
 
