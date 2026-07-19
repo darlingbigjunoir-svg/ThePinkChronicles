@@ -350,6 +350,8 @@
 
   </main>
 
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="js/supabase-config.js"></script>
   <script>
     'use strict';
 
@@ -392,7 +394,7 @@
       return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
     }
 
-    function handleJoinSubmit(e) {
+    async function handleJoinSubmit(e) {
       e.preventDefault();
 
       const fullName = document.getElementById('jFullName').value.trim();
@@ -427,18 +429,32 @@
         return;
       }
 
-      /* Save to localStorage (admin reads this) */
+      /* Save to Supabase — this is what makes the member show up live in the Admin panel */
+      const submitBtn = document.querySelector('.btn-join-now');
+      if (submitBtn) submitBtn.disabled = true;
       try {
-        const raw  = localStorage.getItem('pinkAdmin');
-        const data = raw ? JSON.parse(raw) : { episodes: [], members: [] };
-        if (!Array.isArray(data.members)) data.members = [];
-        data.members.push({
-          id: Date.now(), name: fullName, nickname, age, email, country,
-          interests, why, status: 'active', role: 'Member',
-          joined: new Date().toLocaleDateString('en-GB', { day:'2-digit', month:'short', year:'numeric' })
+        const { error } = await supabaseClient.from('members').insert({
+          name: fullName, nickname, age, email, country, interests, why,
+          status: 'active', role: 'Member'
         });
-        localStorage.setItem('pinkAdmin', JSON.stringify(data));
-      } catch(_) {}
+        if (error) {
+          if (submitBtn) submitBtn.disabled = false;
+          if (error.code === '23505') {
+            showErr('jEmail', 'errEmail');
+            document.getElementById('errEmail').innerHTML =
+              '<i class="fa-solid fa-circle-exclamation"></i> This email has already joined.';
+          } else {
+            alert('Something went wrong submitting your info. Please try again.');
+            console.error(error);
+          }
+          return;
+        }
+      } catch (err) {
+        if (submitBtn) submitBtn.disabled = false;
+        alert('Something went wrong submitting your info. Please try again.');
+        console.error(err);
+        return;
+      }
 
       /* Show success */
       document.getElementById('joinFormWrap').style.display = 'none';
@@ -450,6 +466,6 @@
       success.scrollIntoView({ behavior: 'smooth', block: 'center' });
     }
   </script>
-<script src="js/script.js"></script>
+
 </body>
 </html>

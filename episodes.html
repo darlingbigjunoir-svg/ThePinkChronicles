@@ -82,7 +82,7 @@
     <div class="video-layout">
 
       <!-- ── Empty Player ── -->
-      <div class="video-main">
+      <div class="video-main" id="videoMain">
 
         <div class="ep-empty-player">
           <div class="ep-empty-icon-ring">
@@ -167,6 +167,7 @@
             Coming Up
           </div>
 
+          <div id="queueItems">
           <div class="queue-item no-content">
             <div class="queue-thumb">EP<br>01</div>
             <div class="queue-info">
@@ -202,6 +203,8 @@
               <i class="fa-solid fa-lock" aria-hidden="true"></i>
             </div>
           </div>
+
+          </div><!-- /queueItems -->
 
           <!-- bottom notice -->
           <div class="queue-bottom-notice">
@@ -258,6 +261,8 @@
         </div>
       </div>
 
+      <!-- Episode list (dynamic) -->
+      <div id="epListBody">
       <!-- Empty state card -->
       <div class="ep-empty-card">
         <div class="ep-empty-card-icon">
@@ -282,6 +287,7 @@
           <i class="fa-solid fa-heart"></i>
         </p>
       </div>
+      </div><!-- /epListBody -->
     </div>
 
     <!-- ── Sidebar ── -->
@@ -366,6 +372,52 @@
     </div>
   </footer>
 
+  <!-- ===== STICKY AUDIO PLAYER (shown when an audio episode is playing) ===== -->
+  <div class="ep-player-bar" id="audioPlayerBar">
+    <div class="ep-player-artwork"><i class="fa-solid fa-music"></i></div>
+    <div class="ep-player-info">
+      <div class="ep-player-ep-num" id="playerEpNum">EPISODE</div>
+      <div class="ep-player-title" id="playerTitle">Title</div>
+      <div class="ep-player-host">The Pink Chronicles</div>
+    </div>
+    <div class="ep-player-controls">
+      <button class="ep-ctrl-btn" onclick="audioSeek(-10)" aria-label="Back 10 seconds"><i class="fa-solid fa-rotate-left"></i></button>
+      <button class="ep-ctrl-btn ep-ctrl-play" id="playPauseBtn" onclick="toggleAudioPlay()" aria-label="Play or pause"><i class="fa-solid fa-play"></i></button>
+      <button class="ep-ctrl-btn" onclick="audioSeek(10)" aria-label="Forward 10 seconds"><i class="fa-solid fa-rotate-right"></i></button>
+    </div>
+    <div class="ep-player-progress-wrap">
+      <div class="ep-progress-track" id="progressTrack" onclick="seekClick(event)">
+        <div class="ep-progress-fill" id="progressFill"></div>
+      </div>
+      <div class="ep-player-times"><span id="curTime">0:00</span><span id="durTime">0:00</span></div>
+    </div>
+    <div class="ep-player-volume">
+      <i class="fa-solid fa-volume-high"></i>
+      <input type="range" class="ep-volume-slider" min="0" max="1" step="0.05" value="1" oninput="setVolume(this.value)" aria-label="Volume" title="Volume" />
+    </div>
+    <button class="ep-player-close" onclick="closeAudioPlayer()" aria-label="Close player"><i class="fa-solid fa-xmark"></i></button>
+  </div>
+  <audio id="audioEl" style="display:none"></audio>
+
+  <!-- ===== VIDEO MODAL (shown when a video episode is played) ===== -->
+  <div class="ep-video-modal" id="videoModal" onclick="handleVideoBackdrop(event)">
+    <div class="ep-video-inner">
+      <div class="ep-video-header">
+        <i class="fa-solid fa-podcast"></i>
+        <div class="ep-video-header-info">
+          <div class="ep-video-ep-num" id="vmEpNum">EPISODE</div>
+          <div class="ep-video-title" id="vmTitle">Title</div>
+        </div>
+        <button class="ep-video-close" onclick="closeVideoModal()" aria-label="Close video"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <div id="vmPlayerWrap"></div>
+      <div class="ep-video-footer">
+        <div class="ep-video-footer-desc" id="vmDesc"></div>
+        <div class="ep-video-footer-meta" id="vmMeta"></div>
+      </div>
+    </div>
+  </div>
+
   <!-- ===== NOTIFY ME MODAL ===== -->
   <div id="notifyModal" class="notify-modal-overlay" hidden onclick="handleModalBackdrop(event)">
     <div class="notify-modal" id="notifyModalBox">
@@ -414,6 +466,9 @@
     </div>
   </div>
 
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="js/supabase-config.js"></script>
+  <script src="js/site-data.js"></script>
   <script>
     /* ── Notify modal ── */
     function openNotifyModal(e) {
@@ -451,6 +506,6 @@
       if (e.key === 'Escape') closeNotifyModal();
     });
   </script>
-<script src="js/script.js"></script>
+
 </body>
 </html>
