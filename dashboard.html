@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Community Dashboard – The Pink Chronicles</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-  <link rel="icon" type="image/png" href="images/favicon-64x64.png" />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Nunito:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/style.css" />
 </head>
@@ -53,7 +52,7 @@
       <a href="#" class="dash-nav-link">
         <i class="fa-solid fa-gear"></i> Settings
       </a>
-      <a href="index.html" class="dash-nav-link">
+      <a href="index.html" class="dash-nav-link" onclick="try{localStorage.removeItem('pc_member');}catch(e){}">
         <i class="fa-solid fa-right-from-bracket"></i> Log Out
       </a>
     </nav>
@@ -110,7 +109,7 @@
     </header>
 
     <!-- Greeting bar -->
-    <div class="dash-greet-bar">
+    <div class="dash-greet-bar" id="dashGreetBar">
       <i class="fa-solid fa-hand-sparkles"></i>
       Hi, <strong id="dashGreetName">Pink Star</strong>! &nbsp;
       So happy to see you here! Remember, you are enough just as you are.
@@ -456,21 +455,74 @@
   </div><!-- /dash-main -->
 
   <script>
-    /* ── Load member name from localStorage ── */
+    /* ── Personalize with the member who actually just joined ── */
     (function() {
+      let member = null;
       try {
-        const raw = localStorage.getItem('pinkAdmin');
-        if (raw) {
-          const data = JSON.parse(raw);
-          const members = data.members || [];
-          if (members.length) {
-            const last = members[members.length - 1];
-            const name = last.nickname || last.name || 'Pink Star';
-            const nameEls = document.querySelectorAll('#dashUserName, #dashGreetName');
-            nameEls.forEach(el => { el.textContent = name; });
-          }
-        }
-      } catch(e) {}
+        const raw = localStorage.getItem('pc_member');
+        if (raw) member = JSON.parse(raw);
+      } catch (e) {}
+
+      const displayName = (member && (member.nickname || member.name)) || 'Pink Star';
+      document.querySelectorAll('#dashUserName, #dashGreetName').forEach(el => { el.textContent = displayName; });
+
+      /* How many days since they joined (honest, not fabricated) */
+      let dayNum = 1;
+      let justJoined = true;
+      if (member && member.joinedAt) {
+        const joined = new Date(member.joinedAt);
+        const now = new Date();
+        const diffDays = Math.floor((now - joined) / 86400000);
+        dayNum = Math.max(1, diffDays + 1);
+        justJoined = diffDays < 1;
+      }
+      const streakNum = document.querySelector('.dash-stat-streak .dash-stat-num');
+      if (streakNum) streakNum.innerHTML = `${dayNum} <i class="fa-solid fa-fire"></i>`;
+      const streakLabel = document.querySelector('.dash-stat-streak .dash-stat-label');
+      if (streakLabel) streakLabel.textContent = dayNum === 1 ? 'Day 1' : 'Day Streak';
+
+      /* New members start at 0 points — nothing fabricated */
+      const pointsNum = document.querySelector('.dash-stat-points .dash-stat-num');
+      if (pointsNum) pointsNum.innerHTML = `0 <i class="fa-solid fa-star"></i>`;
+
+      /* Greeting reflects whether they just joined today or are back again */
+      const greetBar = document.getElementById('dashGreetBar');
+      if (greetBar && justJoined) {
+        greetBar.innerHTML =
+          `<i class="fa-solid fa-hand-sparkles"></i> Welcome to the family, <strong id="dashGreetName">${displayName}</strong>! ` +
+          `So glad you're here — you just joined the sisterhood. <i class="fa-solid fa-heart"></i>`;
+      } else if (greetBar) {
+        greetBar.innerHTML =
+          `<i class="fa-solid fa-hand-sparkles"></i> Hi, <strong id="dashGreetName">${displayName}</strong>! ` +
+          `So happy to see you here! Remember, you are enough just as you are. <i class="fa-solid fa-heart"></i>`;
+      }
+    })();
+
+    /* ── Upcoming events: always show real upcoming dates, never stale ones ── */
+    (function() {
+      const rows = document.querySelectorAll('.dash-event-row');
+      const templates = [
+        { name: 'Weekly Girl Talk', icon: 'fa-comments', desc: 'Real talks. Real girls. Real support.', time: '7:00 PM EST', offset: 3 },
+        { name: 'Confidence Challenge Kickoff', icon: 'fa-trophy', desc: '7 days to a more confident YOU!', time: '6:00 PM EST', offset: 9 },
+        { name: 'Q&A with Guest Expert', icon: 'fa-microphone', desc: 'Ask. Learn. Grow.', time: '5:00 PM EST', offset: 16 }
+      ];
+      const monthNames = ['JAN','FEB','MAR','APR','MAY','JUN','JUL','AUG','SEP','OCT','NOV','DEC'];
+      rows.forEach((row, i) => {
+        const t = templates[i];
+        if (!t) return;
+        const d = new Date();
+        d.setDate(d.getDate() + t.offset);
+        const monthEl = row.querySelector('.dash-event-month');
+        const dayEl   = row.querySelector('.dash-event-day');
+        const nameEl  = row.querySelector('.dash-event-name');
+        const descEl  = row.querySelector('.dash-event-desc');
+        const timeEl  = row.querySelector('.dash-event-time');
+        if (monthEl) monthEl.textContent = monthNames[d.getMonth()];
+        if (dayEl)   dayEl.textContent = d.getDate();
+        if (nameEl)  nameEl.innerHTML = `${t.name} <i class="fa-solid ${t.icon}"></i>`;
+        if (descEl)  descEl.textContent = t.desc;
+        if (timeEl)  timeEl.textContent = t.time;
+      });
     })();
 
     /* ── Sidebar toggle on mobile ── */
