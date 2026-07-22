@@ -277,7 +277,40 @@ async function pcRenderIndexLatest() {
   btn.innerHTML = `<i class="fa-solid fa-headphones"></i> LISTEN: ${pcEsc(ep.title)}`;
 }
 
+/* ============================================================
+   SITE SETTINGS SYNC — email, phone, social links
+   Works across every page's footer, whatever its class naming,
+   by matching on the visible label text and aria-labels rather
+   than requiring specific IDs on every page.
+   ============================================================ */
+async function pcApplySettings() {
+  if (typeof supabaseClient === 'undefined') return;
+  const { data, error } = await supabaseClient.from('settings').select('*').eq('id', 1).single();
+  if (error || !data) return;
+
+  document.querySelectorAll('[class*="-label"]').forEach(labelEl => {
+    if (!/(contact-label|ct-item-label)/.test(labelEl.className)) return;
+    const valEl = labelEl.nextElementSibling;
+    if (!valEl) return;
+    const text = labelEl.textContent.trim().toUpperCase();
+    if (text === 'EMAIL' && data.email) valEl.textContent = data.email;
+    if (text === 'PHONE' && data.phone) valEl.textContent = data.phone;
+  });
+
+  const socialMap = {
+    Instagram: data.instagram_url,
+    TikTok:    data.tiktok_url,
+    Spotify:   data.spotify_url,
+    YouTube:   data.youtube_url
+  };
+  document.querySelectorAll('a[aria-label]').forEach(a => {
+    const url = socialMap[a.getAttribute('aria-label')];
+    if (url) { a.href = url; a.target = '_blank'; a.rel = 'noopener'; }
+  });
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   pcRenderEpisodesPage();
   pcRenderIndexLatest();
+  pcApplySettings();
 });

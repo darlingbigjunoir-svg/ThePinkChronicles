@@ -546,6 +546,47 @@
       });
     });
   </script>
+  <!-- ── DASH TOAST (friendly "coming soon" for features still being built) ── -->
+  <div id="dashToast" class="dash-toast"></div>
+  <script>
+    (function() {
+      let toastTimer = null;
+      function showDashToast(msg) {
+        const el = document.getElementById('dashToast');
+        if (!el) return;
+        el.innerHTML = `<i class="fa-solid fa-heart"></i> ${msg}`;
+        el.classList.add('show');
+        if (toastTimer) clearTimeout(toastTimer);
+        toastTimer = setTimeout(() => el.classList.remove('show'), 3000);
+      }
+
+      const navMessages = {
+        'Events': "Events are being finalized — you'll be the first to know! 📅",
+        'Stories': "Story submissions are opening soon — start thinking about yours! ✍️",
+        'Challenges': "Challenges launch soon — get ready to grow with us! 🏆",
+        'Members': "The full member directory is coming soon! 👯",
+        'Messages': "Messaging is on its way — hang tight! 💌",
+        'Badges': "Badges & rewards are coming soon! 🏅",
+        'Resources': "The resource library is being stocked with love! 📚",
+        'Settings': "Account settings are coming soon! ⚙️"
+      };
+
+      document.querySelectorAll('.dash-nav-link[href="#"]').forEach(link => {
+        const label = link.textContent.trim();
+        link.addEventListener('click', e => {
+          e.preventDefault();
+          showDashToast(navMessages[label] || "This is coming soon! 💕");
+        });
+      });
+
+      document.querySelectorAll('.dash-content a[href="#"], .dash-content button.btn-see-all, .dash-post-menu, .dash-view-profile').forEach(el => {
+        el.addEventListener('click', e => {
+          e.preventDefault();
+          showDashToast("This is coming soon — thanks for exploring! 💕");
+        });
+      });
+    })();
+  </script>
 
 </body>
 </html>
