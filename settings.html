@@ -117,15 +117,15 @@
 
     <!-- Page content -->
     <div class="dash-content">
-      <div class="settings-grid" style="max-width:900px;margin:0 auto;">
+      <div class="settings-grid">
 
         <div class="section-card">
           <div class="section-card-header"><h2><i class="fa-solid fa-user"></i> Your Profile</h2></div>
           <div class="meta-form">
-            <div class="meta-field"><label>Full Name</label><input type="text" id="setName" class="admin-input" /></div>
-            <div class="meta-field"><label>Nickname</label><input type="text" id="setNickname" class="admin-input" /></div>
-            <div class="meta-field"><label>Age</label><input type="number" id="setAge" class="admin-input" /></div>
-            <div class="meta-field"><label>About Me</label><textarea id="setBio" class="admin-textarea" rows="3" placeholder="Tell the community a little about yourself..."></textarea></div>
+            <div class="meta-field"><label for="setName">Full Name</label><input type="text" id="setName" class="admin-input" /></div>
+            <div class="meta-field"><label for="setNickname">Nickname</label><input type="text" id="setNickname" class="admin-input" /></div>
+            <div class="meta-field"><label for="setAge">Age</label><input type="number" id="setAge" class="admin-input" /></div>
+            <div class="meta-field"><label for="setBio">About Me</label><textarea id="setBio" class="admin-textarea" rows="3" placeholder="Tell the community a little about yourself..."></textarea></div>
             <div class="meta-actions"><button class="btn-primary" id="saveProfileBtn"><i class="fa-solid fa-floppy-disk"></i> Save Changes</button></div>
           </div>
         </div>
@@ -133,8 +133,8 @@
         <div class="section-card">
           <div class="section-card-header"><h2><i class="fa-solid fa-lock"></i> Change Password</h2></div>
           <div class="meta-form">
-            <div class="meta-field"><label>New Password</label><input type="password" id="setNewPw" class="admin-input" placeholder="At least 6 characters" /></div>
-            <div class="meta-field"><label>Confirm New Password</label><input type="password" id="setConfirmPw" class="admin-input" /></div>
+            <div class="meta-field"><label for="setNewPw">New Password</label><input type="password" id="setNewPw" class="admin-input" placeholder="At least 6 characters" /></div>
+            <div class="meta-field"><label for="setConfirmPw">Confirm New Password</label><input type="password" id="setConfirmPw" class="admin-input" /></div>
             <div class="meta-actions"><button class="btn-primary" id="savePwBtn"><i class="fa-solid fa-key"></i> Update Password</button></div>
           </div>
         </div>
@@ -142,7 +142,7 @@
         <div class="section-card">
           <div class="section-card-header"><h2><i class="fa-solid fa-circle-info"></i> Account</h2></div>
           <div class="meta-form">
-            <p style="font-size:.85rem;color:var(--gray);margin-bottom:14px;">Signed in as <strong id="setEmail" style="color:var(--dark);"></strong></p>
+            <p class="account-info">Signed in as <strong id="setEmail"></strong></p>
             <div class="meta-actions">
               <button class="btn-ghost" onclick="hubLogout()"><i class="fa-solid fa-right-from-bracket"></i> Log Out</button>
             </div>
