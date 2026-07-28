@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Log In – The Pink Chronicles</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Nunito:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <div class="mlogin-screen">
+    <div class="mlogin-card">
+      <div class="mlogin-logo">
+        <i class="fa-solid fa-microphone-lines"></i>
+        <div>
+          <span class="mlogin-logo-top">THE</span>
+          <span class="mlogin-logo-main">PINK CHRONICLES</span>
+        </div>
+      </div>
+      <h1 class="mlogin-title">Welcome back <i class="fa-solid fa-heart"></i></h1>
+      <p class="mlogin-sub">Log in to your community dashboard</p>
+
+      <div id="mloginNotice" class="mlogin-notice hidden"></div>
+
+      <div class="mlogin-field">
+        <i class="fa-regular fa-envelope mlogin-field-icon"></i>
+        <input id="mloginEmail" type="email" placeholder="Your email" class="mlogin-input" />
+      </div>
+      <div class="mlogin-field">
+        <i class="fa-solid fa-lock mlogin-field-icon"></i>
+        <input id="mloginPassword" type="password" placeholder="Password" class="mlogin-input" />
+        <button type="button" class="mlogin-toggle-pw" onclick="mloginTogglePw()" aria-label="Toggle password">
+          <i class="fa-regular fa-eye" id="mloginPwEye"></i>
+        </button>
+      </div>
+
+      <div id="mloginError" class="mlogin-error hidden">
+        <i class="fa-solid fa-circle-exclamation"></i>
+        <span id="mloginErrorMsg">Incorrect email or password.</span>
+      </div>
+
+      <button type="button" class="btn-join-now" id="mloginBtn" onclick="mloginSubmit()">
+        <i class="fa-solid fa-right-to-bracket"></i> LOG IN
+      </button>
+
+      <p class="mlogin-hint">
+        Not a member yet? <a href="join.html">Join the community</a>
+      </p>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="js/supabase-config.js"></script>
+  <script>
+    'use strict';
+
+    function mloginTogglePw() {
+      const input = document.getElementById('mloginPassword');
+      const icon = document.getElementById('mloginPwEye');
+      if (input.type === 'password') { input.type = 'text'; icon.className = 'fa-regular fa-eye-slash'; }
+      else { input.type = 'password'; icon.className = 'fa-regular fa-eye'; }
+    }
+
+    function mloginShowError(msg) {
+      document.getElementById('mloginErrorMsg').textContent = msg;
+      document.getElementById('mloginError').classList.remove('hidden');
+    }
+
+    async function mloginSubmit() {
+      const email = document.getElementById('mloginEmail').value.trim();
+      const pw = document.getElementById('mloginPassword').value;
+      document.getElementById('mloginError').classList.add('hidden');
+
+      if (!email || !pw) { mloginShowError('Please enter both your email and password.'); return; }
+
+      const btn = document.getElementById('mloginBtn');
+      btn.disabled = true;
+      btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Logging in…';
+
+      const { data, error } = await supabaseClient.auth.signInWithPassword({ email, password: pw });
+
+      if (error) {
+        btn.disabled = false;
+        btn.innerHTML = '<i class="fa-solid fa-right-to-bracket"></i> LOG IN';
+        mloginShowError('Incorrect email or password.');
+        return;
+      }
+
+      // Confirm this account belongs to an active joined member
+      const { data: member, error: memberError } = await supabaseClient
+        .from('members').select('*').eq('auth_user_id', data.user.id).single();
+
+      if (memberError || !member || member.status !== 'active') {
+        await supabaseClient.auth.signOut();
+        btn.disabled = false;
+        btn.innerHTML = '<i class="fa-solid fa-right-to-bracket"></i> LOG IN';
+        mloginShowError("We couldn't find an active membership for this account.");
+        return;
+      }
+
+      window.location.href = 'dashboard.html';
+    }
+
+    document.addEventListener('keydown', e => { if (e.key === 'Enter') mloginSubmit(); });
+
+    // Friendly notice if redirected here after a session became invalid
+    (function() {
+      const params = new URLSearchParams(window.location.search);
+      if (params.get('reason') === 'notmember') {
+        const el = document.getElementById('mloginNotice');
+        el.innerHTML = '<i class="fa-solid fa-circle-info"></i> Please log in again to continue.';
+        el.classList.remove('hidden');
+      }
+    })();
+  </script>
+</body>
+</html>

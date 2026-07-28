@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Settings – The Pink Chronicles</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Nunito:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body class="dash-page">
+
+  <!-- ===== SIDEBAR ===== -->
+  <aside class="dash-sidebar" id="dashSidebar">
+    <a href="index.html" class="dash-sidebar-logo">
+      <i class="fa-solid fa-microphone-lines"></i>
+      <div>
+        <span class="dash-logo-text-top">THE PINK</span>
+        <span class="dash-logo-text-main">CHRONICLES</span>
+      </div>
+    </a>
+
+    <nav class="dash-nav">
+      <a href="dashboard.html" class="dash-nav-link">
+        <i class="fa-solid fa-house"></i> Home
+      </a>
+      <a href="discussions.html" class="dash-nav-link">
+        <i class="fa-solid fa-comments"></i> Discussions
+      </a>
+      <a href="events.html" class="dash-nav-link">
+        <i class="fa-regular fa-calendar-days"></i> Events
+      </a>
+      <a href="#" class="dash-nav-link">
+        <i class="fa-solid fa-book-open"></i> Stories
+      </a>
+      <a href="#" class="dash-nav-link">
+        <i class="fa-solid fa-trophy"></i> Challenges
+      </a>
+      <a href="members.html" class="dash-nav-link">
+        <i class="fa-solid fa-people-group"></i> Members
+      </a>
+      <a href="#" class="dash-nav-link">
+        <i class="fa-regular fa-envelope"></i> Messages
+      </a>
+      <a href="#" class="dash-nav-link">
+        <i class="fa-solid fa-medal"></i> Badges
+      </a>
+      <a href="#" class="dash-nav-link">
+        <i class="fa-solid fa-folder-open"></i> Resources
+      </a>
+      <a href="settings.html" class="dash-nav-link active">
+        <i class="fa-solid fa-gear"></i> Settings
+      </a>
+      <a href="index.html" class="dash-nav-link" onclick="hubLogout(); return false;">
+        <i class="fa-solid fa-right-from-bracket"></i> Log Out
+      </a>
+    </nav>
+  </aside>
+
+  <!-- ===== MAIN ===== -->
+  <div class="dash-main">
+
+    <!-- Top bar -->
+    <header class="dash-topbar">
+      <button class="dash-topbar-menu" onclick="document.getElementById('dashSidebar').classList.toggle('open')" aria-label="Toggle menu">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+
+      <div class="dash-step-badge">
+        <i class="fa-solid fa-gear"></i>
+        YOUR SETTINGS
+      </div>
+
+      <div class="dash-topbar-title-block">
+        <div class="dash-topbar-sub">MANAGE YOUR PROFILE</div>
+      </div>
+
+      <!-- Stats -->
+      <div class="dash-topbar-stats">
+        <div class="dash-stat-pill dash-stat-streak">
+          <span class="dash-stat-num">
+            7 <i class="fa-solid fa-fire"></i>
+          </span>
+          <span class="dash-stat-label">Day Streak</span>
+        </div>
+        <div class="dash-stat-pill dash-stat-points">
+          <span class="dash-stat-num">
+            450 <i class="fa-solid fa-star"></i>
+          </span>
+          <span class="dash-stat-label">Pink Points</span>
+        </div>
+      </div>
+
+      <!-- User chip -->
+      <div class="dash-topbar-user">
+        <div class="dash-user-avatar">
+          <i class="fa-solid fa-user"></i>
+        </div>
+        <div>
+          <div class="dash-user-name" id="dashUserName">Pink Star</div>
+          <div class="dash-user-role">Community Member</div>
+          <a href="settings.html" class="dash-view-profile">
+            View Profile <i class="fa-solid fa-arrow-right"></i>
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <!-- Greeting bar -->
+    <div class="dash-greet-bar" id="dashGreetBar">
+      <i class="fa-solid fa-hand-sparkles"></i>
+      Hi, <strong id="dashGreetName">Pink Star</strong>! &nbsp;
+      So happy to see you here! Remember, you are enough just as you are.
+      <i class="fa-solid fa-heart"></i>
+    </div>
+
+
+    <!-- Page content -->
+    <div class="dash-content">
+      <div class="settings-grid" style="max-width:900px;margin:0 auto;">
+
+        <div class="section-card">
+          <div class="section-card-header"><h2><i class="fa-solid fa-user"></i> Your Profile</h2></div>
+          <div class="meta-form">
+            <div class="meta-field"><label>Full Name</label><input type="text" id="setName" class="admin-input" /></div>
+            <div class="meta-field"><label>Nickname</label><input type="text" id="setNickname" class="admin-input" /></div>
+            <div class="meta-field"><label>Age</label><input type="number" id="setAge" class="admin-input" /></div>
+            <div class="meta-field"><label>About Me</label><textarea id="setBio" class="admin-textarea" rows="3" placeholder="Tell the community a little about yourself..."></textarea></div>
+            <div class="meta-actions"><button class="btn-primary" id="saveProfileBtn"><i class="fa-solid fa-floppy-disk"></i> Save Changes</button></div>
+          </div>
+        </div>
+
+        <div class="section-card">
+          <div class="section-card-header"><h2><i class="fa-solid fa-lock"></i> Change Password</h2></div>
+          <div class="meta-form">
+            <div class="meta-field"><label>New Password</label><input type="password" id="setNewPw" class="admin-input" placeholder="At least 6 characters" /></div>
+            <div class="meta-field"><label>Confirm New Password</label><input type="password" id="setConfirmPw" class="admin-input" /></div>
+            <div class="meta-actions"><button class="btn-primary" id="savePwBtn"><i class="fa-solid fa-key"></i> Update Password</button></div>
+          </div>
+        </div>
+
+        <div class="section-card">
+          <div class="section-card-header"><h2><i class="fa-solid fa-circle-info"></i> Account</h2></div>
+          <div class="meta-form">
+            <p style="font-size:.85rem;color:var(--gray);margin-bottom:14px;">Signed in as <strong id="setEmail" style="color:var(--dark);"></strong></p>
+            <div class="meta-actions">
+              <button class="btn-ghost" onclick="hubLogout()"><i class="fa-solid fa-right-from-bracket"></i> Log Out</button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div><!-- /dash-content -->
+  </div><!-- /dash-main -->
+
+  <div id="dashToast" class="dash-toast"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="js/supabase-config.js"></script>
+  <script src="js/hub-auth.js"></script>
+  <script src="js/hub-data.js"></script>
+  <script>
+    'use strict';
+    let toastTimer = null;
+    function showDashToast(msg) {
+      const el = document.getElementById('dashToast');
+      el.innerHTML = `<i class="fa-solid fa-heart"></i> ${msg}`;
+      el.classList.add('show');
+      if (toastTimer) clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => el.classList.remove('show'), 3000);
+    }
+    document.addEventListener('click', function(e) {
+      const sidebar = document.getElementById('dashSidebar');
+      const menuBtn = document.querySelector('.dash-topbar-menu');
+      if (sidebar && menuBtn && !sidebar.contains(e.target) && !menuBtn.contains(e.target)) sidebar.classList.remove('open');
+    });
+    document.querySelectorAll('.dash-nav-link[href="#"]').forEach(link => {
+      link.addEventListener('click', e => { e.preventDefault(); showDashToast("This is coming soon! 💕"); });
+    });
+
+    (async function() {
+      const member = await hubRequireMember();
+      if (!member) return;
+      hubRenderTopStats(member);
+      document.querySelectorAll('#dashUserName, #dashGreetName').forEach(el => { el.textContent = member.nickname || member.name || 'Pink Star'; });
+
+      document.getElementById('setName').value = member.name || '';
+      document.getElementById('setNickname').value = member.nickname || '';
+      document.getElementById('setAge').value = member.age || '';
+      document.getElementById('setBio').value = member.bio || '';
+      document.getElementById('setEmail').textContent = member.email || '';
+
+      document.getElementById('saveProfileBtn').addEventListener('click', async () => {
+        const btn = document.getElementById('saveProfileBtn');
+        btn.disabled = true;
+        const { error } = await hubUpdateProfile({
+          name: document.getElementById('setName').value.trim(),
+          nickname: document.getElementById('setNickname').value.trim(),
+          age: document.getElementById('setAge').value,
+          bio: document.getElementById('setBio').value.trim()
+        });
+        btn.disabled = false;
+        if (error) { showDashToast("Couldn't save — please try again."); return; }
+        document.querySelectorAll('#dashUserName, #dashGreetName').forEach(el => { el.textContent = HUB_MEMBER.nickname || HUB_MEMBER.name; });
+        showDashToast("Profile saved! 💕");
+      });
+
+      document.getElementById('savePwBtn').addEventListener('click', async () => {
+        const nw = document.getElementById('setNewPw').value;
+        const conf = document.getElementById('setConfirmPw').value;
+        if (nw.length < 6) { showDashToast("Password must be at least 6 characters."); return; }
+        if (nw !== conf) { showDashToast("Passwords don't match."); return; }
+        const btn = document.getElementById('savePwBtn');
+        btn.disabled = true;
+        const { error } = await hubChangePassword(nw);
+        btn.disabled = false;
+        if (error) { showDashToast("Couldn't update password — please try again."); return; }
+        document.getElementById('setNewPw').value = '';
+        document.getElementById('setConfirmPw').value = '';
+        showDashToast("Password updated! 🔒");
+      });
+    })();
+  </script>
+
+</body>
+</html>

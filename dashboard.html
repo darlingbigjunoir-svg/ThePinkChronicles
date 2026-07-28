@@ -24,10 +24,10 @@
       <a href="dashboard.html" class="dash-nav-link active">
         <i class="fa-solid fa-house"></i> Home
       </a>
-      <a href="topics.html" class="dash-nav-link">
+      <a href="discussions.html" class="dash-nav-link">
         <i class="fa-solid fa-comments"></i> Discussions
       </a>
-      <a href="#" class="dash-nav-link">
+      <a href="events.html" class="dash-nav-link">
         <i class="fa-regular fa-calendar-days"></i> Events
       </a>
       <a href="#" class="dash-nav-link">
@@ -36,12 +36,11 @@
       <a href="#" class="dash-nav-link">
         <i class="fa-solid fa-trophy"></i> Challenges
       </a>
-      <a href="#" class="dash-nav-link">
+      <a href="members.html" class="dash-nav-link">
         <i class="fa-solid fa-people-group"></i> Members
       </a>
       <a href="#" class="dash-nav-link">
         <i class="fa-regular fa-envelope"></i> Messages
-        <span class="dash-nav-badge">3</span>
       </a>
       <a href="#" class="dash-nav-link">
         <i class="fa-solid fa-medal"></i> Badges
@@ -49,10 +48,10 @@
       <a href="#" class="dash-nav-link">
         <i class="fa-solid fa-folder-open"></i> Resources
       </a>
-      <a href="#" class="dash-nav-link">
+      <a href="settings.html" class="dash-nav-link">
         <i class="fa-solid fa-gear"></i> Settings
       </a>
-      <a href="index.html" class="dash-nav-link" onclick="try{localStorage.removeItem('pc_member');}catch(e){}">
+      <a href="index.html" class="dash-nav-link" onclick="hubLogout(); return false;">
         <i class="fa-solid fa-right-from-bracket"></i> Log Out
       </a>
     </nav>
@@ -101,7 +100,7 @@
         <div>
           <div class="dash-user-name" id="dashUserName">Pink Star</div>
           <div class="dash-user-role">Community Member</div>
-          <a href="#" class="dash-view-profile">
+          <a href="settings.html" class="dash-view-profile">
             View Profile <i class="fa-solid fa-arrow-right"></i>
           </a>
         </div>
@@ -126,126 +125,84 @@
             <div class="dash-card-title">
               <i class="fa-solid fa-comments"></i>
               DISCUSSION BOARDS
-              <a href="#" class="dash-view-link">
+              <a href="discussions.html" class="dash-view-link">
                 View All <i class="fa-solid fa-arrow-right"></i>
               </a>
             </div>
             <div class="dash-card-sub">Join conversations that matter to you</div>
           </div>
-          <div class="dash-card-body">
+          <div class="dash-card-body" id="topicCountsBody">
             <div class="dash-discussion-row">
               <div class="dash-disc-icon"><i class="fa-solid fa-brain"></i></div>
               <div class="dash-disc-info">
-                <div class="dash-disc-name">Mental Health Corner</div>
+                <div class="dash-disc-name">Mental Health</div>
                 <div class="dash-disc-sub">Talk about anxiety, stress, self-care &amp; more</div>
               </div>
-              <span class="dash-disc-count">128</span>
+              <span class="dash-disc-count" data-topic="mental-health">0</span>
             </div>
             <div class="dash-discussion-row">
               <div class="dash-disc-icon"><i class="fa-solid fa-book-open"></i></div>
               <div class="dash-disc-info">
-                <div class="dash-disc-name">School &amp; Study Tips</div>
+                <div class="dash-disc-name">School Life</div>
                 <div class="dash-disc-sub">Share tips, ask questions, ace together!</div>
               </div>
-              <span class="dash-disc-count">96</span>
+              <span class="dash-disc-count" data-topic="school-life">0</span>
             </div>
             <div class="dash-discussion-row">
               <div class="dash-disc-icon"><i class="fa-solid fa-heart"></i></div>
               <div class="dash-disc-info">
-                <div class="dash-disc-name">Friendships &amp; Relationships</div>
+                <div class="dash-disc-name">Relationships</div>
                 <div class="dash-disc-sub">Everything about friends, crushes &amp; more</div>
               </div>
-              <span class="dash-disc-count">142</span>
+              <span class="dash-disc-count" data-topic="relationships">0</span>
             </div>
             <div class="dash-discussion-row">
               <div class="dash-disc-icon"><i class="fa-solid fa-seedling"></i></div>
               <div class="dash-disc-info">
-                <div class="dash-disc-name">Self-Love &amp; Confidence</div>
+                <div class="dash-disc-name">Self Growth</div>
                 <div class="dash-disc-sub">Build confidence and love yourself!</div>
               </div>
-              <span class="dash-disc-count">111</span>
+              <span class="dash-disc-count" data-topic="self-growth">0</span>
             </div>
             <div class="dash-discussion-row">
               <div class="dash-disc-icon"><i class="fa-solid fa-face-laugh"></i></div>
               <div class="dash-disc-info">
-                <div class="dash-disc-name">Fun Zone</div>
+                <div class="dash-disc-name">Fun &amp; Lifestyle</div>
                 <div class="dash-disc-sub">Games, memes, polls &amp; good vibes only!</div>
               </div>
-              <span class="dash-disc-count">87</span>
+              <span class="dash-disc-count" data-topic="fun-lifestyle">0</span>
             </div>
           </div>
-          <!-- Trending Topics -->
+          <!-- Quick post composer -->
           <div class="dash-card-header dash-card-header--top-border">
             <div class="dash-card-title">
-              <i class="fa-solid fa-fire"></i>
-              TRENDING TOPICS
+              <i class="fa-solid fa-pen"></i>
+              SHARE SOMETHING
             </div>
-            <div class="dash-card-sub">What's hot in the community</div>
+            <div class="dash-card-sub">Post straight to the discussion feed</div>
           </div>
           <div class="dash-card-body">
-            <div class="dash-topics-wrap">
-              <span class="dash-topic-tag"><i class="fa-solid fa-hashtag"></i>AnxietyHelp</span>
-              <span class="dash-topic-tag"><i class="fa-solid fa-hashtag"></i>ExamStress</span>
-              <span class="dash-topic-tag"><i class="fa-solid fa-hashtag"></i>SelfLove</span>
-              <span class="dash-topic-tag"><i class="fa-solid fa-hashtag"></i>FriendshipGoals</span>
-              <span class="dash-topic-tag"><i class="fa-solid fa-hashtag"></i>FirstCrush</span>
-              <span class="dash-topic-tag"><i class="fa-solid fa-hashtag"></i>BodyPositivity</span>
-            </div>
+            <textarea id="quickPostText" class="join-textarea" rows="2" placeholder="What's on your mind?" style="margin-bottom:10px;"></textarea>
+            <button class="btn-see-all" id="quickPostBtn" style="width:auto;padding:8px 20px;">
+              <i class="fa-solid fa-paper-plane"></i> POST
+            </button>
           </div>
         </div>
 
-        <!-- ── UPCOMING EVENTS ── -->
+        <!-- ── UPCOMING EVENTS + RECENT POSTS ── -->
         <div class="dash-card">
           <div class="dash-card-header">
             <div class="dash-card-title">
               <i class="fa-regular fa-calendar-days"></i>
               UPCOMING EVENTS
-              <a href="#" class="dash-view-link">
-                View Calendar <i class="fa-solid fa-arrow-right"></i>
+              <a href="events.html" class="dash-view-link">
+                View All <i class="fa-solid fa-arrow-right"></i>
               </a>
             </div>
             <div class="dash-card-sub">Don't miss out!</div>
           </div>
-          <div class="dash-card-body">
-            <div class="dash-event-row">
-              <div class="dash-event-date">
-                <span class="dash-event-month">MAY</span>
-                <span class="dash-event-day">25</span>
-              </div>
-              <div class="dash-event-info">
-                <div class="dash-event-name">
-                  Weekly Girl Talk <i class="fa-solid fa-comments"></i>
-                </div>
-                <div class="dash-event-desc">Real talks. Real girls. Real support.</div>
-              </div>
-              <span class="dash-event-time">7:00 PM EST</span>
-            </div>
-            <div class="dash-event-row">
-              <div class="dash-event-date">
-                <span class="dash-event-month">MAY</span>
-                <span class="dash-event-day">31</span>
-              </div>
-              <div class="dash-event-info">
-                <div class="dash-event-name">
-                  Confidence Challenge Kickoff <i class="fa-solid fa-trophy"></i>
-                </div>
-                <div class="dash-event-desc">7 days to a more confident YOU!</div>
-              </div>
-              <span class="dash-event-time">6:00 PM EST</span>
-            </div>
-            <div class="dash-event-row">
-              <div class="dash-event-date">
-                <span class="dash-event-month">JUN</span>
-                <span class="dash-event-day">07</span>
-              </div>
-              <div class="dash-event-info">
-                <div class="dash-event-name">
-                  Q&amp;A with Guest Expert <i class="fa-solid fa-microphone"></i>
-                </div>
-                <div class="dash-event-desc">Ask. Learn. Grow.</div>
-              </div>
-              <span class="dash-event-time">5:00 PM EST</span>
-            </div>
+          <div class="dash-card-body" id="eventsPreviewBody">
+            <p class="empty-state" style="padding:20px 10px;"><i class="fa-regular fa-calendar"></i><br>No events scheduled yet — check back soon!</p>
           </div>
           <!-- Recent posts -->
           <div class="dash-card-header dash-card-header--top-border">
@@ -255,36 +212,8 @@
             </div>
             <div class="dash-card-sub">Latest from our amazing members</div>
           </div>
-          <div class="dash-card-body">
-            <div class="dash-post-card">
-              <div class="dash-post-header">
-                <div class="dash-post-avatar"><i class="fa-solid fa-user"></i></div>
-                <div>
-                  <div class="dash-post-username">
-                    DreamyGirl <i class="fa-solid fa-star"></i>
-                  </div>
-                  <div class="dash-post-time">2h ago</div>
-                </div>
-                <button class="dash-post-menu" aria-label="Post options">
-                  <i class="fa-solid fa-ellipsis"></i>
-                </button>
-              </div>
-              <div class="dash-post-body">
-                Sometimes it's okay to not be okay. Be kind to yourself today.
-                <i class="fa-solid fa-heart"></i>
-              </div>
-              <div class="dash-post-actions">
-                <button class="dash-post-action-btn">
-                  <i class="fa-regular fa-heart"></i> 24
-                </button>
-                <button class="dash-post-action-btn">
-                  <i class="fa-regular fa-comment"></i> 8
-                </button>
-                <a href="#" class="dash-post-read-more">
-                  Read more <i class="fa-solid fa-arrow-right"></i>
-                </a>
-              </div>
-            </div>
+          <div class="dash-card-body" id="recentPostsBody">
+            <p class="empty-state" style="padding:20px 10px;"><i class="fa-regular fa-comment-dots"></i><br>No posts yet — be the first to share something!</p>
           </div>
         </div>
 
@@ -298,65 +227,38 @@
             <div class="dash-card-sub">Your voice matters here</div>
           </div>
           <div class="dash-card-body">
-            <div class="dash-story-row">
+            <a href="discussions.html?compose=story" class="dash-story-row" style="text-decoration:none;">
               <div class="dash-story-icon"><i class="fa-solid fa-pen"></i></div>
               <div>
                 <div class="dash-story-name">Share an Experience</div>
                 <div class="dash-story-desc">Inspire others with your story</div>
               </div>
-            </div>
-            <div class="dash-story-row">
+            </a>
+            <a href="discussions.html?compose=question" class="dash-story-row" style="text-decoration:none;">
               <div class="dash-story-icon"><i class="fa-solid fa-circle-question"></i></div>
               <div>
                 <div class="dash-story-name">Ask for Advice</div>
                 <div class="dash-story-desc">Get support from the community</div>
               </div>
-            </div>
-            <div class="dash-story-row">
-              <div class="dash-story-icon"><i class="fa-solid fa-mask"></i></div>
-              <div>
-                <div class="dash-story-name">Submit Anonymously</div>
-                <div class="dash-story-desc">Share without revealing your identity</div>
-              </div>
-            </div>
-            <a href="#" class="dash-see-link">
-              Go to Stories <i class="fa-solid fa-arrow-right"></i>
+            </a>
+            <a href="discussions.html" class="dash-see-link">
+              Go to Discussions <i class="fa-solid fa-arrow-right"></i>
             </a>
           </div>
-          <!-- Top contributors -->
+          <!-- Newest members -->
           <div class="dash-card-header dash-card-header--top-border">
             <div class="dash-card-title">
-              <i class="fa-solid fa-crown"></i>
-              TOP CONTRIBUTORS
+              <i class="fa-solid fa-heart"></i>
+              NEW TO THE SISTERHOOD
             </div>
-            <div class="dash-card-sub">These members are making a difference!</div>
+            <div class="dash-card-sub">Give them a warm welcome!</div>
           </div>
-          <div class="dash-card-body">
-            <div class="dash-leader-row">
-              <span class="dash-rank">1</span>
-              <div class="dash-leader-avatar"><i class="fa-solid fa-user"></i></div>
-              <span class="dash-leader-name">KindHeart <i class="fa-solid fa-heart"></i></span>
-              <span class="dash-leader-pts">1250 pts</span>
-            </div>
-            <div class="dash-leader-row">
-              <span class="dash-rank">2</span>
-              <div class="dash-leader-avatar"><i class="fa-solid fa-user"></i></div>
-              <span class="dash-leader-name">GlowQueen <i class="fa-solid fa-star"></i></span>
-              <span class="dash-leader-pts">980 pts</span>
-            </div>
-            <div class="dash-leader-row">
-              <span class="dash-rank">3</span>
-              <div class="dash-leader-avatar"><i class="fa-solid fa-user"></i></div>
-              <span class="dash-leader-name">PositiveVibes <i class="fa-solid fa-seedling"></i></span>
-              <span class="dash-leader-pts">870 pts</span>
-            </div>
-            <a href="#" class="dash-see-link">
-              See Leaderboard <i class="fa-solid fa-arrow-right"></i>
-            </a>
+          <div class="dash-card-body" id="newMembersBody">
+            <p class="empty-state" style="padding:20px 10px;"><i class="fa-regular fa-user"></i><br>Loading…</p>
           </div>
         </div>
 
-        <!-- ── CHALLENGES + PLUS + ACTIVE ── -->
+        <!-- ── CHALLENGES + PLUS + MEMBER COUNT ── -->
         <div class="dash-plus-list-wrap">
 
           <!-- Community Challenges -->
@@ -365,37 +267,14 @@
               <div class="dash-card-title">
                 <i class="fa-solid fa-trophy"></i>
                 COMMUNITY CHALLENGES
-                <a href="#" class="dash-view-link">
-                  View All <i class="fa-solid fa-arrow-right"></i>
-                </a>
               </div>
               <div class="dash-card-sub">Grow, step by step!</div>
             </div>
             <div class="dash-card-body">
-              <div class="dash-challenge-row">
-                <div class="dash-challenge-icon"><i class="fa-solid fa-heart"></i></div>
-                <div class="dash-challenge-info">
-                  <div class="dash-challenge-name">Self-Care Challenge</div>
-                  <div class="dash-challenge-sub">Take care of your mind, body &amp; soul</div>
-                </div>
-                <span class="dash-days-left green">5 Days Left</span>
-              </div>
-              <div class="dash-challenge-row">
-                <div class="dash-challenge-icon"><i class="fa-solid fa-seedling"></i></div>
-                <div class="dash-challenge-info">
-                  <div class="dash-challenge-name">Confidence Challenge</div>
-                  <div class="dash-challenge-sub">Build your confidence every day</div>
-                </div>
-                <span class="dash-days-left blue">8 Days Left</span>
-              </div>
-              <div class="dash-challenge-row">
-                <div class="dash-challenge-icon"><i class="fa-solid fa-sun"></i></div>
-                <div class="dash-challenge-info">
-                  <div class="dash-challenge-name">Gratitude Challenge</div>
-                  <div class="dash-challenge-sub">Focus on the good, every day</div>
-                </div>
-                <span class="dash-days-left purple">12 Days Left</span>
-              </div>
+              <p class="empty-state" style="padding:20px 10px;">
+                <i class="fa-solid fa-trophy"></i><br>
+                Challenges are being designed with love — coming soon! 💕
+              </p>
             </div>
           </div>
 
@@ -411,41 +290,17 @@
               <li><i class="fa-solid fa-circle-check"></i> Guest Speaker Events</li>
               <li><i class="fa-solid fa-circle-check"></i> Private Community Groups</li>
             </ul>
-            <a href="#" class="btn-learn-more">LEARN MORE</a>
+            <a href="#" class="btn-learn-more" id="learnMoreBtn">LEARN MORE</a>
           </div>
 
-          <!-- Active Now -->
+          <!-- Community size -->
           <div class="dash-card dash-active-card">
-            <div class="dash-active-title">ACTIVE NOW</div>
-            <div class="dash-active-count">
-              <i class="fa-solid fa-circle"></i> 125 girls online
+            <div class="dash-active-title">OUR SISTERHOOD</div>
+            <div class="dash-active-count" id="communityCountLine">
+              <i class="fa-solid fa-circle"></i> Loading…
             </div>
-            <div class="dash-member-row">
-              <div class="dash-member-dot"></div>
-              <span class="dash-member-name">Sunshine</span>
-              <span class="dash-member-emoji">☀️</span>
-            </div>
-            <div class="dash-member-row">
-              <div class="dash-member-dot"></div>
-              <span class="dash-member-name">Peachy</span>
-              <span class="dash-member-emoji">🍑</span>
-            </div>
-            <div class="dash-member-row">
-              <div class="dash-member-dot"></div>
-              <span class="dash-member-name">Moonchild</span>
-              <span class="dash-member-emoji">🌙</span>
-            </div>
-            <div class="dash-member-row">
-              <div class="dash-member-dot"></div>
-              <span class="dash-member-name">DreamyGirl</span>
-              <span class="dash-member-emoji">✨</span>
-            </div>
-            <div class="dash-member-row">
-              <div class="dash-member-dot"></div>
-              <span class="dash-member-name">StarryEyes</span>
-              <span class="dash-member-emoji">🌟</span>
-            </div>
-            <button class="btn-see-all">SEE ALL MEMBERS</button>
+            <div id="sampleMembersBody"></div>
+            <a href="members.html" class="btn-see-all" style="display:block;text-align:center;text-decoration:none;">SEE ALL MEMBERS</a>
           </div>
 
         </div>
@@ -454,76 +309,45 @@
     </div><!-- /dash-content -->
   </div><!-- /dash-main -->
 
+  <!-- ── DASH TOAST (friendly "coming soon" for features still being built) ── -->
+  <div id="dashToast" class="dash-toast"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="js/supabase-config.js"></script>
+  <script src="js/hub-auth.js"></script>
+  <script src="js/hub-data.js"></script>
   <script>
-    /* ── Personalize with the member who actually just joined ── */
-    (function() {
-      let member = null;
-      try {
-        const raw = localStorage.getItem('pc_member');
-        if (raw) member = JSON.parse(raw);
-      } catch (e) {}
+    'use strict';
 
-      const displayName = (member && (member.nickname || member.name)) || 'Pink Star';
-      document.querySelectorAll('#dashUserName, #dashGreetName').forEach(el => { el.textContent = displayName; });
+    let toastTimer = null;
+    function showDashToast(msg) {
+      const el = document.getElementById('dashToast');
+      if (!el) return;
+      el.innerHTML = `<i class="fa-solid fa-heart"></i> ${msg}`;
+      el.classList.add('show');
+      if (toastTimer) clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => el.classList.remove('show'), 3000);
+    }
 
-      /* How many days since they joined (honest, not fabricated) */
-      let dayNum = 1;
-      let justJoined = true;
-      if (member && member.joinedAt) {
-        const joined = new Date(member.joinedAt);
-        const now = new Date();
-        const diffDays = Math.floor((now - joined) / 86400000);
-        dayNum = Math.max(1, diffDays + 1);
-        justJoined = diffDays < 1;
-      }
-      const streakNum = document.querySelector('.dash-stat-streak .dash-stat-num');
-      if (streakNum) streakNum.innerHTML = `${dayNum} <i class="fa-solid fa-fire"></i>`;
-      const streakLabel = document.querySelector('.dash-stat-streak .dash-stat-label');
-      if (streakLabel) streakLabel.textContent = dayNum === 1 ? 'Day 1' : 'Day Streak';
-
-      /* New members start at 0 points — nothing fabricated */
-      const pointsNum = document.querySelector('.dash-stat-points .dash-stat-num');
-      if (pointsNum) pointsNum.innerHTML = `0 <i class="fa-solid fa-star"></i>`;
-
-      /* Greeting reflects whether they just joined today or are back again */
-      const greetBar = document.getElementById('dashGreetBar');
-      if (greetBar && justJoined) {
-        greetBar.innerHTML =
-          `<i class="fa-solid fa-hand-sparkles"></i> Welcome to the family, <strong id="dashGreetName">${displayName}</strong>! ` +
-          `So glad you're here — you just joined the sisterhood. <i class="fa-solid fa-heart"></i>`;
-      } else if (greetBar) {
-        greetBar.innerHTML =
-          `<i class="fa-solid fa-hand-sparkles"></i> Hi, <strong id="dashGreetName">${displayName}</strong>! ` +
-          `So happy to see you here! Remember, you are enough just as you are. <i class="fa-solid fa-heart"></i>`;
-      }
-    })();
-
-    /* ── Upcoming events: always show real upcoming dates, never stale ones ── */
-    (function() {
-      const rows = document.querySelectorAll('.dash-event-row');
-      const templates = [
-        { name: 'Weekly Girl Talk', icon: 'fa-comments', desc: 'Real talks. Real girls. Real support.', time: '7:00 PM EST', offset: 3 },
-        { name: 'Confidence Challenge Kickoff', icon: 'fa-trophy', desc: '7 days to a more confident YOU!', time: '6:00 PM EST', offset: 9 },
-        { name: 'Q&A with Guest Expert', icon: 'fa-microphone', desc: 'Ask. Learn. Grow.', time: '5:00 PM EST', offset: 16 }
-      ];
-      const monthNames = ['JAN','FEB','MAR','APR','MAY','JUN','JUL','AUG','SEP','OCT','NOV','DEC'];
-      rows.forEach((row, i) => {
-        const t = templates[i];
-        if (!t) return;
-        const d = new Date();
-        d.setDate(d.getDate() + t.offset);
-        const monthEl = row.querySelector('.dash-event-month');
-        const dayEl   = row.querySelector('.dash-event-day');
-        const nameEl  = row.querySelector('.dash-event-name');
-        const descEl  = row.querySelector('.dash-event-desc');
-        const timeEl  = row.querySelector('.dash-event-time');
-        if (monthEl) monthEl.textContent = monthNames[d.getMonth()];
-        if (dayEl)   dayEl.textContent = d.getDate();
-        if (nameEl)  nameEl.innerHTML = `${t.name} <i class="fa-solid ${t.icon}"></i>`;
-        if (descEl)  descEl.textContent = t.desc;
-        if (timeEl)  timeEl.textContent = t.time;
+    const navMessages = {
+      'Stories': "Story submissions are opening soon — for now, share on the Discussion feed! ✍️",
+      'Challenges': "Challenges launch soon — get ready to grow with us! 🏆",
+      'Messages': "Messaging is on its way — hang tight! 💌",
+      'Badges': "Badges & rewards are coming soon! 🏅",
+      'Resources': "The resource library is being stocked with love! 📚"
+    };
+    document.querySelectorAll('.dash-nav-link[href="#"]').forEach(link => {
+      const label = link.textContent.trim();
+      link.addEventListener('click', e => {
+        e.preventDefault();
+        showDashToast(navMessages[label] || "This is coming soon! 💕");
       });
-    })();
+    });
+    const learnMoreBtn = document.getElementById('learnMoreBtn');
+    if (learnMoreBtn) learnMoreBtn.addEventListener('click', e => {
+      e.preventDefault();
+      showDashToast("Pink Chronicles Plus is coming soon! 💕");
+    });
 
     /* ── Sidebar toggle on mobile ── */
     document.addEventListener('click', function(e) {
@@ -534,57 +358,127 @@
       }
     });
 
-    /* ── Post like button toggle ── */
-    document.querySelectorAll('.dash-post-action-btn').forEach(btn => {
-      btn.addEventListener('click', function() {
-        const icon = this.querySelector('.fa-heart, .fa-regular');
-        if (icon) {
-          icon.classList.toggle('fa-regular');
-          icon.classList.toggle('fa-solid');
-          icon.style.color = icon.classList.contains('fa-solid') ? 'var(--pink-deep)' : '';
-        }
-      });
-    });
-  </script>
-  <!-- ── DASH TOAST (friendly "coming soon" for features still being built) ── -->
-  <div id="dashToast" class="dash-toast"></div>
-  <script>
-    (function() {
-      let toastTimer = null;
-      function showDashToast(msg) {
-        const el = document.getElementById('dashToast');
-        if (!el) return;
-        el.innerHTML = `<i class="fa-solid fa-heart"></i> ${msg}`;
-        el.classList.add('show');
-        if (toastTimer) clearTimeout(toastTimer);
-        toastTimer = setTimeout(() => el.classList.remove('show'), 3000);
+    /* ================================================
+       MAIN: require a real logged-in member, then load
+       everything on this page from Supabase
+       ================================================ */
+    (async function() {
+      const member = await hubRequireMember();
+      if (!member) return; // hubRequireMember already redirected to login.html
+
+      const displayName = member.nickname || member.name || 'Pink Star';
+      document.querySelectorAll('#dashUserName, #dashGreetName').forEach(el => { el.textContent = displayName; });
+
+      hubRenderTopStats(member);
+
+      const greetBar = document.getElementById('dashGreetBar');
+      let justJoined = false;
+      if (member.joined_at) {
+        const diffDays = Math.floor((Date.now() - new Date(member.joined_at)) / 86400000);
+        justJoined = diffDays < 1;
+      }
+      if (greetBar && justJoined) {
+        greetBar.innerHTML =
+          `<i class="fa-solid fa-hand-sparkles"></i> Welcome to the family, <strong>${hubEsc(displayName)}</strong>! ` +
+          `So glad you're here — you just joined the sisterhood. <i class="fa-solid fa-heart"></i>`;
+      } else if (greetBar) {
+        greetBar.innerHTML =
+          `<i class="fa-solid fa-hand-sparkles"></i> Hi, <strong>${hubEsc(displayName)}</strong>! ` +
+          `So happy to see you here! Remember, you are enough just as you are. <i class="fa-solid fa-heart"></i>`;
       }
 
-      const navMessages = {
-        'Events': "Events are being finalized — you'll be the first to know! 📅",
-        'Stories': "Story submissions are opening soon — start thinking about yours! ✍️",
-        'Challenges': "Challenges launch soon — get ready to grow with us! 🏆",
-        'Members': "The full member directory is coming soon! 👯",
-        'Messages': "Messaging is on its way — hang tight! 💌",
-        'Badges': "Badges & rewards are coming soon! 🏅",
-        'Resources': "The resource library is being stocked with love! 📚",
-        'Settings': "Account settings are coming soon! ⚙️"
-      };
-
-      document.querySelectorAll('.dash-nav-link[href="#"]').forEach(link => {
-        const label = link.textContent.trim();
-        link.addEventListener('click', e => {
-          e.preventDefault();
-          showDashToast(navMessages[label] || "This is coming soon! 💕");
-        });
+      /* Recent posts + topic counts */
+      const posts = await hubFetchPosts(20);
+      const topicCounts = {};
+      posts.forEach(p => { if (p.topic) topicCounts[p.topic] = (topicCounts[p.topic] || 0) + 1; });
+      document.querySelectorAll('#topicCountsBody .dash-disc-count').forEach(el => {
+        const t = el.dataset.topic;
+        if (topicCounts[t]) el.textContent = topicCounts[t];
       });
 
-      document.querySelectorAll('.dash-content a[href="#"], .dash-content button.btn-see-all, .dash-post-menu, .dash-view-profile').forEach(el => {
-        el.addEventListener('click', e => {
-          e.preventDefault();
-          showDashToast("This is coming soon — thanks for exploring! 💕");
-        });
+      const recentBody = document.getElementById('recentPostsBody');
+      if (posts.length) {
+        recentBody.innerHTML = posts.slice(0, 3).map(p => {
+          const liked = (p.post_likes || []).some(l => l.member_id === member.id);
+          return `
+          <div class="dash-post-card">
+            <div class="dash-post-header">
+              <div class="dash-post-avatar"><i class="fa-solid fa-user"></i></div>
+              <div>
+                <div class="dash-post-username">${hubEsc(p.author_name)}</div>
+                <div class="dash-post-time">${hubTimeAgo(p.created_at)}</div>
+              </div>
+            </div>
+            <div class="dash-post-body">${hubEsc(p.content)}</div>
+            <div class="dash-post-actions">
+              <span class="dash-post-action-btn"><i class="fa-solid fa-heart" style="color:${liked ? 'var(--pink-deep)' : '#94a3b8'}"></i> ${(p.post_likes || []).length}</span>
+              <span class="dash-post-action-btn"><i class="fa-regular fa-comment"></i> ${(p.post_comments || []).length}</span>
+              <a href="discussions.html" class="dash-post-read-more">Read more <i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+          </div>`;
+        }).join('');
+      }
+
+      /* Quick composer on the dashboard itself */
+      document.getElementById('quickPostBtn').addEventListener('click', async () => {
+        const text = document.getElementById('quickPostText').value.trim();
+        if (!text) return;
+        const btn = document.getElementById('quickPostBtn');
+        btn.disabled = true;
+        const { error } = await hubCreatePost(text, null);
+        btn.disabled = false;
+        if (error) { showDashToast("Couldn't post — please try again."); return; }
+        document.getElementById('quickPostText').value = '';
+        showDashToast("Posted! Head to Discussions to see it. 💕");
       });
+
+      /* Upcoming events preview */
+      const events = await hubFetchUpcomingEvents(3);
+      if (events.length) {
+        const monthNames = ['JAN','FEB','MAR','APR','MAY','JUN','JUL','AUG','SEP','OCT','NOV','DEC'];
+        document.getElementById('eventsPreviewBody').innerHTML = events.map(ev => {
+          const d = ev.event_date ? new Date(ev.event_date) : null;
+          return `
+          <div class="dash-event-row">
+            <div class="dash-event-date">
+              <span class="dash-event-month">${d ? monthNames[d.getMonth()] : '—'}</span>
+              <span class="dash-event-day">${d ? d.getDate() : '—'}</span>
+            </div>
+            <div class="dash-event-info">
+              <div class="dash-event-name">${hubEsc(ev.title)}</div>
+              <div class="dash-event-desc">${hubEsc(ev.description || '')}</div>
+            </div>
+            <span class="dash-event-time">${hubEsc(ev.event_time || '')}</span>
+          </div>`;
+        }).join('');
+      }
+
+      /* Newest members + community size */
+      const directory = await hubFetchDirectory();
+      document.getElementById('communityCountLine').innerHTML =
+        `<i class="fa-solid fa-heart" style="color:var(--pink-mid)"></i> ${directory.length} member${directory.length === 1 ? '' : 's'} strong`;
+
+      const newest = directory.slice(0, 5);
+      const newMembersBody = document.getElementById('newMembersBody');
+      if (newest.length) {
+        newMembersBody.innerHTML = newest.map(m => `
+          <div class="dash-story-row">
+            <div class="dash-story-icon"><i class="fa-solid fa-user"></i></div>
+            <div>
+              <div class="dash-story-name">${hubEsc(m.nickname || m.name)}</div>
+              <div class="dash-story-desc">Joined ${hubTimeAgo(m.joined_at)}</div>
+            </div>
+          </div>`).join('');
+      }
+
+      const sampleBody = document.getElementById('sampleMembersBody');
+      if (newest.length) {
+        sampleBody.innerHTML = newest.slice(0, 5).map(m => `
+          <div class="dash-member-row">
+            <div class="dash-member-dot"></div>
+            <span class="dash-member-name">${hubEsc(m.nickname || m.name)}</span>
+          </div>`).join('');
+      }
     })();
   </script>
 

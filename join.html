@@ -28,6 +28,7 @@
         <li><a href="topics.html">TOPICS</a></li>
         <li><a href="community.html" class="active">COMMUNITY</a></li>
         <li><a href="contact.html">CONTACT</a></li>
+        <li><a href="login.html" class="nav-login-link">LOG IN</a></li>
       </ul>
     </nav>
     <a href="episodes.html" class="btn-listen">
@@ -232,6 +233,16 @@
                 <i class="fa-solid fa-circle-exclamation"></i> Please enter a valid email.
               </span>
             </div>
+            <div class="join-field-group">
+              <label for="jPassword">Create a Password</label>
+              <div class="join-input-wrap">
+                <input type="password" id="jPassword" class="join-input" placeholder="At least 6 characters" autocomplete="new-password" />
+                <i class="fa-solid fa-lock field-icon"></i>
+              </div>
+              <span class="join-error-msg" id="errPassword">
+                <i class="fa-solid fa-circle-exclamation"></i> Password must be at least 6 characters.
+              </span>
+            </div>
           </div>
 
           <!-- Country -->
@@ -401,6 +412,7 @@
       const nickname = document.getElementById('jNickname').value.trim();
       const age      = document.getElementById('jAge').value;
       const email    = document.getElementById('jEmail').value.trim();
+      const password = document.getElementById('jPassword').value;
       const country  = document.getElementById('jCountry').value;
       const why      = document.getElementById('jWhy').value.trim();
       const interests = [...document.querySelectorAll('.join-chip.selected')]
@@ -420,6 +432,9 @@
       if (!email || !isValidEmail(email)) { showErr('jEmail','errEmail'); valid = false; }
       else                                  clearErr('jEmail','errEmail');
 
+      if (!password || password.length < 6) { showErr('jPassword','errPassword'); valid = false; }
+      else                                    clearErr('jPassword','errPassword');
+
       if (!country) { showErr('jCountry','errCountry'); valid = false; }
       else            clearErr('jCountry','errCountry');
 
@@ -429,29 +444,64 @@
         return;
       }
 
-      /* Save to Supabase — this is what makes the member show up live in the Admin panel */
+      /* 1. Create a real login account for this member */
       const submitBtn = document.querySelector('.btn-join-now');
       if (submitBtn) submitBtn.disabled = true;
+
+      let authUserId = null;
       try {
-        const { error } = await supabaseClient.from('members').insert({
-          name: fullName, nickname, age, email, country, interests, why,
-          status: 'active', role: 'Member'
-        });
-        if (error) {
+        const { data: signUpData, error: signUpError } = await supabaseClient.auth.signUp({ email, password });
+        if (signUpError) {
           if (submitBtn) submitBtn.disabled = false;
-          if (error.code === '23505') {
+          if (signUpError.message && signUpError.message.toLowerCase().includes('already registered')) {
             showErr('jEmail', 'errEmail');
             document.getElementById('errEmail').innerHTML =
-              '<i class="fa-solid fa-circle-exclamation"></i> This email has already joined.';
+              '<i class="fa-solid fa-circle-exclamation"></i> An account with this email already exists — try logging in instead.';
           } else {
-            alert('Something went wrong submitting your info. Please try again.');
-            console.error(error);
+            alert('Something went wrong creating your account. Please try again.');
+            console.error(signUpError);
           }
           return;
         }
+        authUserId = signUpData.user ? signUpData.user.id : null;
       } catch (err) {
         if (submitBtn) submitBtn.disabled = false;
-        alert('Something went wrong submitting your info. Please try again.');
+        alert('Something went wrong creating your account. Please try again.');
+        console.error(err);
+        return;
+      }
+
+      /* 2. Save/link their membership profile — this is what makes
+         them show up live in the Admin panel and in the community */
+      try {
+        const { error } = await supabaseClient.from('members').insert({
+          name: fullName, nickname, age, email, country, interests, why,
+          status: 'active', role: 'Member', auth_user_id: authUserId
+        });
+        if (error) {
+          if (error.code === '23505') {
+            // Email already existed as a member (e.g. added manually by an admin
+            // before this account existed) — claim that row instead.
+            const { error: claimError } = await supabaseClient.from('members').update({
+              name: fullName, nickname, age, country, interests, why,
+              status: 'active', auth_user_id: authUserId
+            }).eq('email', email);
+            if (claimError) {
+              if (submitBtn) submitBtn.disabled = false;
+              alert('Something went wrong finishing your signup. Please try again.');
+              console.error(claimError);
+              return;
+            }
+          } else {
+            if (submitBtn) submitBtn.disabled = false;
+            alert('Something went wrong saving your info. Please try again.');
+            console.error(error);
+            return;
+          }
+        }
+      } catch (err) {
+        if (submitBtn) submitBtn.disabled = false;
+        alert('Something went wrong saving your info. Please try again.');
         console.error(err);
         return;
       }
