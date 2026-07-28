@@ -33,21 +33,14 @@
       <a href="#" class="dash-nav-link">
         <i class="fa-solid fa-book-open"></i> Stories
       </a>
-      <a href="#" class="dash-nav-link">
-        <i class="fa-solid fa-trophy"></i> Challenges
-      </a>
+    
       <a href="members.html" class="dash-nav-link">
         <i class="fa-solid fa-people-group"></i> Members
       </a>
       <a href="#" class="dash-nav-link">
         <i class="fa-regular fa-envelope"></i> Messages
       </a>
-      <a href="#" class="dash-nav-link">
-        <i class="fa-solid fa-medal"></i> Badges
-      </a>
-      <a href="#" class="dash-nav-link">
-        <i class="fa-solid fa-folder-open"></i> Resources
-      </a>
+      
       <a href="settings.html" class="dash-nav-link">
         <i class="fa-solid fa-gear"></i> Settings
       </a>
@@ -182,8 +175,8 @@
             <div class="dash-card-sub">Post straight to the discussion feed</div>
           </div>
           <div class="dash-card-body">
-            <textarea id="quickPostText" class="join-textarea" rows="2" placeholder="What's on your mind?" style="margin-bottom:10px;"></textarea>
-            <button class="btn-see-all" id="quickPostBtn" style="width:auto;padding:8px 20px;">
+            <textarea id="quickPostText" class="join-textarea quick-post-textarea" rows="2" placeholder="What's on your mind?"></textarea>
+            <button class="btn-see-all quick-post-btn" id="quickPostBtn">
               <i class="fa-solid fa-paper-plane"></i> POST
             </button>
           </div>
@@ -202,7 +195,7 @@
             <div class="dash-card-sub">Don't miss out!</div>
           </div>
           <div class="dash-card-body" id="eventsPreviewBody">
-            <p class="empty-state" style="padding:20px 10px;"><i class="fa-regular fa-calendar"></i><br>No events scheduled yet — check back soon!</p>
+            <p class="empty-state"><i class="fa-regular fa-calendar"></i><br>No events scheduled yet — check back soon!</p>
           </div>
           <!-- Recent posts -->
           <div class="dash-card-header dash-card-header--top-border">
@@ -213,7 +206,7 @@
             <div class="dash-card-sub">Latest from our amazing members</div>
           </div>
           <div class="dash-card-body" id="recentPostsBody">
-            <p class="empty-state" style="padding:20px 10px;"><i class="fa-regular fa-comment-dots"></i><br>No posts yet — be the first to share something!</p>
+            <p class="empty-state"><i class="fa-regular fa-comment-dots"></i><br>No posts yet — be the first to share something!</p>
           </div>
         </div>
 
@@ -227,14 +220,14 @@
             <div class="dash-card-sub">Your voice matters here</div>
           </div>
           <div class="dash-card-body">
-            <a href="discussions.html?compose=story" class="dash-story-row" style="text-decoration:none;">
+            <a href="discussions.html?compose=story" class="dash-story-row dash-story-link">
               <div class="dash-story-icon"><i class="fa-solid fa-pen"></i></div>
               <div>
                 <div class="dash-story-name">Share an Experience</div>
                 <div class="dash-story-desc">Inspire others with your story</div>
               </div>
             </a>
-            <a href="discussions.html?compose=question" class="dash-story-row" style="text-decoration:none;">
+            <a href="discussions.html?compose=question" class="dash-story-row dash-story-link">
               <div class="dash-story-icon"><i class="fa-solid fa-circle-question"></i></div>
               <div>
                 <div class="dash-story-name">Ask for Advice</div>
@@ -254,7 +247,7 @@
             <div class="dash-card-sub">Give them a warm welcome!</div>
           </div>
           <div class="dash-card-body" id="newMembersBody">
-            <p class="empty-state" style="padding:20px 10px;"><i class="fa-regular fa-user"></i><br>Loading…</p>
+            <p class="empty-state"><i class="fa-regular fa-user"></i><br>Loading…</p>
           </div>
         </div>
 
@@ -271,7 +264,7 @@
               <div class="dash-card-sub">Grow, step by step!</div>
             </div>
             <div class="dash-card-body">
-              <p class="empty-state" style="padding:20px 10px;">
+              <p class="empty-state">
                 <i class="fa-solid fa-trophy"></i><br>
                 Challenges are being designed with love — coming soon! 💕
               </p>
@@ -300,7 +293,7 @@
               <i class="fa-solid fa-circle"></i> Loading…
             </div>
             <div id="sampleMembersBody"></div>
-            <a href="members.html" class="btn-see-all" style="display:block;text-align:center;text-decoration:none;">SEE ALL MEMBERS</a>
+            <a href="members.html" class="btn-see-all block-center">SEE ALL MEMBERS</a>
           </div>
 
         </div>
@@ -482,11 +475,7 @@
     })();
   </script>
   
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-  <script src="js/supabase-config.js"></script>
   <script src="js/site-data.js"></script>
-  <script src="js/hub-auth.js"></script>
-  <script src="js/hub-data.js"></script>
 
 </body>
 </html>

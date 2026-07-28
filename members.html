@@ -117,16 +117,16 @@
 
     <!-- Page content -->
     <div class="dash-content">
-      <div class="section-card" style="max-width:960px;margin:0 auto 20px;">
+      <div class="section-card members-section">
         <div class="section-card-header">
           <h2><i class="fa-solid fa-people-group"></i> All Members</h2>
-          <div class="search-wrap" style="max-width:280px;">
+          <div class="search-wrap members-search-wrap">
             <i class="fa-solid fa-magnifying-glass"></i>
             <input type="text" id="memberSearch" class="admin-search" placeholder="Search members…" oninput="filterDirectory()" />
           </div>
         </div>
       </div>
-      <div id="directoryGrid" style="max-width:960px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:14px;">
+      <div id="directoryGrid">
         <p class="empty-state"><i class="fa-solid fa-spinner fa-spin"></i><br>Loading members…</p>
       </div>
     </div><!-- /dash-content -->
@@ -166,11 +166,11 @@
         return;
       }
       grid.innerHTML = list.map(m => `
-        <div class="dash-card" style="padding:18px;text-align:center;">
-          <div class="member-avatar" style="width:52px;height:52px;margin:0 auto 10px;"><i class="fa-solid fa-user"></i></div>
-          <div style="font-weight:800;color:var(--dark);font-size:.88rem;margin-bottom:3px;">${hubEsc(m.nickname || m.name)}</div>
-          <span class="role-badge ${m.role === 'Moderator' ? 'moderator' : (m.role === 'Guest Speaker' ? 'guest' : 'member')}" style="margin-bottom:6px;display:inline-block;">${hubEsc(m.role)}</span>
-          <div style="font-size:.7rem;color:var(--gray);margin-top:6px;">Joined ${hubTimeAgo(m.joined_at)}</div>
+        <div class="dash-card member-card">
+          <div class="member-avatar"><i class="fa-solid fa-user"></i></div>
+          <div class="member-info">${hubEsc(m.nickname || m.name)}</div>
+          <span class="role-badge ${m.role === 'Moderator' ? 'moderator' : (m.role === 'Guest Speaker' ? 'guest' : 'member')}">${hubEsc(m.role)}</span>
+          <div class="member-joined">Joined ${hubTimeAgo(m.joined_at)}</div>
         </div>`).join('');
     }
 
