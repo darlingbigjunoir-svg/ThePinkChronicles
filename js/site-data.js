@@ -279,9 +279,6 @@ async function pcRenderIndexLatest() {
 
 /* ============================================================
    SITE SETTINGS SYNC — email, phone, social links
-   Works across every page's footer, whatever its class naming,
-   by matching on the visible label text and aria-labels rather
-   than requiring specific IDs on every page.
    ============================================================ */
 async function pcApplySettings() {
   if (typeof supabaseClient === 'undefined') return;
@@ -298,10 +295,8 @@ async function pcApplySettings() {
   });
 
   const socialMap = {
-    Instagram: data.instagram_url,
-    TikTok:    data.tiktok_url,
-    Spotify:   data.spotify_url,
-    YouTube:   data.youtube_url
+    Instagram: data.instagram_url, TikTok: data.tiktok_url,
+    Spotify: data.spotify_url, YouTube: data.youtube_url
   };
   document.querySelectorAll('a[aria-label]').forEach(a => {
     const url = socialMap[a.getAttribute('aria-label')];
