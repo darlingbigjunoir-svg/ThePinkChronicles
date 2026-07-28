@@ -143,3 +143,111 @@ async function hubChangePassword(newPassword) {
   const { error } = await supabaseClient.auth.updateUser({ password: newPassword });
   return { error };
 }
+
+/* ============================================================
+   STORIES
+   ============================================================ */
+async function hubFetchStories() {
+  const { data, error } = await supabaseClient
+    .from('stories')
+    .select('*')
+    .order('created_at', { ascending: false });
+  if (error) { console.error(error); return []; }
+  return data || [];
+}
+
+async function hubSubmitStory(title, content) {
+  if (!HUB_MEMBER) return { error: 'Not logged in' };
+  const { error } = await supabaseClient.from('stories').insert({
+    member_id: HUB_MEMBER.id,
+    author_name: HUB_MEMBER.nickname || HUB_MEMBER.name,
+    title, content
+  });
+  return { error };
+}
+
+async function hubDeleteStory(storyId) {
+  const { error } = await supabaseClient.from('stories').delete().eq('id', storyId);
+  return { error };
+}
+
+
+/* ============================================================
+   MESSAGES (1:1 direct messages only)
+   ============================================================ */
+async function hubFetchConversations() {
+  if (!HUB_MEMBER) return [];
+  const { data, error } = await supabaseClient
+    .from('conversations')
+    .select('*, direct_messages(id, content, created_at, sender_member_id)')
+    .or(`member_a_id.eq.${HUB_MEMBER.id},member_b_id.eq.${HUB_MEMBER.id}`)
+    .order('created_at', { ascending: false });
+  if (error) { console.error(error); return []; }
+
+  // Attach the "other member" id and a preview of the last message
+  return (data || []).map(c => {
+    const otherId = c.member_a_id === HUB_MEMBER.id ? c.member_b_id : c.member_a_id;
+    const msgs = (c.direct_messages || []).slice().sort((a, b) => new Date(a.created_at) - new Date(b.created_at));
+    const last = msgs[msgs.length - 1] || null;
+    return { ...c, otherId, lastMessage: last };
+  });
+}
+
+async function hubGetOrCreateConversation(otherMemberId) {
+  if (!HUB_MEMBER) return { error: 'Not logged in' };
+  const my = HUB_MEMBER.id;
+
+  const { data: existing, error: findError } = await supabaseClient
+    .from('conversations')
+    .select('*')
+    .or(`and(member_a_id.eq.${my},member_b_id.eq.${otherMemberId}),and(member_a_id.eq.${otherMemberId},member_b_id.eq.${my})`)
+    .maybeSingle();
+  if (findError) return { error: findError };
+  if (existing) return { data: existing };
+
+  const { data: created, error: createError } = await supabaseClient
+    .from('conversations')
+    .insert({ member_a_id: my, member_b_id: otherMemberId })
+    .select()
+    .single();
+  return { data: created, error: createError };
+}
+
+async function hubFetchMessages(conversationId) {
+  const { data, error } = await supabaseClient
+    .from('direct_messages')
+    .select('*')
+    .eq('conversation_id', conversationId)
+    .order('created_at', { ascending: true });
+  if (error) { console.error(error); return []; }
+  return data || [];
+}
+
+async function hubSendMessage(conversationId, content) {
+  if (!HUB_MEMBER) return { error: 'Not logged in' };
+  const { error } = await supabaseClient.from('direct_messages').insert({
+    conversation_id: conversationId,
+    sender_member_id: HUB_MEMBER.id,
+    content
+  });
+  return { error };
+}
+
+async function hubBlockMember(otherMemberId) {
+  if (!HUB_MEMBER) return { error: 'Not logged in' };
+  const { error } = await supabaseClient.from('member_blocks').insert({
+    blocker_member_id: HUB_MEMBER.id,
+    blocked_member_id: otherMemberId
+  });
+  return { error };
+}
+
+async function hubReportMessage(messageId, reason) {
+  if (!HUB_MEMBER) return { error: 'Not logged in' };
+  const { error } = await supabaseClient.from('message_reports').insert({
+    message_id: messageId,
+    reporter_member_id: HUB_MEMBER.id,
+    reason: reason || null
+  });
+  return { error };
+}

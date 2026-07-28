@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Community Dashboard – The Pink Chronicles</title>
+  <link rel="icon" type="image/png" href="images/favicon-64x64.png" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Nunito:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/style.css" />
@@ -24,9 +25,7 @@
       <a href="dashboard.html" class="dash-nav-link active">
         <i class="fa-solid fa-house"></i> Home
       </a>
-      <a href="discussions.html" class="dash-nav-link">
-        <i class="fa-solid fa-comments"></i> Discussions
-      </a>
+    
       <a href="events.html" class="dash-nav-link">
         <i class="fa-regular fa-calendar-days"></i> Events
       </a>
@@ -118,7 +117,7 @@
             <div class="dash-card-title">
               <i class="fa-solid fa-comments"></i>
               DISCUSSION BOARDS
-              <a href="discussions.html" class="dash-view-link">
+              <a href="episodes.html" class="dash-view-link">
                 View All <i class="fa-solid fa-arrow-right"></i>
               </a>
             </div>
@@ -166,22 +165,8 @@
               <span class="dash-disc-count" data-topic="fun-lifestyle">0</span>
             </div>
           </div>
-          <!-- Quick post composer -->
-          <div class="dash-card-header dash-card-header--top-border">
-            <div class="dash-card-title">
-              <i class="fa-solid fa-pen"></i>
-              SHARE SOMETHING
-            </div>
-            <div class="dash-card-sub">Post straight to the discussion feed</div>
-          </div>
-          <div class="dash-card-body">
-            <textarea id="quickPostText" class="join-textarea quick-post-textarea" rows="2" placeholder="What's on your mind?"></textarea>
-            <button class="btn-see-all quick-post-btn" id="quickPostBtn">
-              <i class="fa-solid fa-paper-plane"></i> POST
-            </button>
-          </div>
-        </div>
-
+         >
+            
         <!-- ── UPCOMING EVENTS + RECENT POSTS ── -->
         <div class="dash-card">
           <div class="dash-card-header">
@@ -220,7 +205,7 @@
             <div class="dash-card-sub">Your voice matters here</div>
           </div>
           <div class="dash-card-body">
-            <a href="discussions.html?compose=story" class="dash-story-row dash-story-link">
+            <a href="stories.html" class="dash-story-row dash-story-link">
               <div class="dash-story-icon"><i class="fa-solid fa-pen"></i></div>
               <div>
                 <div class="dash-story-name">Share an Experience</div>
@@ -234,7 +219,7 @@
                 <div class="dash-story-desc">Get support from the community</div>
               </div>
             </a>
-            <a href="discussions.html" class="dash-see-link">
+            <a href="episodes.html" class="dash-see-link">
               Go to Discussions <i class="fa-solid fa-arrow-right"></i>
             </a>
           </div>
@@ -251,25 +236,7 @@
           </div>
         </div>
 
-        <!-- ── CHALLENGES + PLUS + MEMBER COUNT ── -->
-        <div class="dash-plus-list-wrap">
-
-          <!-- Community Challenges -->
-          <div class="dash-card">
-            <div class="dash-card-header">
-              <div class="dash-card-title">
-                <i class="fa-solid fa-trophy"></i>
-                COMMUNITY CHALLENGES
-              </div>
-              <div class="dash-card-sub">Grow, step by step!</div>
-            </div>
-            <div class="dash-card-body">
-              <p class="empty-state">
-                <i class="fa-solid fa-trophy"></i><br>
-                Challenges are being designed with love — coming soon! 💕
-              </p>
-            </div>
-          </div>
+       
 
           <!-- Pink Chronicles Plus -->
           <div class="dash-plus-card">
