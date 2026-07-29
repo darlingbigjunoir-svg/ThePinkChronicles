@@ -6192,7 +6192,7 @@ input[type="checkbox"]#agreeCheck { display: none; }
    ============================================= */
 .hidden { display: none !important; }
 
-
+.feed-comments { }
 
 
 /* =============================================
@@ -6566,4 +6566,327 @@ p, span, a, li, blockquote, .join-bubble { overflow-wrap: break-word; }
   font-family: 'Font Awesome 6 Free';
   font-weight: 900;
   font-size: .85em;
+}
+
+
+/* =============================================
+   STORIES PAGE — stories.html
+   ============================================= */
+.sp-compose-card { max-width: 760px; margin: 0 auto 20px; }
+.sp-compose-note {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--pink-bg);
+  border: 1.5px solid var(--pink-pale);
+  border-radius: 10px;
+  padding: 10px 14px;
+  font-size: .78rem;
+  color: var(--gray);
+  margin-bottom: 14px;
+}
+.sp-compose-note .fa-shield-heart { color: var(--pink-mid) !important; }
+
+.sp-stories-list { max-width: 760px; margin: 0 auto; display: flex; flex-direction: column; gap: 14px; }
+.sp-story-card {
+  background: var(--white);
+  border: 1.5px solid var(--pink-pale);
+  border-radius: 14px;
+  padding: 18px 20px;
+}
+.sp-story-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+.sp-story-title { font-size: 1rem; font-weight: 800; color: var(--dark); margin-bottom: 4px; }
+.sp-story-meta { font-size: .72rem; color: var(--gray); display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.sp-story-content { font-size: .88rem; color: var(--dark); line-height: 1.75; white-space: pre-wrap; }
+
+.sp-status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: .65rem;
+  font-weight: 800;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  padding: 2px 9px;
+  border-radius: 20px;
+}
+.sp-status-pending  { background: #fff8e1; color: #e65100; }
+.sp-status-rejected { background: #fce4e4; color: #c62828; }
+
+
+/* =============================================
+   MESSAGES PAGE — messages.html
+   Design language: private notes passed between
+   sisterhood members, not a generic chat app.
+   Received = warm paper card, folded corner top-left.
+   Sent = deep-pink note, folded corner top-right.
+   ============================================= */
+.msg-safety-note {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: linear-gradient(135deg, #fff0f5 0%, var(--pink-bg) 100%);
+  border: 1.5px solid var(--pink-pale);
+  border-radius: 12px;
+  padding: 12px 18px;
+  font-size: .78rem;
+  color: var(--gray);
+  margin-bottom: 18px;
+  max-width: 100%;
+}
+.msg-safety-note .fa-shield-heart { color: var(--pink-mid) !important; font-size: 1rem; }
+.msg-safety-note strong { color: var(--pink-deep); }
+
+.msg-layout {
+  display: grid;
+  grid-template-columns: 290px 1fr;
+  gap: 20px;
+  height: calc(100vh - 270px);
+  min-height: 440px;
+}
+
+/* ── Conversation list: a little "address book" ── */
+.msg-convo-panel {
+  background: var(--white);
+  border: 1.5px solid var(--pink-pale);
+  border-radius: 18px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 4px 22px rgba(224,0,94,.06);
+}
+.msg-convo-panel-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 18px;
+  background: var(--pink-deep);
+  color: var(--white);
+  font-family: var(--ff-display);
+  font-style: italic;
+  font-size: 1rem;
+  font-weight: 700;
+}
+.msg-convo-panel-header .btn-icon {
+  background: rgba(255,255,255,.16);
+  border-color: rgba(255,255,255,.3);
+  width: 30px; height: 30px;
+}
+.msg-convo-panel-header .btn-icon .fa-solid { color: var(--white) !important; }
+.msg-convo-panel-header .btn-icon:hover { background: rgba(255,255,255,.28); }
+
+.msg-new-picker {
+  display: flex;
+  gap: 8px;
+  padding: 12px 14px;
+  border-bottom: 1.5px solid var(--pink-pale);
+  background: var(--pink-bg);
+}
+.msg-new-picker select { flex: 1; }
+
+.msg-convo-list { flex: 1; overflow-y: auto; padding: 8px; }
+.msg-convo-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 10px;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: background .15s, transform .12s;
+  margin-bottom: 4px;
+}
+.msg-convo-item:hover { background: var(--pink-bg); }
+.msg-convo-item-active { background: var(--pink-pale); }
+.msg-convo-avatar {
+  width: 40px; height: 40px;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+  color: var(--white);
+  font-weight: 800;
+  font-size: .82rem;
+  letter-spacing: .02em;
+  box-shadow: inset 0 0 0 2px rgba(255,255,255,.4);
+}
+.msg-convo-info { min-width: 0; }
+.msg-convo-name { font-size: .85rem; font-weight: 800; color: var(--dark); }
+.msg-convo-preview {
+  font-size: .74rem; color: var(--gray);
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.msg-convo-list .empty-state { padding: 32px 16px; }
+
+/* ── Chat panel ── */
+.msg-chat-panel {
+  background: var(--pink-bg);
+  border: 1.5px solid var(--pink-pale);
+  border-radius: 18px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 4px 22px rgba(224,0,94,.06);
+  position: relative;
+}
+/* faint corner decoration to keep the "note paper" world consistent */
+.msg-chat-panel::before {
+  content: '';
+  position: absolute;
+  top: -60px; right: -60px;
+  width: 200px; height: 200px;
+  background: radial-gradient(circle, rgba(224,0,94,.05) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.msg-empty-state {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: var(--gray);
+  gap: 14px;
+  padding: 40px 20px;
+  position: relative;
+  z-index: 1;
+}
+.msg-empty-state i {
+  width: 74px; height: 74px;
+  border-radius: 50%;
+  background: var(--pink-pale);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.7rem;
+  color: var(--pink-deep) !important;
+}
+.msg-empty-state p {
+  font-family: var(--ff-display);
+  font-style: italic;
+  font-size: 1.05rem;
+  color: var(--pink-deep);
+  max-width: 260px;
+}
+.msg-chat-active { flex: 1; display: flex; flex-direction: column; min-height: 0; position: relative; z-index: 1; }
+
+.msg-chat-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 20px;
+  background: var(--white);
+  border-bottom: 1.5px solid var(--pink-pale);
+}
+.msg-chat-header-avatar {
+  width: 38px; height: 38px;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--white);
+  font-weight: 800;
+  font-size: .78rem;
+  flex-shrink: 0;
+}
+.msg-chat-header-name { font-size: .92rem; font-weight: 800; color: var(--dark); flex: 1; }
+.msg-chat-header-actions { display: flex; gap: 8px; }
+.msg-small-btn { padding: 7px 14px !important; font-size: .72rem !important; }
+
+/* ── The notes themselves ── */
+.msg-messages {
+  flex: 1;
+  overflow-y: auto;
+  padding: 22px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.msg-bubble-row { display: flex; }
+.msg-bubble-row.msg-bubble-mine { justify-content: flex-end; }
+
+.msg-bubble {
+  position: relative;
+  max-width: 68%;
+  background: var(--white);
+  color: var(--dark);
+  padding: 12px 36px 12px 16px;
+  border-radius: 4px 14px 14px 14px;
+  font-size: .86rem;
+  line-height: 1.55;
+  word-break: break-word;
+  box-shadow: 0 3px 10px rgba(120,60,90,.08);
+  border: 1px solid #f5d0de;
+}
+/* folded-corner detail: a small pink triangle "dog-ear" */
+.msg-bubble::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 0; height: 0;
+  border-style: solid;
+  border-width: 0 0 12px 12px;
+  border-color: transparent transparent var(--pink-pale) transparent;
+  border-bottom-left-radius: 2px;
+}
+.msg-bubble-mine .msg-bubble {
+  background: linear-gradient(135deg, var(--pink-deep) 0%, var(--pink-footer) 100%);
+  color: var(--white);
+  border: none;
+  border-radius: 14px 4px 14px 14px;
+  padding: 12px 16px 12px 36px;
+  box-shadow: 0 4px 14px rgba(224,0,94,.25);
+}
+.msg-bubble-mine .msg-bubble::before {
+  top: 0; left: auto; right: 0;
+  border-width: 0 12px 12px 0;
+  border-color: transparent rgba(255,255,255,.35) transparent transparent;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 2px;
+}
+
+.msg-report-icon {
+  position: absolute;
+  top: 8px; right: 10px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity .15s;
+}
+.msg-bubble:hover .msg-report-icon { opacity: .55; }
+.msg-report-icon:hover { opacity: 1 !important; }
+.msg-report-icon .fa-flag { color: var(--gray) !important; font-size: .7rem; }
+.msg-bubble-mine .msg-report-icon { left: 10px; right: auto; }
+.msg-bubble-mine .msg-report-icon .fa-flag { color: rgba(255,255,255,.85) !important; }
+
+/* ── Compose row ── */
+.msg-input-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 16px 20px;
+  background: var(--white);
+  border-top: 1.5px solid var(--pink-pale);
+}
+.msg-input-row input {
+  flex: 1;
+  border-radius: 24px;
+}
+.msg-input-row .btn-primary {
+  width: 42px; height: 42px;
+  border-radius: 50%;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+@media (max-width: 900px) {
+  .msg-layout { grid-template-columns: 1fr; height: auto; }
+  .msg-convo-panel { height: 260px; }
+  .msg-chat-panel { height: 500px; }
+  .msg-bubble { max-width: 82%; }
 }

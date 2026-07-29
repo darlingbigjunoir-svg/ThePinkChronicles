@@ -4,7 +4,6 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Messages – The Pink Chronicles</title>
-  <link rel="icon" type="image/png" href="images/favicon-64x64.png" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Nunito:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/style.css" />
@@ -25,22 +24,30 @@
       <a href="dashboard.html" class="dash-nav-link">
         <i class="fa-solid fa-house"></i> Home
       </a>
-  
-      
+      <a href="discussions.html" class="dash-nav-link">
+        <i class="fa-solid fa-comments"></i> Discussions
+      </a>
       <a href="events.html" class="dash-nav-link">
         <i class="fa-regular fa-calendar-days"></i> Events
       </a>
       <a href="stories.html" class="dash-nav-link">
         <i class="fa-solid fa-book-open"></i> Stories
       </a>
-      
+      <a href="#" class="dash-nav-link">
+        <i class="fa-solid fa-trophy"></i> Challenges
+      </a>
       <a href="members.html" class="dash-nav-link">
         <i class="fa-solid fa-people-group"></i> Members
       </a>
       <a href="messages.html" class="dash-nav-link active">
         <i class="fa-regular fa-envelope"></i> Messages
       </a>
-      
+      <a href="#" class="dash-nav-link">
+        <i class="fa-solid fa-medal"></i> Badges
+      </a>
+      <a href="#" class="dash-nav-link">
+        <i class="fa-solid fa-folder-open"></i> Resources
+      </a>
       <a href="settings.html" class="dash-nav-link">
         <i class="fa-solid fa-gear"></i> Settings
       </a>
@@ -107,7 +114,7 @@
             <button class="btn-icon" id="newMsgBtn" title="New message"><i class="fa-solid fa-square-plus"></i></button>
           </div>
           <div id="newMsgPicker" class="msg-new-picker hidden">
-            <select id="newMsgSelect" class="admin-select" title="Choose a member…">
+            <select id="newMsgSelect" class="admin-select" aria-label="Choose a member">
               <option value="">Choose a member…</option>
             </select>
             <button class="btn-primary" id="newMsgStartBtn">Start</button>
@@ -125,6 +132,7 @@
           </div>
           <div id="chatActive" class="msg-chat-active hidden">
             <div class="msg-chat-header">
+              <div class="msg-chat-header-avatar" id="chatWithAvatar">?</div>
               <div class="msg-chat-header-name" id="chatWithName">Member</div>
               <div class="msg-chat-header-actions">
                 <button class="btn-ghost msg-small-btn" id="blockBtn"><i class="fa-solid fa-ban"></i> Block</button>
@@ -171,6 +179,20 @@
     let ACTIVE_CONVO = null;
     let POLL_TIMER = null;
 
+    /* A handful of warm, on-brand tones so each person gets a
+       consistent, recognizable avatar color across the app */
+    const AVATAR_TONES = ['#e0005e', '#ff5fa0', '#c2185b', '#ad1457', '#f0307a', '#d81b60'];
+    function hubAvatarColor(name) {
+      let hash = 0;
+      for (let i = 0; i < name.length; i++) hash = name.charCodeAt(i) + ((hash << 5) - hash);
+      return AVATAR_TONES[Math.abs(hash) % AVATAR_TONES.length];
+    }
+    function hubInitials(name) {
+      const parts = name.trim().split(/\s+/);
+      const initials = parts.length > 1 ? parts[0][0] + parts[1][0] : parts[0].slice(0, 2);
+      return initials.toUpperCase();
+    }
+
     async function renderConvoList() {
       const convos = await hubFetchConversations();
       const list = document.getElementById('convoList');
@@ -185,7 +207,7 @@
         const active = ACTIVE_CONVO && ACTIVE_CONVO.id === c.id ? 'msg-convo-item-active' : '';
         return `
         <div class="msg-convo-item ${active}" onclick="openConversation(${c.id}, ${c.otherId}, '${hubEsc(name).replace(/'/g, "&#39;")}')">
-          <div class="msg-convo-avatar"><i class="fa-solid fa-user"></i></div>
+          <div class="msg-convo-avatar" style="background:${hubAvatarColor(name)}">${hubInitials(name)}</div>
           <div class="msg-convo-info">
             <div class="msg-convo-name">${hubEsc(name)}</div>
             <div class="msg-convo-preview">${hubEsc(preview)}</div>
@@ -199,6 +221,9 @@
       document.getElementById('chatEmpty').classList.add('hidden');
       document.getElementById('chatActive').classList.remove('hidden');
       document.getElementById('chatWithName').textContent = otherName;
+      const avatarEl = document.getElementById('chatWithAvatar');
+      avatarEl.textContent = hubInitials(otherName);
+      avatarEl.style.background = hubAvatarColor(otherName);
       renderConvoList();
       await renderMessages();
       if (POLL_TIMER) clearInterval(POLL_TIMER);
