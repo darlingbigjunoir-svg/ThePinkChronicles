@@ -2152,6 +2152,7 @@ body {
   cursor: pointer;
   transition: background .2s, transform .15s;
   margin-bottom: 16px;
+  text-decoration: none;
 }
 .btn-join-community:hover { background: var(--pink-footer); transform: scale(1.03); }
 .btn-join-community .fa-people-group { color: var(--white) !important; font-size: .95rem; }
@@ -2385,6 +2386,7 @@ body {
   text-transform: uppercase;
   cursor: pointer;
   transition: background .2s, transform .14s;
+  text-decoration: none;
 }
 .btn-join-sisterhood:hover { background: var(--pink-pale); transform: scale(1.04); }
 .btn-join-sisterhood .fa-heart { color: var(--pink-deep) !important; font-size: .8rem; }
@@ -2770,6 +2772,7 @@ body {
   text-transform: uppercase;
   cursor: pointer;
   transition: background .2s, transform .14s;
+  text-decoration: none;
 }
 .btn-suggest:hover { background: var(--pink-footer); transform: scale(1.04); }
 .btn-suggest .fa-heart { color: var(--white) !important; font-size: .8rem; }
@@ -5487,6 +5490,15 @@ input[type="checkbox"]#agreeCheck { display: none; }
   font-weight: 700;
   letter-spacing: .06em;
 }
+.btn-explore {
+  display: inline-flex; align-items: center; gap: 8px;
+  border: none; border-radius: 50px; padding: 10px 24px;
+  font-family: var(--ff-body); letter-spacing: .07em; text-transform: uppercase;
+  cursor: pointer; text-decoration: none;
+  transition: background .2s, transform .14s;
+}
+ 
+
 
 /* ── Affirmations strip ── */
 .topic-affirmations {
@@ -6524,7 +6536,7 @@ p, span, a, li, blockquote, .join-bubble { overflow-wrap: break-word; }
   .btn-share-story, .btn-join-community, .btn-join-sisterhood,
   .btn-start-listening, .btn-notify, .btn-notify-submit,
   .btn-rules-community {
-    white-space: normal; text-align: center; letter-spacing: .04em;
+    white-space: normal; text-align: center; letter-spacing: .04em;text-transform: none; font-size: .78rem;
   }
   .navbar { padding: 10px 16px; gap: 8px; }
   .logo-pink { font-size: 1.3rem; }
@@ -6889,4 +6901,114 @@ p, span, a, li, blockquote, .join-bubble { overflow-wrap: break-word; }
   .msg-convo-panel { height: 260px; }
   .msg-chat-panel { height: 500px; }
   .msg-bubble { max-width: 82%; }
+}
+
+/* =============================================
+   MEMBER DIRECTORY — members.html
+   ============================================= */
+.members-section .section-card-header { flex-wrap: wrap; gap: 14px; }
+.members-search-wrap { flex: 1; min-width: 220px; max-width: 320px; }
+
+#directoryGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 16px;
+  margin-top: 20px;
+}
+#directoryGrid .empty-state { grid-column: 1 / -1; }
+
+.member-card {
+  padding: 26px 18px 22px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  transition: transform .18s, box-shadow .18s;
+}
+.member-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 26px rgba(224,0,94,.12);
+}
+.member-card .member-avatar {
+  width: 56px; height: 56px;
+  font-size: 1.3rem;
+  border: 2px solid var(--pink-light);
+  margin-bottom: 2px;
+}
+.member-info {
+  font-size: .88rem;
+  font-weight: 800;
+  color: var(--dark);
+  line-height: 1.3;
+}
+.member-joined {
+  font-size: .68rem;
+  color: var(--gray);
+}
+
+@media (max-width: 640px) {
+  #directoryGrid { grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 12px; }
+  .member-card { padding: 20px 12px 16px; }
+}
+
+
+/* =============================================
+   EVENTS LIST — events.html
+   ============================================= */
+.events-list { max-width: 820px; margin: 0 auto; }
+.events-list .dash-event-row {
+  background: var(--white);
+  border: 1.5px solid var(--pink-pale);
+  border-radius: 12px;
+  margin-bottom: 10px;
+  transition: transform .15s, box-shadow .15s;
+}
+.events-list .section-card .dash-event-row {
+  border: none;
+  border-bottom: 1px solid var(--pink-pale);
+  border-radius: 0;
+  margin-bottom: 0;
+}
+.events-list .section-card .dash-event-row:last-child { border-bottom: none; }
+.events-list .dash-event-row:hover { box-shadow: 0 6px 18px rgba(224,0,94,.08); }
+
+@media (max-width: 480px) {
+  .events-list .dash-event-row { flex-direction: column; align-items: flex-start; gap: 10px; }
+  .events-list .dash-event-time { margin-left: 56px; }
+}
+
+
+/* =============================================
+   dash-story-row used as a real link (dashboard.html
+   "Share Your Story" card) — same look, cursor + no
+   underline since it's now an <a> not a <div>
+   ============================================= */
+a.dash-story-link {
+  text-decoration: none;
+  cursor: pointer;
+}
+
+
+/* =============================================
+   SETTINGS PAGE — settings.html
+   ============================================= */
+.settings-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 22px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+.settings-grid .section-card:last-child { grid-column: 1 / -1; }
+.account-info {
+  font-size: .85rem;
+  color: var(--gray);
+  margin-bottom: 14px;
+}
+.account-info strong { color: var(--pink-deep); }
+
+@media (max-width: 800px) {
+  .settings-grid { grid-template-columns: 1fr; }
+  .settings-grid .section-card:last-child { grid-column: auto; }
 }
