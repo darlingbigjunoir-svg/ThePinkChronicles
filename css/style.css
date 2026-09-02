@@ -7012,3 +7012,12 @@ a.dash-story-link {
   .settings-grid { grid-template-columns: 1fr; }
   .settings-grid .section-card:last-child { grid-column: auto; }
 }
+
+
+/* =============================================
+   EPISODES PAGE — hide "New Here?" card on mobile
+   only (still shows on tablet + desktop)
+   ============================================= */
+@media (max-width: 600px) {
+  .new-here-card { display: none; }
+}
